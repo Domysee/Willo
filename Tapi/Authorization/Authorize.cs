@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Tapi.WebConnection;
 
 namespace Tapi.Authorization
 {
     public class Authorize
     {
-        private const string AuthorizationUrl = "https://trello.com/1/authorize";
+        private const string AuthorizationUrl = ConnectionData.BaseUrl + "/authorize";
 
         /// <summary>
         /// creates a url that can be used to authorize the application
