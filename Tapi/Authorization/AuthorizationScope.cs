@@ -13,10 +13,10 @@ namespace Tapi.Authorization
     /// </summary>
     public class AuthorizationScope
     {
-        public readonly AuthorizationScope ReadOnly = new AuthorizationScope("read");
-        public readonly AuthorizationScope ReadWrite = new AuthorizationScope("read,write");
-        public readonly AuthorizationScope ReadOnlyAccount = new AuthorizationScope("read,account");
-        public readonly AuthorizationScope ReadWriteAccount = new AuthorizationScope("read,write,account");
+        public static readonly AuthorizationScope ReadOnly = new AuthorizationScope("read");
+        public static readonly AuthorizationScope ReadWrite = new AuthorizationScope("read,write");
+        public static readonly AuthorizationScope ReadOnlyAccount = new AuthorizationScope("read,account");
+        public static readonly AuthorizationScope ReadWriteAccount = new AuthorizationScope("read,write,account");
 
         private string scope;
 

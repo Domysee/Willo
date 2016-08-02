@@ -8,10 +8,10 @@ namespace Tapi.Authorization
 {
     public class AuthorizationExpiration
     {
-        public readonly AuthorizationExpiration OneHour = new AuthorizationExpiration("1hour");
-        public readonly AuthorizationExpiration OneDay = new AuthorizationExpiration("1day");
-        public readonly AuthorizationExpiration ThirtyDays = new AuthorizationExpiration("30days");
-        public readonly AuthorizationExpiration Never = new AuthorizationExpiration("never");
+        public static readonly AuthorizationExpiration OneHour = new AuthorizationExpiration("1hour");
+        public static readonly AuthorizationExpiration OneDay = new AuthorizationExpiration("1day");
+        public static readonly AuthorizationExpiration ThirtyDays = new AuthorizationExpiration("30days");
+        public static readonly AuthorizationExpiration Never = new AuthorizationExpiration("never");
 
         private string expiration;
 

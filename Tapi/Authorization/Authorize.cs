@@ -16,7 +16,7 @@ namespace Tapi.Authorization
         /// <param name="applicationKey">your Trello api key</param>
         /// <param name="applicationName">the name of the application you want to authorize</param>
         /// <param name="scope">the rights the application should have</param>
-        /// <param name="expiration">how long the optained token should be valid, use AuthorizationExpiration</param>
+        /// <param name="expiration">how long the optained token should be valid</param>
         /// <returns></returns>
         public string GetAuthorizationUrl(ApplicationKey applicationKey, string applicationName, AuthorizationScope scope, AuthorizationExpiration expiration)
         {
