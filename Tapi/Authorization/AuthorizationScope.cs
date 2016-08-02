@@ -13,9 +13,21 @@ namespace Tapi.Authorization
     /// </summary>
     public class AuthorizationScope
     {
-        public const string ReadOnly = "read";
-        public const string ReadWrite = "read,write";
-        public const string ReadOnlyAccount = "read,account";
-        public const string ReadWriteAccount = "read,write,account";
+        public readonly AuthorizationScope ReadOnly = new AuthorizationScope("read");
+        public readonly AuthorizationScope ReadWrite = new AuthorizationScope("read,write");
+        public readonly AuthorizationScope ReadOnlyAccount = new AuthorizationScope("read,account");
+        public readonly AuthorizationScope ReadWriteAccount = new AuthorizationScope("read,write,account");
+
+        private string scope;
+
+        private AuthorizationScope(string scope)
+        {
+            this.scope = scope;
+        }
+
+        public static explicit operator string(AuthorizationScope scope)
+        {
+            return scope.scope;
+        }
     }
 }
