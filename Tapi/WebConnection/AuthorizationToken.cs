@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace Tapi.WebConnection
@@ -12,6 +13,7 @@ namespace Tapi.WebConnection
 
         public AuthorizationToken(string token)
         {
+            checkToken(token);
             this.token = token;
         }
 
@@ -23,6 +25,16 @@ namespace Tapi.WebConnection
         public static explicit operator string(AuthorizationToken token)
         {
             return token.token;
+        }
+
+        private static void checkToken(string token)
+        {
+            if (token.Length != 64)
+                throw new ArgumentException("A Trello authorization token must be 64 characters");
+
+            var allowedCharacters = new Regex("^[0-9a-z]*$");
+            if (!allowedCharacters.IsMatch(token))
+                throw new ArgumentException("A Trello authorization token must only contain alphanumeric, lowercase characters");
         }
     }
 }
