@@ -18,7 +18,7 @@ namespace Tapi.Authorization
         /// <param name="scope">the rights the application should have</param>
         /// <param name="expiration">how long the optained token should be valid, use AuthorizationExpiration</param>
         /// <returns></returns>
-        public string GetAuthorizationUrl(ApplicationKey applicationKey, string applicationName, AuthorizationScope scope, string expiration)
+        public string GetAuthorizationUrl(ApplicationKey applicationKey, string applicationName, AuthorizationScope scope, AuthorizationExpiration expiration)
         {
             return $"{AuthorizationUrl}?key={applicationKey}&name={applicationName}&scope={scope}&expiration={expiration}";
         }
