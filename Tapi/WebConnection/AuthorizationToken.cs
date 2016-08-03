@@ -36,5 +36,10 @@ namespace Tapi.WebConnection
             if (!allowedCharacters.IsMatch(token))
                 throw new ArgumentException("A Trello authorization token must only contain alphanumeric, lowercase characters");
         }
+
+        public override string ToString()
+        {
+            return token;
+        }
     }
 }

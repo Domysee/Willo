@@ -36,5 +36,10 @@ namespace Tapi.Authorization
             if (!allowedCharacters.IsMatch(key))
                 throw new ArgumentException("A Trello application key must only contain alphanumeric, lowercase characters");
         }
+
+        public override string ToString()
+        {
+            return key;
+        }
     }
 }

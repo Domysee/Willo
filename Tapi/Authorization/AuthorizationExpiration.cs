@@ -24,5 +24,10 @@ namespace Tapi.Authorization
         {
             return expiration.expiration;
         }
+
+        public override string ToString()
+        {
+            return expiration;
+        }
     }
 }

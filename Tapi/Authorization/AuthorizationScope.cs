@@ -29,5 +29,10 @@ namespace Tapi.Authorization
         {
             return scope.scope;
         }
+
+        public override string ToString()
+        {
+            return scope;
+        }
     }
 }

@@ -8,7 +8,7 @@ namespace Tapi.TrelloEntities
 {
     public class MemberId
     {
-        public readonly MemberId AuthorizedUser = new MemberId("me");
+        public static readonly MemberId AuthorizedUser = new MemberId("me");
 
         private string id;
 
@@ -31,6 +31,11 @@ namespace Tapi.TrelloEntities
         private static void checkId(string id)
         {
 
+        }
+
+        public override string ToString()
+        {
+            return id;
         }
     }
 }
