@@ -245,3 +245,4 @@ ModelManifest.xml
 .fake/
 Willo/TrelloData.cs
 Tapi.Tests/Development.cs
+Willo.View/TrelloData.cs

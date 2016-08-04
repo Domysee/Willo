@@ -1,13 +1,14 @@
 ﻿<Page
-    x:Class="Willo.MainPage"
+    x:Class="Willo.View.MainPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:Willo"
+    xmlns:local="using:Willo.View"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:login="using:Willo.View.Components.Login"
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-
+        <login:Login></login:Login>
     </Grid>
 </Page>
