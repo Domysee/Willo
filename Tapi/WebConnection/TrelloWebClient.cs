@@ -56,5 +56,11 @@ namespace Tapi.WebConnection
                 return result;
             }
         }
+
+        public async Task<T> Get<T>(string url) where T : JToken
+        {
+            var result = await Get(url);
+            return result as T;
+        }
     }
 }
