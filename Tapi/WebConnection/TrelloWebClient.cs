@@ -44,7 +44,7 @@ namespace Tapi.WebConnection
                 uri.Query += $"&{authorization}";
         }
 
-        public async Task<JContainer> Get(string url)
+        public async Task<JToken> Get(string url)
         {
             var uri = new UriBuilder(url);
             appendAuthorizationParameter(uri);
@@ -52,7 +52,7 @@ namespace Tapi.WebConnection
             {
                 var response = await client.GetAsync(uri.Uri);
                 var responseJson = await response.Content.ReadAsStringAsync();
-                var result = await Task.Run(() => JsonConvert.DeserializeObject<JContainer>(responseJson));
+                var result = await Task.Run(() => JToken.Parse(responseJson));
                 return result;
             }
         }
