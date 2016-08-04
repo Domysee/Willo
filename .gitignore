@@ -244,3 +244,4 @@ ModelManifest.xml
 # FAKE - F# Make
 .fake/
 Willo/TrelloData.cs
+Tapi.Tests/Development.cs
