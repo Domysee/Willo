@@ -17,11 +17,16 @@ using Windows.UI.Xaml.Navigation;
 
 namespace Willo.View.Components.Login
 {
-    public sealed partial class Login : UserControl
+    public sealed partial class LoginView : UserControl
     {
-        public Login()
+        public LoginViewmodel Viewmodel { get; }
+
+        public LoginView()
         {
             this.InitializeComponent();
+            this.Viewmodel = DependencyInjection.Instance.Resolve<LoginViewmodel>();
+            this.DataContext = this.Viewmodel;
+            this.Viewmodel.Initialize();
         }
     }
 }

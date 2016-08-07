@@ -29,7 +29,7 @@ namespace Tapi.WebConnection
 
         private static void checkToken(string token)
         {
-            if (token.Length != 64)
+            if (token.Length != 64 && token.Length != 32)
                 throw new ArgumentException("A Trello authorization token must be 64 characters");
 
             var allowedCharacters = new Regex("^[0-9a-z]*$");

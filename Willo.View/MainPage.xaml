@@ -9,6 +9,6 @@
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <login:Login></login:Login>
+        <login:LoginView></login:LoginView>
     </Grid>
 </Page>

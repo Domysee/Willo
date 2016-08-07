@@ -246,3 +246,4 @@ ModelManifest.xml
 Willo/TrelloData.cs
 Tapi.Tests/Development.cs
 Willo.View/TrelloData.cs
+Willo.Logic/TrelloData.cs
