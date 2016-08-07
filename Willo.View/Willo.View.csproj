@@ -102,6 +102,9 @@
       <DependentUpon>LoginView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Components\Login\LoginViewmodel.cs" />
+    <Compile Include="Components\Navigation\ContentControlNavigator.cs" />
+    <Compile Include="Components\Navigation\IGuiNavigator.cs" />
+    <Compile Include="Components\Navigation\NavigationCreator.cs" />
     <Compile Include="DependencyInjection.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>

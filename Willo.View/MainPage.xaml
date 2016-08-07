@@ -6,9 +6,10 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:login="using:Willo.View.Components.Login"
+    xmlns:navigation="using:Willo.View.Components.Navigation"
     mc:Ignorable="d">
-
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <login:LoginView></login:LoginView>
-    </Grid>
+    <ContentControl Name="Content" Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+        <login:LoginView NavigationTarget="{Binding ElementName=Content}">
+        </login:LoginView>
+    </ContentControl>
 </Page>
