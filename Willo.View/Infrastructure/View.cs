@@ -7,7 +7,7 @@ using Willo.View.Components.Navigation;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 
-namespace Willo.View.Components
+namespace Willo.View.Infrastructure
 {
     public class View : UserControl
     {

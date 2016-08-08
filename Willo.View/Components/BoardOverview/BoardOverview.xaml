@@ -1,7 +1,7 @@
 ﻿<view:View
     x:Class="Willo.View.Components.BoardOverview.BoardOverview"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-    xmlns:view="using:Willo.View.Components"
+    xmlns:view="using:Willo.View.Infrastructure"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:Willo.View.Components.BoardOverview"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -10,6 +10,6 @@
     d:DesignHeight="300"
     d:DesignWidth="400">
     <Grid>
-        
+        <ListView ItemsSource="{x:Bind Path=Viewmodel.Boards}"></ListView>
     </Grid>
 </view:View>

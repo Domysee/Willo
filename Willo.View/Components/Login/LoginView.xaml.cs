@@ -13,12 +13,13 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using Willo.View.Infrastructure;
 
 // The User Control item template is documented at http://go.microsoft.com/fwlink/?LinkId=234236
 
 namespace Willo.View.Components.Login
 {
-    public sealed partial class LoginView : View
+    public sealed partial class LoginView : Infrastructure.View
     {
         public LoginViewmodel Viewmodel { get; }
 
