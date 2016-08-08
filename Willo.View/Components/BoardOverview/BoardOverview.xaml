@@ -5,10 +5,20 @@
     xmlns:local="using:Willo.View.Components.BoardOverview"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:trello="using:Tapi.TrelloEntities.Board"
     mc:Ignorable="d"
     d:DesignHeight="300"
-    d:DesignWidth="400">
-    <Grid>
-        <ListView ItemsSource="{x:Bind Path=Viewmodel.Boards}"></ListView>
-    </Grid>
+    d:DesignWidth="400" Loaded="UserControl_Loaded">
+    <StackPanel Orientation="Vertical">
+        <TextBlock HorizontalAlignment="Center" FontSize="20px">Boards</TextBlock>
+        <ListView ItemsSource="{Binding Path=Boards}">
+            <ListView.ItemTemplate>
+                <DataTemplate x:DataType="trello:Board">
+                    <Grid>
+                        <TextBlock Text="{x:Bind Path=Name}"></TextBlock>
+                    </Grid>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </StackPanel>
 </UserControl>

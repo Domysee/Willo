@@ -30,7 +30,11 @@ namespace Willo.View.Components.BoardOverview
             this.Navigation = new Infrastructure.Navigation();
             this.Viewmodel = DependencyInjection.Instance.Resolve<BoardOverviewViewModel>();
             this.DataContext = this.Viewmodel;
-            this.Viewmodel.Initialize();
+        }
+
+        private async void UserControl_Loaded(object sender, RoutedEventArgs e)
+        {
+            await this.Viewmodel.Initialize();
         }
     }
 }
