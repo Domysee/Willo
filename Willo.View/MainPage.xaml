@@ -9,7 +9,7 @@
     xmlns:navigation="using:Willo.View.Components.Navigation"
     mc:Ignorable="d">
     <ContentPresenter Name="Content" Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-        <login:LoginView NavigationTarget="{Binding ElementName=Content}">
+        <login:LoginView NavigationContainer="{Binding ElementName=Content}">
         </login:LoginView>
     </ContentPresenter>
 </Page>

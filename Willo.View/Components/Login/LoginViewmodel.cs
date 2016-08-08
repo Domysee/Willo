@@ -12,9 +12,8 @@ namespace Willo.View.Components.Login
     {
         private LoginLogic logic;
         public string Url { get; private set;}
-
-        public delegate void NavigationRequest(Type viewType);
-        public event NavigationRequest NavigationRequested;
+        
+        public event EventHandler NavigationToBoardOverviewRequested;
 
         public LoginViewmodel(LoginLogic logic)
         {
@@ -33,7 +32,7 @@ namespace Willo.View.Components.Login
             if (logic.IsAuthorizationToken(token))
             {
                 logic.Authorize(token);
-                NavigationRequested(typeof(BoardOverview.BoardOverview));
+                NavigationToBoardOverviewRequested(null, null);
             }
         }
     }

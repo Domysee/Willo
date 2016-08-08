@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using Willo.View.Components.Navigation;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
@@ -17,11 +18,16 @@ using Windows.UI.Xaml.Navigation;
 
 namespace Willo.View.Components.BoardOverview
 {
-    public sealed partial class BoardOverview : UserControl
+    public sealed partial class BoardOverview : View
     {
+        public BoardOverviewViewModel Viewmodel { get; }
+
         public BoardOverview()
         {
             this.InitializeComponent();
+            this.Viewmodel = DependencyInjection.Instance.Resolve<BoardOverviewViewModel>();
+            this.DataContext = this.Viewmodel;
+            this.Viewmodel.Initialize();
         }
     }
 }

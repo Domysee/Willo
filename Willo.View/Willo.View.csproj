@@ -98,6 +98,7 @@
     <Compile Include="Components\BoardOverview\BoardOverview.xaml.cs">
       <DependentUpon>BoardOverview.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Components\BoardOverview\BoardOverviewViewModel.cs" />
     <Compile Include="Components\Login\LoginView.xaml.cs">
       <DependentUpon>LoginView.xaml</DependentUpon>
     </Compile>
@@ -106,6 +107,7 @@
     <Compile Include="Components\Navigation\ContentControlNavigator.cs" />
     <Compile Include="Components\Navigation\IGuiNavigator.cs" />
     <Compile Include="Components\Navigation\NavigationCreator.cs" />
+    <Compile Include="Components\View.cs" />
     <Compile Include="DependencyInjection.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>

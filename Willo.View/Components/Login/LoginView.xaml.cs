@@ -18,18 +18,8 @@ using Windows.UI.Xaml.Navigation;
 
 namespace Willo.View.Components.Login
 {
-    public sealed partial class LoginView : UserControl
+    public sealed partial class LoginView : View
     {
-        public object NavigationTarget
-        {
-            get { return (object)GetValue(NavigationTargetProperty); }
-            set { SetValue(NavigationTargetProperty, value); }
-        }
-
-        public static readonly DependencyProperty NavigationTargetProperty =
-            DependencyProperty.Register("NavigationTarget", typeof(object), typeof(LoginView), new PropertyMetadata(null, (dependencyObject, args) => { (dependencyObject as LoginView).initializeNavigator(); }));
-
-        private IGuiNavigator navigator;
         public LoginViewmodel Viewmodel { get; }
 
         public LoginView()
@@ -38,18 +28,14 @@ namespace Willo.View.Components.Login
             this.Viewmodel = DependencyInjection.Instance.Resolve<LoginViewmodel>();
             this.DataContext = this.Viewmodel;
             this.Viewmodel.Initialize();
-            this.Viewmodel.NavigationRequested += Viewmodel_NavigationRequested;
+            this.Viewmodel.NavigationToBoardOverviewRequested += Viewmodel_NavigationToBoardOverviewRequested;
         }
 
-        private void initializeNavigator()
+        private void Viewmodel_NavigationToBoardOverviewRequested(object sender, EventArgs e)
         {
-            navigator = new NavigationCreator().Create(NavigationTarget);
-        }
-
-        private void Viewmodel_NavigationRequested(Type viewType)
-        {
-            var v = (UserControl)Activator.CreateInstance(viewType);
-            navigator.NavigateTo(v);
+            var boardOverview = new BoardOverview.BoardOverview();
+            boardOverview.NavigationContainer = this.NavigationContainer;
+            navigator.NavigateTo(boardOverview);
         }
     }
 }
