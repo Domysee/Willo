@@ -12,11 +12,16 @@
     <StackPanel Orientation="Vertical">
         <TextBlock HorizontalAlignment="Center" FontSize="20px">Boards</TextBlock>
         <ListView ItemsSource="{Binding Path=Boards}">
+            <ListView.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <ItemsWrapGrid Orientation="Horizontal"></ItemsWrapGrid>
+                </ItemsPanelTemplate>
+            </ListView.ItemsPanel>
             <ListView.ItemTemplate>
                 <DataTemplate x:DataType="trello:Board">
-                    <Grid>
-                        <TextBlock Text="{x:Bind Path=Name}"></TextBlock>
-                    </Grid>
+                    <Border Height="114px" Width="300px" Background="#0079BF" CornerRadius="3" Margin="5 5 5 5">
+                        <TextBlock Text="{x:Bind Path=Name}" Foreground="White" FontSize="20px" FontWeight="Bold" Margin="8"></TextBlock>
+                    </Border>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
