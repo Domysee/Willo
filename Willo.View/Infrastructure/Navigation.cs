@@ -9,7 +9,7 @@ using Windows.UI.Xaml.Controls;
 
 namespace Willo.View.Infrastructure
 {
-    public class View : UserControl
+    public class Navigation : DependencyObject
     {
         public object NavigationContainer
         {
@@ -18,13 +18,13 @@ namespace Willo.View.Infrastructure
         }
 
         public static readonly DependencyProperty NavigationContainerProperty =
-            DependencyProperty.Register("NavigationContainer", typeof(object), typeof(View), new PropertyMetadata(null, (dependencyObject, args) => { (dependencyObject as View).initializeNavigator(); }));
+            DependencyProperty.Register("NavigationContainer", typeof(object), typeof(Navigation), new PropertyMetadata(null, (dependencyObject, args) => { (dependencyObject as Navigation).initializeNavigator(); }));
 
-        protected IGuiNavigator navigator;
+        public IGuiNavigator Navigator { get; set; }
 
         private void initializeNavigator()
         {
-            navigator = new NavigationCreator().Create(NavigationContainer);
+            Navigator = new NavigationCreator().Create(NavigationContainer);
         }
     }
 }

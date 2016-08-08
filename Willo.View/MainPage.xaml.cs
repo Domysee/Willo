@@ -26,5 +26,10 @@ namespace Willo.View
         {
             this.InitializeComponent();
         }
+
+        private void Page_Loaded(object sender, RoutedEventArgs e)
+        {
+            LoginView.Navigation.NavigationContainer = Content;
+        }
     }
 }

@@ -19,13 +19,15 @@ using Willo.View.Infrastructure;
 
 namespace Willo.View.Components.Login
 {
-    public sealed partial class LoginView : Infrastructure.View
+    public sealed partial class LoginView : UserControl
     {
+        public Infrastructure.Navigation Navigation { get; set; }
         public LoginViewmodel Viewmodel { get; }
 
         public LoginView()
         {
             this.InitializeComponent();
+            this.Navigation = new Infrastructure.Navigation();
             this.Viewmodel = DependencyInjection.Instance.Resolve<LoginViewmodel>();
             this.DataContext = this.Viewmodel;
             this.Viewmodel.Initialize();
@@ -35,8 +37,8 @@ namespace Willo.View.Components.Login
         private void Viewmodel_NavigationToBoardOverviewRequested(object sender, EventArgs e)
         {
             var boardOverview = new BoardOverview.BoardOverview();
-            boardOverview.NavigationContainer = this.NavigationContainer;
-            navigator.NavigateTo(boardOverview);
+            boardOverview.Navigation.NavigationContainer = this.Navigation.NavigationContainer;
+            Navigation.Navigator.NavigateTo(boardOverview);
         }
     }
 }

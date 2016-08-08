@@ -5,13 +5,19 @@ using System.Text;
 using System.Threading.Tasks;
 using Tapi.TrelloEntities.Board;
 using Willo.Logic;
+using Willo.View.Infrastructure;
 
 namespace Willo.View.Components.BoardOverview
 {
-    public class BoardOverviewViewModel
+    public class BoardOverviewViewModel : BindableBase
     {
         private BoardOverviewLogic logic;
-        public IReadOnlyCollection<Board> Boards { get; private set; }
+        private IReadOnlyCollection<Board> boards;
+        public IReadOnlyCollection<Board> Boards
+        {
+            get { return boards; }
+            set { SetProperty(ref boards, value); }
+        }
 
         public BoardOverviewViewModel(BoardOverviewLogic logic)
         {

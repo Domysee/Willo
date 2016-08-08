@@ -109,7 +109,7 @@
     <Compile Include="Components\Navigation\IGuiNavigator.cs" />
     <Compile Include="Components\Navigation\NavigationCreator.cs" />
     <Compile Include="Infrastructure\PropertySupport.cs" />
-    <Compile Include="Infrastructure\View.cs" />
+    <Compile Include="Infrastructure\Navigation.cs" />
     <Compile Include="DependencyInjection.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>

@@ -3,13 +3,13 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:Willo.View"
+    xmlns:infrastructure="using:Willo.View.Infrastructure"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:login="using:Willo.View.Components.Login"
     xmlns:navigation="using:Willo.View.Components.Navigation"
-    mc:Ignorable="d">
+    mc:Ignorable="d" Loaded="Page_Loaded">
     <ContentPresenter Name="Content" Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-        <login:LoginView NavigationContainer="{Binding ElementName=Content}">
-        </login:LoginView>
+        <login:LoginView x:Name="LoginView"></login:LoginView>
     </ContentPresenter>
 </Page>
