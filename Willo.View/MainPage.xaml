@@ -8,8 +8,8 @@
     xmlns:login="using:Willo.View.Components.Login"
     xmlns:navigation="using:Willo.View.Components.Navigation"
     mc:Ignorable="d">
-    <ContentControl Name="Content" Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+    <ContentPresenter Name="Content" Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
         <login:LoginView NavigationTarget="{Binding ElementName=Content}">
         </login:LoginView>
-    </ContentControl>
+    </ContentPresenter>
 </Page>
