@@ -7,7 +7,7 @@ using Tapi;
 using Tapi.TrelloEntities;
 using Tapi.TrelloEntities.Board;
 
-namespace Willo.Logic
+namespace Willo.Logic.BoardOverview
 {
     public class BoardOverviewLogic
     {
@@ -18,9 +18,10 @@ namespace Willo.Logic
             this.api = api;
         }
 
-        public async Task<IEnumerable<Board>> GetBoards()
+        public async Task<IEnumerable<OverviewBoard>> GetBoards()
         {
-            return await api.Boards.GetAll(MemberId.AuthorizedUser);
+            var boards = await api.Boards.GetAll(MemberId.AuthorizedUser);
+            return boards.Select(b => new OverviewBoard(b.Id, b.Name));
         }
     }
 }

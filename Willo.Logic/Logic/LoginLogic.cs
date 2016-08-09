@@ -7,7 +7,7 @@ using Tapi;
 using Tapi.Authorization;
 using Tapi.WebConnection;
 
-namespace Willo.Logic
+namespace Willo.Logic.Login
 {
     public class LoginLogic
     {

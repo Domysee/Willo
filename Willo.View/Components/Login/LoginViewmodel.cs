@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Willo.Logic;
+using Willo.Logic.Login;
 using Windows.UI.Xaml.Controls;
 
 namespace Willo.View.Components.Login
