@@ -5,7 +5,7 @@
     xmlns:local="using:Willo.View.Components.BoardOverview"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:trello="using:Tapi.TrelloEntities.Board"
+    xmlns:logic="using:Willo.Logic.BoardOverview"
     mc:Ignorable="d"
     d:DesignHeight="300"
     d:DesignWidth="400" Loaded="UserControl_Loaded">
@@ -18,7 +18,7 @@
                 </ItemsPanelTemplate>
             </ListView.ItemsPanel>
             <ListView.ItemTemplate>
-                <DataTemplate x:DataType="trello:Board">
+                <DataTemplate x:DataType="logic:OverviewBoard">
                     <Border Height="114px" Width="300px" Background="#0079BF" CornerRadius="3" Margin="5 5 5 5">
                         <TextBlock Text="{x:Bind Path=Name}" Foreground="White" FontSize="20px" FontWeight="Bold" Margin="8"></TextBlock>
                     </Border>

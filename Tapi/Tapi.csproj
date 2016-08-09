@@ -114,6 +114,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Trello.cs" />
     <Compile Include="TrelloEntities\Board\Board.cs" />
+    <Compile Include="TrelloEntities\Board\BoardProperties.cs" />
+    <Compile Include="TrelloEntities\Board\PropertyMappings.cs" />
     <Compile Include="TrelloEntities\Board\Boards.cs" />
     <Compile Include="TrelloEntities\MemberId.cs" />
     <Compile Include="WebConnection\AuthorizationToken.cs" />

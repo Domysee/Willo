@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Tapi;
 using Willo.Logic;
+using Willo.Logic.Login;
 using Willo.View.Components.Login;
 
 namespace Willo.View

@@ -20,7 +20,8 @@ namespace Willo.Logic.BoardOverview
 
         public async Task<IEnumerable<OverviewBoard>> GetBoards()
         {
-            var boards = await api.Boards.GetAll(MemberId.AuthorizedUser);
+            var propertiesToLoad = new BoardProperties { Name = true };
+            var boards = await api.Boards.GetAll(MemberId.AuthorizedUser, propertiesToLoad);
             return boards.Select(b => new OverviewBoard(b.Id, b.Name));
         }
     }

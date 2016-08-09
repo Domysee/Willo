@@ -17,9 +17,11 @@ namespace Tapi.TrelloEntities.Board
             this.webClient = webClient;
         }
 
-        public async Task<IEnumerable<Board>> GetAll(MemberId memberId)
+        public async Task<IEnumerable<Board>> GetAll(MemberId memberId, BoardProperties properties = null)
         {
             var url = $"{ConnectionData.BaseUrl}/members/{memberId}/boards";
+            if (properties != null)
+                url += "?fields=" + properties.ToString();
             var result = await webClient.Get<JArray>(url);
             var boards = result.Select(json => Board.FromJson((JObject)json)).ToList();
             return boards;
