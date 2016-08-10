@@ -20,7 +20,7 @@ namespace Willo.Logic.Login
 
         public string GetAuthenticationUrl()
         {
-            return Tapi.Authorization.Authorize.GetAuthorizationUrl(TrelloData.AppplicationKey, TrelloData.ApplicationName, AuthorizationScope.ReadWriteAccount, AuthorizationExpiration.Never);
+            return Tapi.Authorization.AuthorizationUrlCreator.Create(TrelloData.AppplicationKey, TrelloData.ApplicationName, AuthorizationScope.ReadWriteAccount, AuthorizationExpiration.Never);
         }
 
         public bool IsAuthorizationToken(string token)
