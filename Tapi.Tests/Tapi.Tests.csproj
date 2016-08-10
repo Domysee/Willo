@@ -101,6 +101,7 @@
     </Compile>
     <Compile Include="Development.cs" />
     <Compile Include="UnitTests\AuthorizationTests.cs" />
+    <Compile Include="UnitTests\TrelloEntities\Board\BoardsTest.cs" />
     <Compile Include="UnitTests\WebConnnectionTests.cs" />
   </ItemGroup>
   <ItemGroup>

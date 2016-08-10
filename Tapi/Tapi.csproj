@@ -110,7 +110,7 @@
     <Compile Include="Authorization\ApplicationKey.cs" />
     <Compile Include="Authorization\AuthorizationExpiration.cs" />
     <Compile Include="Authorization\AuthorizationScope.cs" />
-    <Compile Include="Authorization\Authorize.cs" />
+    <Compile Include="Authorization\AuthorizationUrlCreator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Trello.cs" />
     <Compile Include="TrelloEntities\Board\Board.cs" />
