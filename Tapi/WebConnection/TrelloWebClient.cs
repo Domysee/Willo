@@ -12,7 +12,7 @@ using Windows.Web.Http.Headers;
 
 namespace Tapi.WebConnection
 {
-    public class TrelloWebClient
+    public class TrelloWebClient : ITrelloWebClient
     {
         public bool IsAuthorized { get; private set; }
         private ApplicationKey applicationKey;

@@ -14,7 +14,7 @@ namespace Tapi
     /// </summary>
     public class Trello
     {
-        private TrelloWebClient webClient;
+        private ITrelloWebClient webClient;
 
         public Boards Boards { get; }
 

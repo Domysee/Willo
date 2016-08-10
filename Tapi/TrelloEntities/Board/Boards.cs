@@ -10,9 +10,9 @@ namespace Tapi.TrelloEntities.Board
 {
     public class Boards
     {
-        private TrelloWebClient webClient;
+        private ITrelloWebClient webClient;
 
-        public Boards(TrelloWebClient webClient)
+        public Boards(ITrelloWebClient webClient)
         {
             this.webClient = webClient;
         }
