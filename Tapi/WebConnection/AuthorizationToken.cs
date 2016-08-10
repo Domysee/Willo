@@ -22,7 +22,7 @@ namespace Tapi.WebConnection
             return new AuthorizationToken(token);
         }
 
-        public static implicit operator string(AuthorizationToken token)
+        public static explicit operator string(AuthorizationToken token)
         {
             return token.token;
         }

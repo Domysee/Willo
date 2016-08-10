@@ -121,6 +121,7 @@
     <Compile Include="WebConnection\AuthorizationToken.cs" />
     <Compile Include="WebConnection\ConnectionData.cs" />
     <Compile Include="WebConnection\TrelloWebClient.cs" />
+    <Compile Include="WebConnection\UnauthorizedException.cs" />
     <EmbeddedResource Include="Properties\Tapi.rd.xml" />
   </ItemGroup>
   <ItemGroup />

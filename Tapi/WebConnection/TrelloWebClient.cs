@@ -14,6 +14,7 @@ namespace Tapi.WebConnection
 {
     public class TrelloWebClient
     {
+        public bool IsAuthorized { get; private set; }
         private ApplicationKey applicationKey;
         private AuthorizationToken authorizationToken;
 
@@ -21,6 +22,7 @@ namespace Tapi.WebConnection
         {
             this.applicationKey = applicationKey;
             this.authorizationToken = authorizationToken;
+            this.IsAuthorized = true;
         }
 
         private HttpClient createClient()
@@ -44,8 +46,14 @@ namespace Tapi.WebConnection
                 uri.Query += $"&{authorization}";
         }
 
+        private void throwIfNotAuthorized()
+        {
+            if (!IsAuthorized) throw new UnauthorizedException();
+        }
+
         public async Task<JToken> Get(string url)
         {
+            throwIfNotAuthorized(); 
             var uri = new UriBuilder(url);
             appendAuthorizationParameter(uri);
             using (var client = createClient())
@@ -60,7 +68,7 @@ namespace Tapi.WebConnection
         public async Task<T> Get<T>(string url) where T : JToken
         {
             var result = await Get(url);
-            return result as T;
+            return (T)result;
         }
     }
 }
