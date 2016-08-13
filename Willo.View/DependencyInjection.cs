@@ -19,7 +19,10 @@ namespace Willo.View
             get
             {
                 if (instance == null)
+                {
                     instance = new DependencyInjection();
+                    instance.Setup();
+                }
                 return instance;
             }
         }
@@ -33,9 +36,7 @@ namespace Willo.View
 
         public void Setup()
         {
-            Container.RegisterType<Trello>();
-            Container.RegisterType<LoginViewmodel>();
-            Container.RegisterType<LoginLogic>();
+            Container.RegisterInstance(new Trello());
         }
 
         public T Resolve<T>()
