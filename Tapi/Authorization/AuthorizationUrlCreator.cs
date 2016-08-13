@@ -9,7 +9,7 @@ namespace Tapi.Authorization
 {
     public class AuthorizationUrlCreator
     {
-        private const string AuthorizationUrl = ConnectionData.BaseUrl + "/authorize";
+        private const string AuthorizationUrl = ConnectionData.BaseUrl + "/authorize?response_type=token";
 
         /// <summary>
         /// creates a url that can be used to authorize the application
@@ -21,7 +21,7 @@ namespace Tapi.Authorization
         /// <returns></returns>
         public static string Create(ApplicationKey applicationKey, string applicationName, AuthorizationScope scope, AuthorizationExpiration expiration)
         {
-            return $"{AuthorizationUrl}?key={applicationKey}&name={applicationName}&scope={scope}&expiration={expiration}";
+            return $"{AuthorizationUrl}&key={applicationKey}&name={applicationName}&scope={scope}&expiration={expiration}";
         }
     }
 }
