@@ -16,7 +16,7 @@ namespace Willo.Logic.Login
             this.api = api;
         }
 
-        public override IEnumerable<IError> Handle(AuthorizeCommand command)
+        public override async Task<IEnumerable<IError>> Handle(AuthorizeCommand command)
         {
             api.Authorize(TrelloData.AppplicationKey, command.AuthorizationToken);
             return null;

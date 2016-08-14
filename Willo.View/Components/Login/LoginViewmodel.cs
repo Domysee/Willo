@@ -32,7 +32,7 @@ namespace Willo.View.Components.Login
             token = token.Trim();
             if (await messageBroker.Query(new IsAuthorizationTokenQuery(token)))
             {
-                messageBroker.Command(new AuthorizeCommand(token));
+                await messageBroker.Command(new AuthorizeCommand(token));
                 NavigationToBoardOverviewRequested(null, null);
             }
         }

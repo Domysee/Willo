@@ -49,10 +49,10 @@ namespace Willo.Logic
             return (T)await handler.Handle(query);
         }
 
-        public IEnumerable<IError> Command(ICommand command)
+        public async Task<IEnumerable<IError>> Command(ICommand command)
         {
             var handler = commandHandlerStore.Get(command);
-            return handler.Handle(command);
+            return await handler.Handle(command);
         }
     }
 }

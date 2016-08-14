@@ -9,13 +9,13 @@ namespace Willo.Logic
     public abstract class CommandHandlerBase<TCommand> : ICommandHandler<TCommand>
         where TCommand : ICommand
     {
-        public IEnumerable<IError> Handle(ICommand command)
+        public async Task<IEnumerable<IError>> Handle(ICommand command)
         {
             if (!(command is TCommand))
                 throw new ArgumentException("The command type doesn't match");
-            return Handle((TCommand)command);
+            return await Handle((TCommand)command);
         }
 
-        public abstract IEnumerable<IError> Handle(TCommand command);
+        public abstract Task<IEnumerable<IError>> Handle(TCommand command);
     }
 }

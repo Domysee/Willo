@@ -107,7 +107,6 @@
     <None Include="project.json" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BoardOverview\BoardOverviewLogic.cs" />
     <Compile Include="BoardOverview\BoardOverviewQuery.cs" />
     <Compile Include="BoardOverview\BoardOverview.cs" />
     <Compile Include="BoardOverview\BoardOverviewQueryHandler.cs" />
