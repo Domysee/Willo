@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace Willo.Logic.BoardOverview
 {
-    public class OverviewBoard
+    public class BoardOverview
     {
         public string Id { get; }
         public string Name { get; }
 
-        public OverviewBoard(string id, string name)
+        public BoardOverview(string id, string name)
         {
             this.Id = id;
             this.Name = name;

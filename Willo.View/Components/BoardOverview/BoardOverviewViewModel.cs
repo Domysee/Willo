@@ -12,22 +12,22 @@ namespace Willo.View.Components.BoardOverview
 {
     public class BoardOverviewViewModel : BindableBase
     {
-        private BoardOverviewLogic logic;
-        private IReadOnlyCollection<OverviewBoard> boards;
-        public IReadOnlyCollection<OverviewBoard> Boards
+        private MessageBroker messageBroker;
+        private IReadOnlyCollection<Logic.BoardOverview.BoardOverview> boards;
+        public IReadOnlyCollection<Logic.BoardOverview.BoardOverview> Boards
         {
             get { return boards; }
             set { SetProperty(ref boards, value); }
         }
 
-        public BoardOverviewViewModel(BoardOverviewLogic logic)
+        public BoardOverviewViewModel(MessageBroker messageBroker)
         {
-            this.logic = logic;
+            this.messageBroker = messageBroker;
         }
 
         public async Task Initialize()
         {
-            Boards = (await logic.GetBoards()).ToList();
+            Boards = (await messageBroker.Query(new BoardOverviewQuery())).ToList();
         }
     }
 }

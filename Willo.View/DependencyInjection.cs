@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Tapi;
 using Willo.Logic;
+using Willo.Logic.BoardOverview;
 using Willo.Logic.Login;
 using Willo.View.Components.Login;
 
@@ -42,9 +43,10 @@ namespace Willo.View
             var commandHandlerStore = new CommandHandlerStore();
             var messageBroker = new MessageBroker(queryHandlerStore, commandHandlerStore);
             Container.RegisterInstance(messageBroker);
-
-            messageBroker.RegisterHandler(new AuthorizationUrlQueryHandler());
-            messageBroker.RegisterHandler(new IsAuthorizationTokenQueryHandler());
+            
+            messageBroker.RegisterHandler(instance.Resolve<AuthorizationUrlQueryHandler>());
+            messageBroker.RegisterHandler(instance.Resolve<IsAuthorizationTokenQueryHandler>());
+            messageBroker.RegisterHandler(instance.Resolve<BoardOverviewQueryHandler>());
 
             messageBroker.RegisterHandler(instance.Resolve<AuthorizeCommandHandler>());
         }

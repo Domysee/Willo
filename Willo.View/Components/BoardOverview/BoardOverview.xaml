@@ -18,7 +18,7 @@
                 </ItemsPanelTemplate>
             </ListView.ItemsPanel>
             <ListView.ItemTemplate>
-                <DataTemplate x:DataType="logic:OverviewBoard">
+                <DataTemplate x:DataType="logic:BoardOverview">
                     <Border Height="114px" Width="300px" Background="#0079BF" CornerRadius="3" Margin="5 5 5 5">
                         <TextBlock Text="{x:Bind Path=Name}" Foreground="White" FontSize="20px" FontWeight="Bold" Margin="8"></TextBlock>
                     </Border>

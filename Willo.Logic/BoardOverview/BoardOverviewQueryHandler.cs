@@ -9,20 +9,20 @@ using Tapi.TrelloEntities.Board;
 
 namespace Willo.Logic.BoardOverview
 {
-    public class BoardOverviewLogic
+    public class BoardOverviewQueryHandler : QueryHandlerBase<BoardOverviewQuery, IEnumerable<BoardOverview>>
     {
         private Trello api;
 
-        public BoardOverviewLogic(Trello api)
+        public BoardOverviewQueryHandler(Trello api)
         {
             this.api = api;
         }
 
-        public async Task<IEnumerable<OverviewBoard>> GetBoards()
+        public override async Task<IEnumerable<BoardOverview>> Handle(BoardOverviewQuery query)
         {
             var propertiesToLoad = new BoardProperties { Name = true };
             var boards = await api.Boards.GetAll(MemberId.AuthorizedUser, propertiesToLoad);
-            return boards.Select(b => new OverviewBoard(b.Id, b.Name));
+            return boards.Select(b => new BoardOverview(b.Id, b.Name));
         }
     }
 }
