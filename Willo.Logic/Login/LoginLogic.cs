@@ -18,19 +18,6 @@ namespace Willo.Logic.Login
             this.api = api;
         }
 
-        public bool IsAuthorizationToken(string token)
-        {
-            try
-            {
-                new AuthorizationToken(token);
-                return true;
-            }
-            catch (Exception)
-            {
-                return false;
-            }
-        }
-
         public void Authorize(AuthorizationToken token)
         {
             api.Authorize(TrelloData.AppplicationKey, token);

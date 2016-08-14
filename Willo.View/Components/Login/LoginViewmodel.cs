@@ -13,8 +13,8 @@ namespace Willo.View.Components.Login
     {
         private LoginLogic logic;
         private MessageBroker messageBroker;
-        public string Url { get; private set;}
-        
+        public string Url { get; private set; }
+
         public event EventHandler NavigationToBoardOverviewRequested;
 
         public LoginViewmodel(LoginLogic logic, MessageBroker messageBroker)
@@ -32,7 +32,7 @@ namespace Willo.View.Components.Login
         {
             string token = await sender.InvokeScriptAsync("eval", new string[] { "[].map.call(document.getElementsByTagName('pre'), function(node){ return node.innerText; }).join('||');" });
             token = token.Trim();
-            if (logic.IsAuthorizationToken(token))
+            if (messageBroker.Query(new IsAuthorizationTokenQuery(token)))
             {
                 logic.Authorize(token);
                 NavigationToBoardOverviewRequested(null, null);

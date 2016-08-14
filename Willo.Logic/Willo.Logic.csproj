@@ -115,6 +115,8 @@
     <Compile Include="IQueryHandlerStore.cs" />
     <Compile Include="Login\AuthorizationUrlQuery.cs" />
     <Compile Include="Login\AuthorizationUrlQueryHandler.cs" />
+    <Compile Include="Login\IsAuthorizationTokenQuery.cs" />
+    <Compile Include="Login\IsAuthorizationTokenQueryHandler.cs" />
     <Compile Include="Login\LoginLogic.cs" />
     <Compile Include="MessageBroker.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
