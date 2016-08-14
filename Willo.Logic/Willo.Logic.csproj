@@ -109,8 +109,17 @@
   <ItemGroup>
     <Compile Include="BoardOverview\BoardOverviewLogic.cs" />
     <Compile Include="BoardOverview\OverviewBoard.cs" />
-    <Compile Include="Logic\LoginLogic.cs" />
+    <Compile Include="IMessageBroker.cs" />
+    <Compile Include="IQuery.cs" />
+    <Compile Include="IQueryHandler.cs" />
+    <Compile Include="IQueryHandlerStore.cs" />
+    <Compile Include="Login\AuthorizationUrlQuery.cs" />
+    <Compile Include="Login\AuthorizationUrlQueryHandler.cs" />
+    <Compile Include="Login\LoginLogic.cs" />
+    <Compile Include="MessageBroker.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="QueryHandlerBase.cs" />
+    <Compile Include="QueryHandlerStore.cs" />
     <Compile Include="TrelloData.cs" />
     <EmbeddedResource Include="Properties\Willo.Logic.rd.xml" />
   </ItemGroup>

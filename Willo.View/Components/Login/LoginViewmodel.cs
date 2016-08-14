@@ -12,18 +12,20 @@ namespace Willo.View.Components.Login
     public class LoginViewmodel
     {
         private LoginLogic logic;
+        private MessageBroker messageBroker;
         public string Url { get; private set;}
         
         public event EventHandler NavigationToBoardOverviewRequested;
 
-        public LoginViewmodel(LoginLogic logic)
+        public LoginViewmodel(LoginLogic logic, MessageBroker messageBroker)
         {
             this.logic = logic;
+            this.messageBroker = messageBroker;
         }
 
         public void Initialize()
         {
-            Url = logic.GetAuthenticationUrl();
+            Url = messageBroker.Query(new AuthorizationUrlQuery());
         }
 
         public async void WebContentLoaded(WebView sender, WebViewDOMContentLoadedEventArgs args)

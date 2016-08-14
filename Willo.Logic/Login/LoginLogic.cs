@@ -18,11 +18,6 @@ namespace Willo.Logic.Login
             this.api = api;
         }
 
-        public string GetAuthenticationUrl()
-        {
-            return Tapi.Authorization.AuthorizationUrlCreator.Create(TrelloData.AppplicationKey, TrelloData.ApplicationName, AuthorizationScope.ReadWriteAccount, AuthorizationExpiration.Never);
-        }
-
         public bool IsAuthorizationToken(string token)
         {
             try

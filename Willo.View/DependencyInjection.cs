@@ -36,6 +36,10 @@ namespace Willo.View
 
         public void Setup()
         {
+            var queryHandlerStore = new QueryHandlerStore();
+            var messageBroker = new MessageBroker(queryHandlerStore);
+            messageBroker.RegisterHandler(new AuthorizationUrlQueryHandler());
+            Container.RegisterInstance(messageBroker);
             Container.RegisterInstance(new Trello());
         }
 
