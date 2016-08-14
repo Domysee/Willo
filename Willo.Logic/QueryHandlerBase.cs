@@ -9,13 +9,13 @@ namespace Willo.Logic
     public abstract class QueryHandlerBase<TQuery, TReturn> : IQueryHandler<TQuery, TReturn>
         where TQuery : IQuery<TReturn>
     {
-        public object Handle(IQuery query)
+        public async Task<object> Handle(IQuery query)
         {
             if (!(query is TQuery))
                 throw new ArgumentException("The query type doesn't match");
-            return Handle((TQuery)query);
+            return await Handle((TQuery)query);
         }
 
-        public abstract TReturn Handle(TQuery query);
+        public abstract Task<TReturn> Handle(TQuery query);
     }
 }

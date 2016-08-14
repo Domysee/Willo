@@ -21,16 +21,16 @@ namespace Willo.View.Components.Login
             this.messageBroker = messageBroker;
         }
 
-        public void Initialize()
+        public async Task Initialize()
         {
-            Url = messageBroker.Query(new AuthorizationUrlQuery());
+            Url = await messageBroker.Query(new AuthorizationUrlQuery());
         }
 
         public async void WebContentLoaded(WebView sender, WebViewDOMContentLoadedEventArgs args)
         {
             string token = await sender.InvokeScriptAsync("eval", new string[] { "[].map.call(document.getElementsByTagName('pre'), function(node){ return node.innerText; }).join('||');" });
             token = token.Trim();
-            if (messageBroker.Query(new IsAuthorizationTokenQuery(token)))
+            if (await messageBroker.Query(new IsAuthorizationTokenQuery(token)))
             {
                 messageBroker.Command(new AuthorizeCommand(token));
                 NavigationToBoardOverviewRequested(null, null);

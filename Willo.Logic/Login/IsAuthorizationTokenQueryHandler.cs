@@ -9,7 +9,7 @@ namespace Willo.Logic.Login
 {
     public class IsAuthorizationTokenQueryHandler : QueryHandlerBase<IsAuthorizationTokenQuery, bool>
     {
-        public override bool Handle(IsAuthorizationTokenQuery query)
+        public override async Task<bool> Handle(IsAuthorizationTokenQuery query)
         {
             try
             {

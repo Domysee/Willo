@@ -41,12 +41,12 @@ namespace Willo.Logic
             commandHandlerStore.Unregister(handler);
         }
 
-        public T Query<T>(IQuery<T> query)
+        public async Task<T> Query<T>(IQuery<T> query)
         {
             var handler = queryHandlerStore.Get(query);
             //the cast is guaranteed to work, because registering a query handler uses the concrete query type, and also checks the return type, which is set in the query interface
             //getting the handler also uses the concrete query type
-            return (T)handler.Handle(query);
+            return (T)await handler.Handle(query);
         }
 
         public IEnumerable<IError> Command(ICommand command)

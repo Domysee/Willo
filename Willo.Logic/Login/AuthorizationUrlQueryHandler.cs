@@ -9,7 +9,7 @@ namespace Willo.Logic.Login
 {
     public class AuthorizationUrlQueryHandler : QueryHandlerBase<AuthorizationUrlQuery, string>
     {
-        public override string Handle(AuthorizationUrlQuery query)
+        public override async Task<string> Handle(AuthorizationUrlQuery query)
         {
             return AuthorizationUrlCreator.Create(TrelloData.AppplicationKey, TrelloData.ApplicationName, AuthorizationScope.ReadWriteAccount, AuthorizationExpiration.Never);
         }

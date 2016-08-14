@@ -30,7 +30,7 @@ namespace Willo.View.Components.Login
             this.Navigation = new Infrastructure.Navigation();
             this.Viewmodel = DependencyInjection.Instance.Resolve<LoginViewmodel>();
             this.DataContext = this.Viewmodel;
-            this.Viewmodel.Initialize();
+            this.Viewmodel.Initialize().Wait();
             this.Viewmodel.NavigationToBoardOverviewRequested += Viewmodel_NavigationToBoardOverviewRequested;
         }
 
