@@ -9,10 +9,12 @@ namespace Willo.Logic
     public class MessageBroker : IMessageBroker
     {
         private IQueryHandlerStore queryHandlerStore;
+        private ICommandHandlerStore commandHandlerStore;
 
-        public MessageBroker(IQueryHandlerStore queryHandlerStore)
+        public MessageBroker(IQueryHandlerStore queryHandlerStore, ICommandHandlerStore commandHandlerStore)
         {
             this.queryHandlerStore = queryHandlerStore;
+            this.commandHandlerStore = commandHandlerStore;
         }
 
         public void RegisterHandler<TQuery, TReturn>(IQueryHandler<TQuery, TReturn> handler)
@@ -27,12 +29,30 @@ namespace Willo.Logic
             queryHandlerStore.Unregister(handler);
         }
 
+        public void RegisterHandler<TCommand>(ICommandHandler<TCommand> handler)
+            where TCommand : ICommand
+        {
+            commandHandlerStore.Register(handler);
+        }
+
+        public void UnregisterHandler<TCommand>(ICommandHandler<TCommand> handler)
+            where TCommand : ICommand
+        {
+            commandHandlerStore.Unregister(handler);
+        }
+
         public T Query<T>(IQuery<T> query)
         {
             var handler = queryHandlerStore.Get(query);
             //the cast is guaranteed to work, because registering a query handler uses the concrete query type, and also checks the return type, which is set in the query interface
             //getting the handler also uses the concrete query type
             return (T)handler.Handle(query);
+        }
+
+        public IEnumerable<IError> Command(ICommand command)
+        {
+            var handler = commandHandlerStore.Get(command);
+            return handler.Handle(command);
         }
     }
 }
