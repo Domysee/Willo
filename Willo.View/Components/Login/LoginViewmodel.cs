@@ -11,15 +11,13 @@ namespace Willo.View.Components.Login
 {
     public class LoginViewmodel
     {
-        private LoginLogic logic;
         private MessageBroker messageBroker;
         public string Url { get; private set; }
 
         public event EventHandler NavigationToBoardOverviewRequested;
 
-        public LoginViewmodel(LoginLogic logic, MessageBroker messageBroker)
+        public LoginViewmodel(MessageBroker messageBroker)
         {
-            this.logic = logic;
             this.messageBroker = messageBroker;
         }
 
@@ -34,7 +32,7 @@ namespace Willo.View.Components.Login
             token = token.Trim();
             if (messageBroker.Query(new IsAuthorizationTokenQuery(token)))
             {
-                logic.Authorize(token);
+                messageBroker.Command(new AuthorizeCommand(token));
                 NavigationToBoardOverviewRequested(null, null);
             }
         }
