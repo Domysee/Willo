@@ -22,6 +22,24 @@ namespace Tapi.Tests.UnitTests
         }
 
         [TestMethod]
+        public void ApplicationKeyThrowsExceptionOnCreatingWithTooLongString()
+        {
+            var invalidKey = "abcdefghijklmnopqrstuvwxyz1234567890abcdefghijklmnopqrstuvwxyz1234567890abcdefghijklmnopqrstuvwxyz1234567890";
+            Action createKey = () => { var x = (ApplicationKey)invalidKey; };
+
+            createKey.ShouldThrow<ArgumentException>();
+        }
+
+        [TestMethod]
+        public void ApplicationKeyThrowsExceptionOnCreatingWithShortLongString()
+        {
+            var invalidKey = "abcdef";
+            Action createKey = () => { var x = (ApplicationKey)invalidKey; };
+
+            createKey.ShouldThrow<ArgumentException>();
+        }
+
+        [TestMethod]
         public void AuthorizationUrlShouldContainKey()
         {
             var authorizationUrl = AuthorizationUrlCreator.Create(TestData.TestApplicationKey, TestData.TestApplicationName, AuthorizationScope.ReadOnly, AuthorizationExpiration.Never);
