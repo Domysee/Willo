@@ -7,7 +7,7 @@ using Tapi.WebConnection;
 
 namespace Tapi.Authorization
 {
-    public class AuthorizationUrlCreator
+    public class AuthorizationUrlCreator : IAuthorizationUrlCreator
     {
         private const string AuthorizationUrl = ConnectionData.BaseUrl + "/authorize?response_type=token";
 
@@ -19,7 +19,7 @@ namespace Tapi.Authorization
         /// <param name="scope">the rights the application should have</param>
         /// <param name="expiration">how long the optained token should be valid</param>
         /// <returns></returns>
-        public static string Create(ApplicationKey applicationKey, string applicationName, AuthorizationScope scope, AuthorizationExpiration expiration)
+        public string Create(ApplicationKey applicationKey, string applicationName, AuthorizationScope scope, AuthorizationExpiration expiration)
         {
             return $"{AuthorizationUrl}&key={applicationKey}&name={applicationName}&scope={scope}&expiration={expiration}";
         }

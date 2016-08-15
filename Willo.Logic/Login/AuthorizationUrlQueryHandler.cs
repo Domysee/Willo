@@ -9,9 +9,16 @@ namespace Willo.Logic.Login
 {
     public class AuthorizationUrlQueryHandler : QueryHandlerBase<AuthorizationUrlQuery, string>
     {
+        private IAuthorizationUrlCreator urlCreator;
+
+        public AuthorizationUrlQueryHandler(IAuthorizationUrlCreator urlCreator)
+        {
+            this.urlCreator = urlCreator;
+        }
+
         public override async Task<string> Handle(AuthorizationUrlQuery query)
         {
-            return AuthorizationUrlCreator.Create(TrelloData.AppplicationKey, TrelloData.ApplicationName, AuthorizationScope.ReadWriteAccount, AuthorizationExpiration.Never);
+            return urlCreator.Create(TrelloData.AppplicationKey, TrelloData.ApplicationName, AuthorizationScope.ReadWriteAccount, AuthorizationExpiration.Never);
         }
     }
 }

@@ -42,7 +42,7 @@ namespace Tapi.Tests.UnitTests
         [TestMethod]
         public void AuthorizationUrlShouldContainKey()
         {
-            var authorizationUrl = AuthorizationUrlCreator.Create(TestData.TestApplicationKey, TestData.TestApplicationName, AuthorizationScope.ReadOnly, AuthorizationExpiration.Never);
+            var authorizationUrl = new AuthorizationUrlCreator().Create(TestData.TestApplicationKey, TestData.TestApplicationName, AuthorizationScope.ReadOnly, AuthorizationExpiration.Never);
 
             authorizationUrl.Should().Contain("key");
             authorizationUrl.Should().Contain((string)TestData.TestApplicationKey);
@@ -51,7 +51,7 @@ namespace Tapi.Tests.UnitTests
         [TestMethod]
         public void AuthorizationUrlShouldContainName()
         {
-            var authorizationUrl = AuthorizationUrlCreator.Create(TestData.TestApplicationKey, TestData.TestApplicationName, AuthorizationScope.ReadOnly, AuthorizationExpiration.Never);
+            var authorizationUrl = new AuthorizationUrlCreator().Create(TestData.TestApplicationKey, TestData.TestApplicationName, AuthorizationScope.ReadOnly, AuthorizationExpiration.Never);
 
             authorizationUrl.Should().Contain("name");
             authorizationUrl.Should().Contain(TestData.TestApplicationName);
@@ -61,7 +61,7 @@ namespace Tapi.Tests.UnitTests
         public void AuthorizationUrlShouldContainScope()
         {
             var scope = AuthorizationScope.ReadOnly;
-            var authorizationUrl = AuthorizationUrlCreator.Create(TestData.TestApplicationKey, TestData.TestApplicationName, scope, AuthorizationExpiration.Never);
+            var authorizationUrl = new AuthorizationUrlCreator().Create(TestData.TestApplicationKey, TestData.TestApplicationName, scope, AuthorizationExpiration.Never);
 
             authorizationUrl.Should().Contain("scope");
             authorizationUrl.Should().Contain((string)scope);
@@ -71,7 +71,7 @@ namespace Tapi.Tests.UnitTests
         public void AuthorizationUrlShouldContainExpiration()
         {
             var expiration = AuthorizationExpiration.Never;
-            var authorizationUrl = AuthorizationUrlCreator.Create(TestData.TestApplicationKey, TestData.TestApplicationName, AuthorizationScope.ReadOnly, expiration);
+            var authorizationUrl = new AuthorizationUrlCreator().Create(TestData.TestApplicationKey, TestData.TestApplicationName, AuthorizationScope.ReadOnly, expiration);
 
             authorizationUrl.Should().Contain("expiration");
             authorizationUrl.Should().Contain((string)expiration);
