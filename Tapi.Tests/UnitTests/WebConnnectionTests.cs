@@ -23,6 +23,24 @@ namespace Tapi.Tests.UnitTests
         }
 
         [TestMethod]
+        public void AuthorizationTokenThrowsExceptionOnCreatingWithTooLongString()
+        {
+            var invalidToken = "abcdefghijklmnopqrstuvwxyz1234567890abcdefghijklmnopqrstuvwxyz1234567890abcdefghijklmnopqrstuvwxyz1234567890abcdefghijklmnopqrstuvwxyz1234567890abcdefghijklmnopqrstuvwxyz1234567890abcdefghijklmnopqrstuvwxyz1234567890";
+            Action createToken = () => { var x = (AuthorizationToken)invalidToken; };
+
+            createToken.ShouldThrow<ArgumentException>();
+        }
+
+        [TestMethod]
+        public void AuthorizationTokenThrowsExceptionOnCreatingWithTooshortString()
+        {
+            var invalidToken = "abcdef";
+            Action createToken = () => { var x = (AuthorizationToken)invalidToken; };
+
+            createToken.ShouldThrow<ArgumentException>();
+        }
+
+        [TestMethod]
         public void CreatingDoesNotThrow()
         {
             Action create = () => { var x = new TrelloWebClient(); };
