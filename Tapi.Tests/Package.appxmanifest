@@ -5,11 +5,11 @@
   xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10"
   IgnorableNamespaces="uap mp">
 
-  <Identity Name="5dba7214-0443-44ce-82c4-b92e459167e5"
+  <Identity Name="be8c87d8-3357-462b-b652-940e14439ad5"
             Publisher="CN=Dominik"
             Version="1.0.0.0" />
 
-  <mp:PhoneIdentity PhoneProductId="5dba7214-0443-44ce-82c4-b92e459167e5" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
+  <mp:PhoneIdentity PhoneProductId="be8c87d8-3357-462b-b652-940e14439ad5" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
 
   <Properties>
     <DisplayName>Tapi.Tests</DisplayName>

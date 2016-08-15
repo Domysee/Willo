@@ -4,14 +4,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Tapi.Authorization;
-using Xunit;
 using FluentAssertions;
+using Microsoft.VisualStudio.TestPlatform.UnitTestFramework;
 
 namespace Tapi.Tests.UnitTests
 {
+    [TestClass]
     public class AuthorizationTests
     {
-        [Fact]
+        [TestMethod]
         public void ApplicationKeyThrowsExceptionOnCreatingWithInvalidString()
         {
             var invalidKey = "#$^%$%&^$%";
@@ -20,36 +21,42 @@ namespace Tapi.Tests.UnitTests
             createKey.ShouldThrow<ArgumentException>();
         }
 
-        [Fact]
+        [TestMethod]
         public void AuthorizationUrlShouldContainKey()
         {
             var authorizationUrl = AuthorizationUrlCreator.Create(TestData.TestApplicationKey, TestData.TestApplicationName, AuthorizationScope.ReadOnly, AuthorizationExpiration.Never);
 
             authorizationUrl.Should().Contain("key");
+            authorizationUrl.Should().Contain((string)TestData.TestApplicationKey);
         }
 
-        [Fact]
+        [TestMethod]
         public void AuthorizationUrlShouldContainName()
         {
             var authorizationUrl = AuthorizationUrlCreator.Create(TestData.TestApplicationKey, TestData.TestApplicationName, AuthorizationScope.ReadOnly, AuthorizationExpiration.Never);
 
             authorizationUrl.Should().Contain("name");
+            authorizationUrl.Should().Contain(TestData.TestApplicationName);
         }
 
-        [Fact]
+        [TestMethod]
         public void AuthorizationUrlShouldContainScope()
         {
-            var authorizationUrl = AuthorizationUrlCreator.Create(TestData.TestApplicationKey, TestData.TestApplicationName, AuthorizationScope.ReadOnly, AuthorizationExpiration.Never);
+            var scope = AuthorizationScope.ReadOnly;
+            var authorizationUrl = AuthorizationUrlCreator.Create(TestData.TestApplicationKey, TestData.TestApplicationName, scope, AuthorizationExpiration.Never);
 
             authorizationUrl.Should().Contain("scope");
+            authorizationUrl.Should().Contain((string)scope);
         }
 
-        [Fact]
+        [TestMethod]
         public void AuthorizationUrlShouldContainExpiration()
         {
-            var authorizationUrl = AuthorizationUrlCreator.Create(TestData.TestApplicationKey, TestData.TestApplicationName, AuthorizationScope.ReadOnly, AuthorizationExpiration.Never);
+            var expiration = AuthorizationExpiration.Never;
+            var authorizationUrl = AuthorizationUrlCreator.Create(TestData.TestApplicationKey, TestData.TestApplicationName, AuthorizationScope.ReadOnly, expiration);
 
             authorizationUrl.Should().Contain("expiration");
+            authorizationUrl.Should().Contain((string)expiration);
         }
     }
 }

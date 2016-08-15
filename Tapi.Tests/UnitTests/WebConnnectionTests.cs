@@ -3,16 +3,17 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Xunit;
 using FluentAssertions;
 using Tapi.WebConnection;
 using Newtonsoft.Json.Linq;
+using Microsoft.VisualStudio.TestPlatform.UnitTestFramework;
 
 namespace Tapi.Tests.UnitTests
 {
+    [TestClass]
     public class WebConnnectionTests
     {
-        [Fact]
+        [TestMethod]
         public void AuthorizationTokenThrowsExceptionOnCreatingWithInvalidString()
         {
             var invalidToken = "#$^%$%&^$%";
@@ -21,7 +22,7 @@ namespace Tapi.Tests.UnitTests
             createToken.ShouldThrow<ArgumentException>();
         }
 
-        [Fact]
+        [TestMethod]
         public void CreatingDoesNotThrow()
         {
             Action create = () => { var x = new TrelloWebClient(); };
@@ -29,7 +30,7 @@ namespace Tapi.Tests.UnitTests
             create.ShouldNotThrow();
         }
 
-        [Fact]
+        [TestMethod]
         public void AuthorizeDoesNotThrow()
         {
             var client = new TrelloWebClient();
@@ -38,7 +39,7 @@ namespace Tapi.Tests.UnitTests
             authorize.ShouldNotThrow();
         }
 
-        [Fact]
+        [TestMethod]
         public void GetShouldThrowUnauthorizedExceptionIfClientIsNotAuthorized()
         {
             var testUrl = "http://www.url.com";
