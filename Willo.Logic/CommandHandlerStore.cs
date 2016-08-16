@@ -13,6 +13,8 @@ namespace Willo.Logic
         public void Register<TCommand>(ICommandHandler<TCommand> handler)
             where TCommand : ICommand
         {
+            if (handler == null) throw new ArgumentNullException("The given handler is null");
+
             var queryType = typeof(TCommand);
             store.Add(queryType, handler);
         }
@@ -20,14 +22,18 @@ namespace Willo.Logic
         public void Unregister<TCommand>(ICommandHandler<TCommand> handler)
             where TCommand : ICommand
         {
+            if (handler == null) throw new ArgumentNullException("The given handler is null");
+
             var queryType = typeof(TCommand);
             store.Remove(queryType);
         }
 
         public ICommandHandler Get(ICommand query)
         {
-            var handler = store[query.GetType()];
-            return handler;
+            if (store.ContainsKey(query.GetType()))
+                return store[query.GetType()];
+            else
+                return null;
         }
     }
 }
