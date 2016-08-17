@@ -97,6 +97,7 @@
   <ItemGroup>
     <Compile Include="BoardOverview\BoardOverviewQueryHandlerTests.cs" />
     <Compile Include="CommandHandlerStoreTests.cs" />
+    <Compile Include="Login\AuthorizeCommandHandlerTests.cs" />
     <Compile Include="Login\IsAuthorizationTokenQueryHandlerTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="QueryHandlerStoreTests.cs" />
