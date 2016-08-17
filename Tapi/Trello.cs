@@ -12,11 +12,11 @@ namespace Tapi
     /// <summary>
     /// Trello is the entry point for users of the api
     /// </summary>
-    public class Trello
+    public class Trello : ITrello
     {
         private ITrelloWebClient webClient;
 
-        public Boards Boards { get; }
+        public IBoards Boards { get; }
 
         public Trello()
         {

@@ -8,7 +8,7 @@ using Tapi.WebConnection;
 
 namespace Tapi.TrelloEntities.Board
 {
-    public class Boards
+    public class Boards : IBoards
     {
         private ITrelloWebClient webClient;
 
