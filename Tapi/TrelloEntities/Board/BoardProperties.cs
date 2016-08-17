@@ -32,6 +32,12 @@ namespace Tapi.TrelloEntities.Board
         public bool Memberships { get; set; }
         public bool LabelNames { get; set; }
 
+        /// <summary>
+        /// Creates BoardProperties with all properties set to false
+        /// Id is queried by default
+        /// </summary>
+        public BoardProperties() { }
+
         public override string ToString()
         {
             var apiPropertyNames = new List<string>();
