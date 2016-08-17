@@ -95,6 +95,7 @@
     <SDKReference Include="TestPlatform.Universal, Version=$(UnitTestPlatformVersion)" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BoardOverview\BoardOverviewQueryHandlerTests.cs" />
     <Compile Include="CommandHandlerStoreTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="QueryHandlerStoreTests.cs" />
@@ -126,6 +127,10 @@
     <Content Include="Assets\Wide310x150Logo.scale-200.png" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Tapi\Tapi.csproj">
+      <Project>{dc3b314c-dd40-4795-957d-72e4b82a6f80}</Project>
+      <Name>Tapi</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Willo.Logic\Willo.Logic.csproj">
       <Project>{8779abf5-c43e-428c-b3dc-0508b2b19e0e}</Project>
       <Name>Willo.Logic</Name>
@@ -134,9 +139,7 @@
   <ItemGroup>
     <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="BoardOverview\" />
-  </ItemGroup>
+  <ItemGroup />
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
   </PropertyGroup>
