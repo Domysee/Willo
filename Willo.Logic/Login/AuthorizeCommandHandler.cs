@@ -9,9 +9,9 @@ namespace Willo.Logic.Login
 {
     public class AuthorizeCommandHandler : CommandHandlerBase<AuthorizeCommand>
     {
-        private Trello api;
+        private ITrello api;
 
-        public AuthorizeCommandHandler(Trello api)
+        public AuthorizeCommandHandler(ITrello api)
         {
             this.api = api;
         }

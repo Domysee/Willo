@@ -11,9 +11,9 @@ namespace Willo.Logic.BoardOverview
 {
     public class BoardOverviewQueryHandler : QueryHandlerBase<BoardOverviewQuery, IEnumerable<BoardOverview>>
     {
-        private Trello api;
+        private ITrello api;
 
-        public BoardOverviewQueryHandler(Trello api)
+        public BoardOverviewQueryHandler(ITrello api)
         {
             this.api = api;
         }
