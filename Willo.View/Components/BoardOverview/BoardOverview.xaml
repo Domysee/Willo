@@ -14,16 +14,55 @@
         <ListView ItemsSource="{Binding Path=Boards}">
             <ListView.ItemsPanel>
                 <ItemsPanelTemplate>
-                    <ItemsWrapGrid Orientation="Horizontal"></ItemsWrapGrid>
+                    <ItemsWrapGrid x:Name="WrapGrid" Orientation="Horizontal" MaximumRowsOrColumns="4" SizeChanged="WrapGrid_SizeChanged"></ItemsWrapGrid>
                 </ItemsPanelTemplate>
             </ListView.ItemsPanel>
+
             <ListView.ItemTemplate>
                 <DataTemplate x:DataType="logic:BoardOverview">
-                    <Border Height="114px" Width="300px" Background="#0079BF" CornerRadius="3" Margin="5 5 5 5">
+                    <Border MinHeight="60" HorizontalAlignment="Stretch" Padding="10 10 10 20" Background="#0079BF" CornerRadius="3" Margin="5 5 5 5">
                         <TextBlock Text="{x:Bind Path=Name}" Foreground="White" FontSize="20px" FontWeight="Bold" Margin="8"></TextBlock>
                     </Border>
                 </DataTemplate>
             </ListView.ItemTemplate>
+
+            <ListView.Resources>
+                <Style TargetType="ListViewItem">
+                    <Setter Property="HorizontalContentAlignment" Value="Stretch"></Setter>
+                </Style>
+            </ListView.Resources>
         </ListView>
     </StackPanel>
+
+    <VisualStateManager.VisualStateGroups>
+        <VisualStateGroup>
+            <VisualState x:Name="Normal">
+                <VisualState.StateTriggers>
+                    <AdaptiveTrigger MinWindowWidth="900"></AdaptiveTrigger>
+                </VisualState.StateTriggers>
+
+                <VisualState.Setters>
+                    <Setter Target="WrapGrid.MaximumRowsOrColumns" Value="4"></Setter>
+                </VisualState.Setters>
+            </VisualState>
+            <VisualState x:Name="Narrow">
+                <VisualState.StateTriggers>
+                    <AdaptiveTrigger MinWindowWidth="600"></AdaptiveTrigger>
+                </VisualState.StateTriggers>
+
+                <VisualState.Setters>
+                    <Setter Target="WrapGrid.MaximumRowsOrColumns" Value="3"></Setter>
+                </VisualState.Setters>
+            </VisualState>
+            <VisualState x:Name="UltraNarrow">
+                <VisualState.StateTriggers>
+                    <AdaptiveTrigger MinWindowWidth="0"></AdaptiveTrigger>
+                </VisualState.StateTriggers>
+
+                <VisualState.Setters>
+                    <Setter Target="WrapGrid.MaximumRowsOrColumns" Value="1"></Setter>
+                </VisualState.Setters>
+            </VisualState>
+        </VisualStateGroup>
+    </VisualStateManager.VisualStateGroups>
 </UserControl>

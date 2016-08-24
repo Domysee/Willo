@@ -36,5 +36,11 @@ namespace Willo.View.Components.BoardOverview
         {
             await this.Viewmodel.Initialize();
         }
+
+        private void WrapGrid_SizeChanged(object sender, SizeChangedEventArgs e)
+        {
+            var wrapGrid = sender as ItemsWrapGrid;
+            wrapGrid.ItemWidth = e.NewSize.Width / wrapGrid.MaximumRowsOrColumns;
+        }
     }
 }
