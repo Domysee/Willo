@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Tapi;
+using Tapi.Authorization;
 using Willo.Logic;
 using Willo.Logic.BoardOverview;
 using Willo.Logic.Login;
@@ -37,13 +38,15 @@ namespace Willo.View
 
         public void Setup()
         {
-            Container.RegisterInstance(new Trello());
+            Container.RegisterInstance<ITrello>(new Trello());
+
+            Container.RegisterType<IAuthorizationUrlCreator, AuthorizationUrlCreator>();
 
             var queryHandlerStore = new QueryHandlerStore();
             var commandHandlerStore = new CommandHandlerStore();
             var messageBroker = new MessageBroker(queryHandlerStore, commandHandlerStore);
             Container.RegisterInstance(messageBroker);
-            
+
             messageBroker.RegisterHandler(instance.Resolve<AuthorizationUrlQueryHandler>());
             messageBroker.RegisterHandler(instance.Resolve<IsAuthorizationTokenQueryHandler>());
             messageBroker.RegisterHandler(instance.Resolve<BoardOverviewQueryHandler>());
