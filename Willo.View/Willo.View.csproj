@@ -95,6 +95,7 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Helper\VisualHelper.cs" />
     <Compile Include="Infrastructure\BindableBase.cs" />
     <Compile Include="Components\BoardOverview\BoardOverview.xaml.cs">
       <DependentUpon>BoardOverview.xaml</DependentUpon>

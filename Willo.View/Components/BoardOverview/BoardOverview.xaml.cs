@@ -14,6 +14,7 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using Willo.View.Infrastructure;
+using Willo.View.Helper;
 
 // The User Control item template is documented at http://go.microsoft.com/fwlink/?LinkId=234236
 
@@ -41,6 +42,13 @@ namespace Willo.View.Components.BoardOverview
         {
             var wrapGrid = sender as ItemsWrapGrid;
             wrapGrid.ItemWidth = e.NewSize.Width / wrapGrid.MaximumRowsOrColumns;
+
+            var textblocks = VisualHelper.GetChildren(wrapGrid).Where(c => c is TextBlock).Select(c => c as TextBlock);
+            if (textblocks.Count() > 0)
+            {
+                var maxHeight = textblocks.Max(t => t.DesiredSize.Height);
+                wrapGrid.ItemHeight = maxHeight + 60;
+            }
         }
     }
 }
