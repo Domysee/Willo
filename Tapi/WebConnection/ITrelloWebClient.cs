@@ -8,7 +8,8 @@ namespace Tapi.WebConnection
     {
         bool IsAuthorized { get; }
 
-        void Authorize(ApplicationKey applicationKey, AuthorizationToken authorizationToken);
+        Task Authorize(ApplicationKey applicationKey, AuthorizationToken authorizationToken);
+        Task<bool> CheckAuthorizationParameters(ApplicationKey applicationKey, AuthorizationToken authorizationToken);
         Task<JToken> Get(string url);
         Task<T> Get<T>(string url) where T : JToken;
     }
