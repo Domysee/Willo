@@ -1,4 +1,5 @@
-﻿using Tapi.Authorization;
+﻿using System.Threading.Tasks;
+using Tapi.Authorization;
 using Tapi.TrelloEntities.Board;
 using Tapi.WebConnection;
 
@@ -8,6 +9,6 @@ namespace Tapi
     {
         IBoards Boards { get; }
 
-        void Authorize(ApplicationKey applicationKey, AuthorizationToken authorizationToken);
+        Task Authorize(ApplicationKey applicationKey, AuthorizationToken authorizationToken);
     }
 }

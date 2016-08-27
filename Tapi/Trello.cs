@@ -24,9 +24,15 @@ namespace Tapi
             Boards = new Boards(webClient);
         }
 
-        public void Authorize(ApplicationKey applicationKey, AuthorizationToken authorizationToken)
+        /// <summary>
+        /// Authorizes the api client with the given application key and authorization token
+        /// </summary>
+        /// <param name="applicationKey"></param>
+        /// <param name="authorizationToken"></param>
+        /// <exception cref="AuthorizationDeniedException">Occurs if the authorization parameters are not accepted by the server</exception>
+        public async Task Authorize(ApplicationKey applicationKey, AuthorizationToken authorizationToken)
         {
-            webClient.Authorize(applicationKey, authorizationToken);
+            await webClient.Authorize(applicationKey, authorizationToken);
         }
     }
 }
