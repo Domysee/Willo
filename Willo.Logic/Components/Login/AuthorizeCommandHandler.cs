@@ -29,6 +29,10 @@ namespace Willo.Logic.Components.Login
             {
                 errors.Add(new AuthorizationDeniedError());
             }
+            catch (RequestFailedException)
+            {
+                errors.Add(new RequestFailedError());
+            }
             return errors;
         }
     }
