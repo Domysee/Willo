@@ -40,5 +40,11 @@ namespace Willo.View.Components.Login
             boardOverview.Navigation.NavigationContainer = this.Navigation.NavigationContainer;
             Navigation.Navigator.NavigateTo(boardOverview);
         }
+
+        private async void WebView_DOMContentLoaded(WebView sender, WebViewDOMContentLoadedEventArgs args)
+        {
+            var html = await sender.InvokeScriptAsync("eval", new string[] { "document.querySelector('html').innerHTML" });
+            Viewmodel.SetHtml(html);
+        }
     }
 }

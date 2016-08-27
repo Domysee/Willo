@@ -9,6 +9,6 @@
     d:DesignHeight="300"
     d:DesignWidth="400">
     <Grid>
-        <WebView Source="{x:Bind Path=Viewmodel.Url}" DOMContentLoaded="{x:Bind Path=Viewmodel.WebContentLoaded}"></WebView>
+        <WebView Source="{x:Bind Path=Viewmodel.Url}" DOMContentLoaded="WebView_DOMContentLoaded"></WebView>
     </Grid>
 </UserControl>

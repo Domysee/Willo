@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using Willo.Logic;
 using Willo.Logic.Login;
@@ -26,14 +27,23 @@ namespace Willo.View.Components.Login
             Url = await messageBroker.Query(new AuthorizationUrlQuery());
         }
 
-        public async void WebContentLoaded(WebView sender, WebViewDOMContentLoadedEventArgs args)
+        public async Task SetHtml(string html)
         {
-            string token = await sender.InvokeScriptAsync("eval", new string[] { "[].map.call(document.getElementsByTagName('pre'), function(node){ return node.innerText; }).join('||');" });
-            token = token.Trim();
-            if (await messageBroker.Query(new IsAuthorizationTokenQuery(token)))
+            var tokenRegex = new Regex("[0-9a-z]{64}", RegexOptions.IgnoreCase);
+            var matches = tokenRegex.Matches(html);
+            var tokens = new List<string>();
+            foreach (Match match in matches)
             {
-                await messageBroker.Command(new AuthorizeCommand(token));
-                NavigationToBoardOverviewRequested(null, null);
+                var token = match.Value;
+                if (await messageBroker.Query(new IsAuthorizationTokenQuery(token)))
+                {
+                    tokens.Add(token);
+                }
+            }
+            if (tokens.Count > 0)
+            {
+                //await messageBroker.Command(new AuthorizeCommand(tokens.First()));
+                //NavigationToBoardOverviewRequested(null, null);
             }
         }
     }
