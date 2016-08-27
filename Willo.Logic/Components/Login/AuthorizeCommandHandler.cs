@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Tapi;
+using Tapi.WebConnection;
+using Willo.Logic.Errors;
 
 namespace Willo.Logic.Components.Login
 {
@@ -18,8 +20,16 @@ namespace Willo.Logic.Components.Login
 
         public override async Task<IEnumerable<IError>> Handle(AuthorizeCommand command)
         {
-            api.Authorize(TrelloData.AppplicationKey, command.AuthorizationToken);
-            return null;
+            var errors = new List<IError>();
+            try
+            {
+                await api.Authorize(TrelloData.AppplicationKey, command.AuthorizationToken);
+            }
+            catch (AuthorizationDeniedException)
+            {
+                errors.Add(new AuthorizationDeniedError());
+            }
+            return errors;
         }
     }
 }
