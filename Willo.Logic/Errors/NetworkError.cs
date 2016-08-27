@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Willo.Logic.Errors
 {
-    public class InternalServerError : IError
+    public class NetworkError : IError
     {
     }
 }
