@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestPlatform.UnitTestFramework;
 using HyperMock.Universal;
-using Willo.Logic.Login;
+using Willo.Logic.Components.Login;
 using System.Threading.Tasks;
 using FluentAssertions;
 using HyperMock.Universal.Verification;

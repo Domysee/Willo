@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using Tapi;
 using Tapi.TrelloEntities;
 using Tapi.TrelloEntities.Board;
-using Willo.Logic.BoardOverview;
+using Willo.Logic.Components.BoardOverview;
 
 namespace Willo.Logic.Tests.BoardOverview
 {

@@ -7,8 +7,8 @@ using System.Threading.Tasks;
 using Tapi;
 using Tapi.Authorization;
 using Willo.Logic;
-using Willo.Logic.BoardOverview;
-using Willo.Logic.Login;
+using Willo.Logic.Components.BoardOverview;
+using Willo.Logic.Components.Login;
 using Willo.View.Components.Login;
 
 namespace Willo.View

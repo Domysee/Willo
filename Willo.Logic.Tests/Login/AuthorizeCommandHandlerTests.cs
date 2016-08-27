@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using Tapi;
 using Tapi.Authorization;
 using Tapi.WebConnection;
-using Willo.Logic.Login;
+using Willo.Logic.Components.Login;
 
 namespace Willo.Logic.Tests.Login
 {

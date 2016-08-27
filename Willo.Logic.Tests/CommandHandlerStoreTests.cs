@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using HyperMock.Universal;
 using FluentAssertions;
-using Willo.Logic.Login;
+using Willo.Logic.Components.Login;
 
 namespace Willo.Logic.Tests
 {

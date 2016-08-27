@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Willo.Logic.Login;
+using Willo.Logic.Components.Login;
 
 namespace Willo.Logic.Tests.Login
 {

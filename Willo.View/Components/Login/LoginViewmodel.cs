@@ -5,7 +5,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using Willo.Logic;
-using Willo.Logic.Login;
+using Willo.Logic.Components.Login;
 using Windows.UI.Xaml.Controls;
 
 namespace Willo.View.Components.Login
