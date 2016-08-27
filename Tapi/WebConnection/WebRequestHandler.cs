@@ -60,19 +60,25 @@ namespace Tapi.WebConnection
             var uri = new UriBuilder(url);
             using (var client = createClient(applicationKey, authorizationToken))
             {
-                try
-                {
-                    var response = await client.GetAsync(uri.Uri);
-                    if (!response.IsSuccessStatusCode)
-                        throw new RequestFailedException(url);
+                var response = await getResponse(client, uri.Uri);
+                if (!response.IsSuccessStatusCode)
+                    throw new RequestFailedException(url);
 
-                    var responseString = await response.Content.ReadAsStringAsync();
-                    return responseString;
-                }
-                catch (Exception)
-                {
-                    throw new NetworkException();
-                }
+                var responseString = await response.Content.ReadAsStringAsync();
+                return responseString;
+            }
+        }
+
+        private async Task<HttpResponseMessage> getResponse(HttpClient client, Uri uri)
+        {
+            try
+            {
+                var response = await client.GetAsync(uri);
+                return response;
+            }
+            catch (Exception)
+            {
+                throw new NetworkException();
             }
         }
     }
