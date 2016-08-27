@@ -36,14 +36,13 @@ namespace Willo.View.Components.Login
             {
                 var token = match.Value;
                 if (await messageBroker.Query(new IsAuthorizationTokenQuery(token)))
-                {
                     tokens.Add(token);
-                }
             }
             if (tokens.Count > 0)
             {
-                //await messageBroker.Command(new AuthorizeCommand(tokens.First()));
-                //NavigationToBoardOverviewRequested(null, null);
+                var errors = await messageBroker.Command(new AuthorizeCommand(tokens.First()));
+                if (errors.Count() == 0)
+                    NavigationToBoardOverviewRequested(null, null);
             }
         }
     }

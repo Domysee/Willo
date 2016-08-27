@@ -15,41 +15,18 @@ namespace Tapi.WebConnection
 {
     public class TrelloWebClient : ITrelloWebClient
     {
-        private class AddCredentialsFilter : IHttpFilter
-        {
-            private ApplicationKey applicationKey;
-            private AuthorizationToken authorizationToken;
-            private IHttpFilter next;
-
-            public AddCredentialsFilter(ApplicationKey applicationKey, AuthorizationToken authorizationToken, IHttpFilter next)
-            {
-                this.applicationKey = applicationKey;
-                this.authorizationToken = authorizationToken;
-                this.next = next;
-            }
-
-            public IAsyncOperationWithProgress<HttpResponseMessage, HttpProgress> SendRequestAsync(HttpRequestMessage request)
-            {
-                var builder = new UriBuilder(request.RequestUri);
-                var authorization = $"key={applicationKey}&token={authorizationToken}";
-                if (String.IsNullOrWhiteSpace(builder.Query))
-                    builder.Query = authorization;
-                else
-                    builder.Query = builder.Query.Remove(0, 1) + $"&{authorization}";   //remove the questionmark at the beginning
-                request.RequestUri = builder.Uri;
-                return next.SendRequestAsync(request);
-            }
-
-            public void Dispose()
-            {
-            }
-        }
 
         private const string InvalidTokenResponse = "invalid token";
         private const string AuthorizationTestUrl = "https://api.trello.com/1/members/me";
+        private IWebRequestHandler webRequestHandler;
         public bool IsAuthorized { get; private set; }
         private ApplicationKey applicationKey;
         private AuthorizationToken authorizationToken;
+
+        public TrelloWebClient()
+        {
+            webRequestHandler = new WebRequestHandler();
+        }
 
         /// <summary>
         /// authorizes the client
@@ -76,25 +53,8 @@ namespace Tapi.WebConnection
         /// <returns></returns>
         public async Task<bool> CheckAuthorizationParameters(ApplicationKey applicationKey, AuthorizationToken authorizationToken)
         {
-            using (var client = createClient(applicationKey, authorizationToken))
-            {
-                var response = await client.GetAsync(new Uri(AuthorizationTestUrl));
-                var responseString = await response.Content.ReadAsStringAsync();
-                return responseString != InvalidTokenResponse;
-            }
-        }
-
-        private HttpClient createClient(ApplicationKey applicationKey, AuthorizationToken authorizationToken)
-        {
-            //this is needed to disallow the HttpClient asking for credentials in a GUI
-            //as described here: http://stackoverflow.com/a/24410237/3107430
-            var httpBaseFilter = new HttpBaseProtocolFilter
-            {
-                AllowUI = false
-            };
-            var addCredentialsFilter = new AddCredentialsFilter(applicationKey, authorizationToken, httpBaseFilter);
-            var client = new HttpClient(addCredentialsFilter);
-            return client;
+            var response = await webRequestHandler.Get(AuthorizationTestUrl, applicationKey, authorizationToken);
+            return response != InvalidTokenResponse;
         }
 
         private void checkAuthorization()
@@ -112,15 +72,12 @@ namespace Tapi.WebConnection
         {
             checkAuthorization();
             var uri = new UriBuilder(url);
-            using (var client = createClient(applicationKey, authorizationToken))
-            {
-                var response = await client.GetAsync(uri.Uri);
-                var responseJson = await response.Content.ReadAsStringAsync();
-                if (responseJson == InvalidTokenResponse)
-                    throw new AuthorizationDeniedException(applicationKey, authorizationToken);
-                var result = await Task.Run(() => JToken.Parse(responseJson));
-                return result;
-            }
+            var response = await webRequestHandler.Get(AuthorizationTestUrl, applicationKey, authorizationToken);
+            if (response == InvalidTokenResponse)
+                throw new AuthorizationDeniedException(applicationKey, authorizationToken);
+
+            var result = await Task.Run(() => JToken.Parse(response));
+            return result;
         }
 
         public async Task<T> Get<T>(string url) where T : JToken
