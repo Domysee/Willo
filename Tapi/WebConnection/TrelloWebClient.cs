@@ -72,7 +72,7 @@ namespace Tapi.WebConnection
         {
             checkAuthorization();
             var uri = new UriBuilder(url);
-            var response = await webRequestHandler.Get(AuthorizationTestUrl, applicationKey, authorizationToken);
+            var response = await webRequestHandler.Get(url, applicationKey, authorizationToken);
             if (response == InvalidTokenResponse)
                 throw new AuthorizationDeniedException(applicationKey, authorizationToken);
 

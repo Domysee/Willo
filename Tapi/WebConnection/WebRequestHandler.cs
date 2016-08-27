@@ -57,10 +57,10 @@ namespace Tapi.WebConnection
 
         public async Task<string> Get(string url, ApplicationKey applicationKey, AuthorizationToken authorizationToken)
         {
-            var uri = new UriBuilder(url);
+            var uri = new Uri(url);
             using (var client = createClient(applicationKey, authorizationToken))
             {
-                var response = await getResponse(client, uri.Uri);
+                var response = await getResponse(client, uri);
                 if (!response.IsSuccessStatusCode)
                     throw new RequestFailedException(url);
 
