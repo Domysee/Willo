@@ -7,7 +7,7 @@ using Tapi;
 using Tapi.TrelloEntities;
 using Tapi.TrelloEntities.Board;
 
-namespace Willo.Logic.BoardOverview
+namespace Willo.Logic.Components.BoardOverview
 {
     public class BoardOverviewQueryHandler : QueryHandlerBase<BoardOverviewQuery, IEnumerable<BoardOverview>>
     {

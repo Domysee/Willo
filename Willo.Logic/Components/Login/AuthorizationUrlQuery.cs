@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Willo.Logic.Login
+namespace Willo.Logic.Components.Login
 {
     public class AuthorizationUrlQuery : IQuery<string>
     {

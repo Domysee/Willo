@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Tapi.WebConnection;
 
-namespace Willo.Logic.Login
+namespace Willo.Logic.Components.Login
 {
     public class IsAuthorizationTokenQueryHandler : QueryHandlerBase<IsAuthorizationTokenQuery, bool>
     {
