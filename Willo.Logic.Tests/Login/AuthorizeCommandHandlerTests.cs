@@ -21,7 +21,7 @@ namespace Willo.Logic.Tests.Login
         {
             var token = "authorizationtokenauthorizationtokenauthorizationtoken1234567890";
             var api = Mock.Create<ITrello>();
-            api.Setup(a => a.Authorize(Param.IsAny<ApplicationKey>(), Param.IsAny<AuthorizationToken>()));
+            api.Setup(a => a.Authorize(Param.IsAny<ApplicationKey>(), Param.IsAny<AuthorizationToken>())).Returns(Task.CompletedTask);
             var handler = new AuthorizeCommandHandler(api);
 
             handler.Handle(new AuthorizeCommand(token)).Wait();
