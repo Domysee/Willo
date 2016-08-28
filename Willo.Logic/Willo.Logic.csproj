@@ -128,6 +128,7 @@
     <Compile Include="Components\Login\AuthorizeCommandHandler.cs" />
     <Compile Include="Components\Login\IsAuthorizationTokenQuery.cs" />
     <Compile Include="Components\Login\IsAuthorizationTokenQueryHandler.cs" />
+    <Compile Include="LambdaCommandHandler.cs" />
     <Compile Include="MessageBroker.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="QueryHandlerBase.cs" />

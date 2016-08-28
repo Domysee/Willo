@@ -8,6 +8,7 @@ using Willo.Logic;
 using Willo.Logic.Components.Login;
 using Willo.View.Components.Navigation;
 using Willo.View.Components.Navigation.Messaging;
+using Willo.View.Components.UserMessaging.Messaging;
 using Windows.UI.Xaml.Controls;
 
 namespace Willo.View.Components.Login
@@ -44,6 +45,7 @@ namespace Willo.View.Components.Login
                 if (errors.Count() == 0)
                     await messageBroker.Command(new NavigateRegionCommand(NavigationRegions.Content, new BoardOverview.BoardOverview()));
             }
+            await messageBroker.Command(new MessageUserCommand("Test", UserMessaging.MessageType.Warning));
         }
     }
 }

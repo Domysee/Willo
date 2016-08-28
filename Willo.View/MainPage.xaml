@@ -8,8 +8,12 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:login="using:Willo.View.Components.Login"
     xmlns:navigation="using:Willo.View.Components.Navigation"
+    xmlns:userMessaging="using:Willo.View.Components.UserMessaging"
     mc:Ignorable="d" Loaded="Page_Loaded">
-    <ContentPresenter Name="Content" Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-        <login:LoginView x:Name="LoginView"></login:LoginView>
-    </ContentPresenter>
+    <Grid>
+        <ContentPresenter Name="Content" Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+            <login:LoginView x:Name="LoginView"></login:LoginView>
+        </ContentPresenter>
+        <userMessaging:NotificationView VerticalAlignment="Top"></userMessaging:NotificationView>
+    </Grid>
 </Page>

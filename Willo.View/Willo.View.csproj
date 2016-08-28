@@ -104,6 +104,13 @@
     <Compile Include="Components\Navigation\NavigationManager.cs" />
     <Compile Include="Components\Navigation\NavigationRegions.cs" />
     <Compile Include="Components\Navigation\Register.cs" />
+    <Compile Include="Components\UserMessaging\MessageType.cs" />
+    <Compile Include="Components\UserMessaging\Messaging\MessageUserCommand.cs" />
+    <Compile Include="Components\UserMessaging\NotificationView.xaml.cs">
+      <DependentUpon>NotificationView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Components\UserMessaging\NotificationViewViewmodel.cs" />
+    <Compile Include="Components\UserMessaging\Register.cs" />
     <Compile Include="Helper\VisualHelper.cs" />
     <Compile Include="Infrastructure\BindableBase.cs" />
     <Compile Include="Components\BoardOverview\BoardOverview.xaml.cs">
@@ -119,6 +126,8 @@
     <Compile Include="Components\Navigation\IGuiNavigator.cs" />
     <Compile Include="Components\Navigation\NavigationCreator.cs" />
     <Compile Include="Infrastructure\PropertySupport.cs" />
+    <Compile Include="Infrastructure\StateTriggers\EnumTrigger.cs" />
+    <Compile Include="Infrastructure\StateTriggers\PropertyTrigger.cs" />
     <Compile Include="Setup\DependencyInjection.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
@@ -152,6 +161,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Components\Login\LoginView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Components\UserMessaging\NotificationView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
