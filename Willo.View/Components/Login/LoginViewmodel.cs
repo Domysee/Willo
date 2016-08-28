@@ -45,7 +45,6 @@ namespace Willo.View.Components.Login
                 if (errors.Count() == 0)
                     await messageBroker.Command(new NavigateRegionCommand(NavigationRegions.Content, new BoardOverview.BoardOverview()));
             }
-            await messageBroker.Command(new MessageUserCommand("Test", UserMessaging.MessageType.Warning));
         }
     }
 }
