@@ -12,7 +12,7 @@ namespace Willo.View.Components.BoardOverview
 {
     public class BoardOverviewViewModel : BindableBase
     {
-        private MessageBroker messageBroker;
+        private IMessageBroker messageBroker;
         private IReadOnlyCollection<Logic.Components.BoardOverview.BoardOverview> boards;
         public IReadOnlyCollection<Logic.Components.BoardOverview.BoardOverview> Boards
         {
@@ -20,7 +20,7 @@ namespace Willo.View.Components.BoardOverview
             set { SetProperty(ref boards, value); }
         }
 
-        public BoardOverviewViewModel(MessageBroker messageBroker)
+        public BoardOverviewViewModel(IMessageBroker messageBroker)
         {
             this.messageBroker = messageBroker;
         }

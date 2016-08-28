@@ -6,18 +6,18 @@ using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using Willo.Logic;
 using Willo.Logic.Components.Login;
+using Willo.View.Components.Navigation;
+using Willo.View.Components.Navigation.Messaging;
 using Windows.UI.Xaml.Controls;
 
 namespace Willo.View.Components.Login
 {
     public class LoginViewmodel
     {
-        private MessageBroker messageBroker;
+        private IMessageBroker messageBroker;
         public string Url { get; private set; }
 
-        public event EventHandler NavigationToBoardOverviewRequested;
-
-        public LoginViewmodel(MessageBroker messageBroker)
+        public LoginViewmodel(IMessageBroker messageBroker)
         {
             this.messageBroker = messageBroker;
         }
@@ -42,7 +42,7 @@ namespace Willo.View.Components.Login
             {
                 var errors = await messageBroker.Command(new AuthorizeCommand(tokens.First()));
                 if (errors.Count() == 0)
-                    NavigationToBoardOverviewRequested(null, null);
+                    await messageBroker.Command(new NavigateRegionCommand(NavigationRegions.Content, new BoardOverview.BoardOverview()));
             }
         }
     }

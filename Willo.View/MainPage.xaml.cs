@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using Willo.Logic;
+using Willo.View.Components.Navigation;
+using Willo.View.Components.Navigation.Messaging;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
@@ -22,14 +25,17 @@ namespace Willo.View
     /// </summary>
     public sealed partial class MainPage : Page
     {
+        IMessageBroker messageBroker;
+
         public MainPage()
         {
             this.InitializeComponent();
+            messageBroker = DependencyInjection.Instance.Resolve<IMessageBroker>();
         }
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
-            LoginView.Navigation.NavigationContainer = Content;
+            messageBroker.Command(new AddNavigationRegionCommand(Content, NavigationRegions.Content));
         }
     }
 }

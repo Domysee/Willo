@@ -10,6 +10,8 @@ using Willo.Logic;
 using Willo.Logic.Components.BoardOverview;
 using Willo.Logic.Components.Login;
 using Willo.View.Components.Login;
+using Willo.View.Components.Navigation;
+using Willo.View.Components.Navigation.Messaging;
 
 namespace Willo.View
 {
@@ -45,13 +47,18 @@ namespace Willo.View
             var queryHandlerStore = new QueryHandlerStore();
             var commandHandlerStore = new CommandHandlerStore();
             var messageBroker = new MessageBroker(queryHandlerStore, commandHandlerStore);
-            Container.RegisterInstance(messageBroker);
+            Container.RegisterInstance<IMessageBroker>(messageBroker);
+
+            Container.RegisterInstance(new NavigationCreator());
+            Container.RegisterInstance(new NavigationManager());
 
             messageBroker.RegisterHandler(instance.Resolve<AuthorizationUrlQueryHandler>());
             messageBroker.RegisterHandler(instance.Resolve<IsAuthorizationTokenQueryHandler>());
             messageBroker.RegisterHandler(instance.Resolve<BoardOverviewQueryHandler>());
 
             messageBroker.RegisterHandler(instance.Resolve<AuthorizeCommandHandler>());
+            messageBroker.RegisterHandler(instance.Resolve<AddNavigationRegionCommandHandler>());
+            messageBroker.RegisterHandler(instance.Resolve<NavigateRegionCommandHandler>());
         }
 
         public T Resolve<T>()

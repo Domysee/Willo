@@ -21,30 +21,20 @@ namespace Willo.View.Components.Login
 {
     public sealed partial class LoginView : UserControl
     {
-        public Infrastructure.Navigation Navigation { get; set; }
         public LoginViewmodel Viewmodel { get; }
 
         public LoginView()
         {
             this.InitializeComponent();
-            this.Navigation = new Infrastructure.Navigation();
             this.Viewmodel = DependencyInjection.Instance.Resolve<LoginViewmodel>();
             this.DataContext = this.Viewmodel;
             this.Viewmodel.Initialize().Wait();
-            this.Viewmodel.NavigationToBoardOverviewRequested += Viewmodel_NavigationToBoardOverviewRequested;
-        }
-
-        private void Viewmodel_NavigationToBoardOverviewRequested(object sender, EventArgs e)
-        {
-            var boardOverview = new BoardOverview.BoardOverview();
-            boardOverview.Navigation.NavigationContainer = this.Navigation.NavigationContainer;
-            Navigation.Navigator.NavigateTo(boardOverview);
         }
 
         private async void WebView_DOMContentLoaded(WebView sender, WebViewDOMContentLoadedEventArgs args)
         {
             var html = await sender.InvokeScriptAsync("eval", new string[] { "document.querySelector('html').innerHTML" });
-            Viewmodel.SetHtml(html);
+            await Viewmodel.SetHtml(html);
         }
     }
 }
