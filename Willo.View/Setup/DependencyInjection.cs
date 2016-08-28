@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using Tapi;
@@ -13,7 +14,7 @@ using Willo.View.Components.Login;
 using Willo.View.Components.Navigation;
 using Willo.View.Components.Navigation.Messaging;
 
-namespace Willo.View
+namespace Willo.View.Setup
 {
     public class DependencyInjection
     {
@@ -42,23 +43,18 @@ namespace Willo.View
         {
             Container.RegisterInstance<ITrello>(new Trello());
 
-            Container.RegisterType<IAuthorizationUrlCreator, AuthorizationUrlCreator>();
-
             var queryHandlerStore = new QueryHandlerStore();
             var commandHandlerStore = new CommandHandlerStore();
             var messageBroker = new MessageBroker(queryHandlerStore, commandHandlerStore);
             Container.RegisterInstance<IMessageBroker>(messageBroker);
 
-            Container.RegisterInstance(new NavigationCreator());
-            Container.RegisterInstance(new NavigationManager());
-
-            messageBroker.RegisterHandler(instance.Resolve<AuthorizationUrlQueryHandler>());
-            messageBroker.RegisterHandler(instance.Resolve<IsAuthorizationTokenQueryHandler>());
-            messageBroker.RegisterHandler(instance.Resolve<BoardOverviewQueryHandler>());
-
-            messageBroker.RegisterHandler(instance.Resolve<AuthorizeCommandHandler>());
-            messageBroker.RegisterHandler(instance.Resolve<AddNavigationRegionCommandHandler>());
-            messageBroker.RegisterHandler(instance.Resolve<NavigateRegionCommandHandler>());
+            var componentRegisterTypes = AllClasses.FromApplication()
+                .Where(t => t.GetTypeInfo().ImplementedInterfaces.Contains(typeof(IRegisterComponent)));
+            Container.RegisterTypes(componentRegisterTypes, WithMappings.FromAllInterfaces, t => t.FullName, //use the full name as registration name, so that the registration classes can have the same name
+                WithLifetime.ContainerControlled);
+            var componentRegisters = Container.ResolveAll<IRegisterComponent>();
+            foreach (var componentRegister in componentRegisters)
+                componentRegister.Register(Container, messageBroker);
         }
 
         public T Resolve<T>()

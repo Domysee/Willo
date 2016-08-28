@@ -6,6 +6,7 @@ using System.Runtime.InteropServices.WindowsRuntime;
 using Willo.Logic;
 using Willo.View.Components.Navigation;
 using Willo.View.Components.Navigation.Messaging;
+using Willo.View.Setup;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.UI.Xaml;

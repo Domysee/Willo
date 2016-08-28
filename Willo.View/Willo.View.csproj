@@ -95,12 +95,15 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Components\BoardOverview\Register.cs" />
+    <Compile Include="Components\Login\Register.cs" />
     <Compile Include="Components\Navigation\Messaging\AddNavigationRegionCommand.cs" />
     <Compile Include="Components\Navigation\Messaging\AddNavigationRegionCommandHandler.cs" />
     <Compile Include="Components\Navigation\Messaging\NavigateRegionCommand.cs" />
     <Compile Include="Components\Navigation\Messaging\NavigateRegionCommandHandler.cs" />
     <Compile Include="Components\Navigation\NavigationManager.cs" />
     <Compile Include="Components\Navigation\NavigationRegions.cs" />
+    <Compile Include="Components\Navigation\Register.cs" />
     <Compile Include="Helper\VisualHelper.cs" />
     <Compile Include="Infrastructure\BindableBase.cs" />
     <Compile Include="Components\BoardOverview\BoardOverview.xaml.cs">
@@ -116,11 +119,12 @@
     <Compile Include="Components\Navigation\IGuiNavigator.cs" />
     <Compile Include="Components\Navigation\NavigationCreator.cs" />
     <Compile Include="Infrastructure\PropertySupport.cs" />
-    <Compile Include="DependencyInjection.cs" />
+    <Compile Include="Setup\DependencyInjection.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Setup\IRegisterComponent.cs" />
   </ItemGroup>
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest">
