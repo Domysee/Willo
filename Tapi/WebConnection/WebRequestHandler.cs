@@ -20,6 +20,7 @@ namespace Tapi.WebConnection
             {
                 this.applicationKey = applicationKey;
                 this.authorizationToken = authorizationToken;
+                this.InnerHandler = new HttpClientHandler();
             }
 
             protected override HttpRequestMessage ProcessRequest(HttpRequestMessage request, CancellationToken cancellationToken)
