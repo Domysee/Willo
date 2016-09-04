@@ -6,10 +6,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Tapi.Authorization;
-using Windows.Web.Http;
-using Windows.Web.Http.Filters;
-using Windows.Web.Http.Headers;
-using Windows.Foundation;
 
 namespace Tapi.WebConnection
 {

@@ -1,7 +1,9 @@
 ﻿{
   "dependencies": {
-    "Microsoft.NETCore.UniversalWindowsPlatform": "5.1.0",
-    "Unity": "4.0.1"
+    "Microsoft.NETCore.UniversalWindowsPlatform": "5.2.0-rc3-*",
+    "Tapi": "1.0.0",
+    "Unity": "4.0.1",
+    "Willo.Logic": "1.0.0"
   },
   "frameworks": {
     "uap10.0": {}

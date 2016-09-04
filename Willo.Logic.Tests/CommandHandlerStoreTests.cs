@@ -1,12 +1,12 @@
-﻿using Microsoft.VisualStudio.TestPlatform.UnitTestFramework;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using HyperMock.Universal;
 using FluentAssertions;
 using Willo.Logic.Components.Login;
+using Moq;
 
 namespace Willo.Logic.Tests
 {
@@ -17,8 +17,8 @@ namespace Willo.Logic.Tests
         public void RegisterShouldNotThrowIfCalledWithNonNullHandler()
         {
             var store = new CommandHandlerStore();
-            var handler = Mock.Create<ICommandHandler<AuthorizeCommand>>();
-            Action action = () => { store.Register(handler); };
+            var handlerMock = new Mock<ICommandHandler<AuthorizeCommand>>();
+            Action action = () => { store.Register(handlerMock.Object); };
 
             action.ShouldNotThrow();
         }
@@ -36,8 +36,8 @@ namespace Willo.Logic.Tests
         public void UnregisterShouldNotThrowIfCalledWithNotRegisteredHandler()
         {
             var store = new CommandHandlerStore();
-            var handler = Mock.Create<ICommandHandler<AuthorizeCommand>>();
-            Action action = () => { store.Unregister(handler); };
+            var handlerMock = new Mock<ICommandHandler<AuthorizeCommand>>();
+            Action action = () => { store.Unregister(handlerMock.Object); };
 
             action.ShouldNotThrow();
         }
@@ -46,9 +46,9 @@ namespace Willo.Logic.Tests
         public void UnregisterShouldNotThrowIfCalledWithRegisteredHandler()
         {
             var store = new CommandHandlerStore();
-            var handler = Mock.Create<ICommandHandler<AuthorizeCommand>>();
-            store.Register(handler);
-            Action action = () => { store.Unregister(handler); };
+            var handlerMock = new Mock<ICommandHandler<AuthorizeCommand>>();
+            store.Register(handlerMock.Object);
+            Action action = () => { store.Unregister(handlerMock.Object); };
 
             action.ShouldNotThrow();
         }
@@ -66,8 +66,8 @@ namespace Willo.Logic.Tests
         public void RegisterShouldAddHandler()
         {
             var store = new CommandHandlerStore();
-            var addHandler = Mock.Create<ICommandHandler<AuthorizeCommand>>();
-            store.Register(addHandler);
+            var addHandlerMock = new Mock<ICommandHandler<AuthorizeCommand>>();
+            store.Register(addHandlerMock.Object);
 
             var returnHandler = store.Get(new AuthorizeCommand("authorizationtokenauthorizationtokenauthorizationtoken1234567890"));
             returnHandler.Should().NotBeNull();
@@ -77,9 +77,9 @@ namespace Willo.Logic.Tests
         public void UnregisterShouldRemoveHandler()
         {
             var store = new CommandHandlerStore();
-            var handler = Mock.Create<ICommandHandler<AuthorizeCommand>>();
-            store.Register(handler);
-            store.Unregister(handler);
+            var handlerMock = new Mock<ICommandHandler<AuthorizeCommand>>();
+            store.Register(handlerMock.Object);
+            store.Unregister(handlerMock.Object);
 
             var returnHandler = store.Get(new AuthorizeCommand("authorizationtokenauthorizationtokenauthorizationtoken1234567890"));
             returnHandler.Should().BeNull();

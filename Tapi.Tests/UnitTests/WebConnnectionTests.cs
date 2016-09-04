@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using FluentAssertions;
 using Tapi.WebConnection;
 using Newtonsoft.Json.Linq;
-using Microsoft.VisualStudio.TestPlatform.UnitTestFramework;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Tapi.Tests.UnitTests
 {

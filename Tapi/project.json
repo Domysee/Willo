@@ -1,17 +1,23 @@
 ﻿{
+  "version": "1.0.0-*",
+
   "dependencies": {
-    "Microsoft.NETCore.UniversalWindowsPlatform": "5.1.0",
-    "Newtonsoft.Json": "9.0.1"
+    "NETStandard.Library": "1.0.0",
+    "Newtonsoft.Json": "9.0.1",
+    "System.Net.Http": "4.1.0",
+    "System.Reflection.TypeExtensions": "4.1.0",
+    "System.Runtime.InteropServices": "4.1.0"
   },
+
   "frameworks": {
-    "uap10.0": {}
+    "netstandard1.0": {
+      "imports": "dnxcore50"
+    }
   },
-  "runtimes": {
-    "win10-arm": {},
-    "win10-arm-aot": {},
-    "win10-x86": {},
-    "win10-x86-aot": {},
-    "win10-x64": {},
-    "win10-x64-aot": {}
+
+  "scripts": {
+    "postcompile": [
+      "dotnet pack --no-build -o \"C:/Users/Dominik/Documents/Visual Studio 2015/Packages\""
+    ]
   }
 }

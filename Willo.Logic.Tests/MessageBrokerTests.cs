@@ -1,10 +1,10 @@
 ﻿using System;
-using Microsoft.VisualStudio.TestPlatform.UnitTestFramework;
-using HyperMock.Universal;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Willo.Logic.Components.Login;
 using System.Threading.Tasks;
 using FluentAssertions;
-using HyperMock.Universal.Verification;
+using Moq;
+using System.Linq;
 
 namespace Willo.Logic.Tests
 {
@@ -15,8 +15,8 @@ namespace Willo.Logic.Tests
         public void RegisterQueryHandlerShouldNotThrowIfCalledWithNonNullHandler()
         {
             var broker = new MessageBroker(new QueryHandlerStore(), new CommandHandlerStore());
-            var handler = Mock.Create<IQueryHandler<AuthorizationUrlQuery, string>>();
-            Action action = () => { broker.RegisterHandler(handler); };
+            var handlerMock =new Mock<IQueryHandler<AuthorizationUrlQuery, string>>();
+            Action action = () => { broker.RegisterHandler(handlerMock.Object); };
 
             action.ShouldNotThrow();
         }
@@ -34,8 +34,8 @@ namespace Willo.Logic.Tests
         public void UnregisterQueryHandlerShouldNotThrowIfCalledWithNotRegisteredHandler()
         {
             var broker = new MessageBroker(new QueryHandlerStore(), new CommandHandlerStore());
-            var handler = Mock.Create<IQueryHandler<AuthorizationUrlQuery, string>>();
-            Action action = () => { broker.UnregisterHandler(handler); };
+            var handlerMock = new Mock<IQueryHandler<AuthorizationUrlQuery, string>>();
+            Action action = () => { broker.UnregisterHandler(handlerMock.Object); };
 
             action.ShouldNotThrow();
         }
@@ -44,9 +44,9 @@ namespace Willo.Logic.Tests
         public void UnregisterQueryHandlerShouldNotThrowIfCalledWithRegisteredHandler()
         {
             var broker = new MessageBroker(new QueryHandlerStore(), new CommandHandlerStore());
-            var handler = Mock.Create<IQueryHandler<AuthorizationUrlQuery, string>>();
-            broker.RegisterHandler(handler);
-            Action action = () => { broker.UnregisterHandler(handler); };
+            var handlerMock = new Mock<IQueryHandler<AuthorizationUrlQuery, string>>();
+            broker.RegisterHandler(handlerMock.Object);
+            Action action = () => { broker.UnregisterHandler(handlerMock.Object); };
 
             action.ShouldNotThrow();
         }
@@ -64,8 +64,8 @@ namespace Willo.Logic.Tests
         public void RegisterCommandHandlerShouldNotThrowIfCalledWithNonNullHandler()
         {
             var broker = new MessageBroker(new QueryHandlerStore(), new CommandHandlerStore());
-            var handler = Mock.Create<ICommandHandler<AuthorizeCommand>>();
-            Action action = () => { broker.RegisterHandler(handler); };
+            var handlerMock = new Mock<ICommandHandler<AuthorizeCommand>>();
+            Action action = () => { broker.RegisterHandler(handlerMock.Object); };
 
             action.ShouldNotThrow();
         }
@@ -83,8 +83,8 @@ namespace Willo.Logic.Tests
         public void UnregisterCommandHandlerShouldNotThrowIfCalledWithNotRegisteredHandler()
         {
             var broker = new MessageBroker(new QueryHandlerStore(), new CommandHandlerStore());
-            var handler = Mock.Create<ICommandHandler<AuthorizeCommand>>();
-            Action action = () => { broker.UnregisterHandler(handler); };
+            var handlerMock = new Mock<ICommandHandler<AuthorizeCommand>>();
+            Action action = () => { broker.UnregisterHandler(handlerMock.Object); };
 
             action.ShouldNotThrow();
         }
@@ -93,9 +93,9 @@ namespace Willo.Logic.Tests
         public void UnregisterCommandHandlerShouldNotThrowIfCalledWithRegisteredHandler()
         {
             var broker = new MessageBroker(new QueryHandlerStore(), new CommandHandlerStore());
-            var handler = Mock.Create<ICommandHandler<AuthorizeCommand>>();
-            broker.RegisterHandler(handler);
-            Action action = () => { broker.UnregisterHandler(handler); };
+            var handlerMock = new Mock<ICommandHandler<AuthorizeCommand>>();
+            broker.RegisterHandler(handlerMock.Object);
+            Action action = () => { broker.UnregisterHandler(handlerMock.Object); };
 
             action.ShouldNotThrow();
         }
@@ -114,15 +114,15 @@ namespace Willo.Logic.Tests
         {
             var returnValue = "Return";
             var query = new AuthorizationUrlQuery();
-            var handler = Mock.Create<IQueryHandler<AuthorizationUrlQuery, string>>();
-            handler.Setup(h => h.Handle((IQuery)query)).Returns(Task.FromResult<object>(returnValue));
+            var handlerMock = new Mock<IQueryHandler<AuthorizationUrlQuery, string>>();
+            handlerMock.Setup(h => h.Handle((IQuery)query)).Returns(Task.FromResult<object>(returnValue));
             var broker = new MessageBroker(new QueryHandlerStore(), new CommandHandlerStore());
-            broker.RegisterHandler(handler);
+            broker.RegisterHandler(handlerMock.Object);
 
             var result = broker.Query(query);
             var stringResult = result.Result;
 
-            handler.Verify(h => h.Handle(query), Occurred.Once());
+            handlerMock.Verify(h => h.Handle(It.IsAny<IQuery>()), Times.Once());
             stringResult.Should().Be(returnValue);
         }
 
@@ -130,14 +130,13 @@ namespace Willo.Logic.Tests
         public void CommandShouldExecuteHandler()
         {
             var command = new AuthorizeCommand("authorizationtokenauthorizationtokenauthorizationtoken1234567890");
-            var handler = Mock.Create<ICommandHandler<AuthorizeCommand>>();
-            handler.Setup(h => h.Handle(command));
+            var handlerMock = new Mock<ICommandHandler<AuthorizeCommand>>();
             var broker = new MessageBroker(new QueryHandlerStore(), new CommandHandlerStore());
-            broker.RegisterHandler(handler);
+            broker.RegisterHandler(handlerMock.Object);
 
-            var result = broker.Command(command);
-
-            handler.Verify(h => h.Handle(command), Occurred.Once());
+            broker.Command(command).Wait();
+            
+            handlerMock.Verify(h => h.Handle(It.IsAny<ICommand>()), Times.Once());
         }
     }
 }

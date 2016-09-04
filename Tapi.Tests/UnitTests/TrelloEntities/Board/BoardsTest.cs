@@ -1,11 +1,11 @@
 ﻿using FluentAssertions;
-using Microsoft.VisualStudio.TestPlatform.UnitTestFramework;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Tapi.TrelloEntities.Board;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Tapi.Tests.UnitTests.TrelloEntities.Board
 {

@@ -1,10 +1,5 @@
-﻿using HyperMock.Universal;
-using HyperMock.Universal.Verification;
-using Microsoft.VisualStudio.TestPlatform.UnitTestFramework;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Moq;
 using System.Threading.Tasks;
 using Tapi;
 using Tapi.Authorization;
@@ -20,13 +15,13 @@ namespace Willo.Logic.Tests.Login
         public void ShouldAuthorizeApi()
         {
             var token = "authorizationtokenauthorizationtokenauthorizationtoken1234567890";
-            var api = Mock.Create<ITrello>();
-            api.Setup(a => a.Authorize(Param.IsAny<ApplicationKey>(), Param.IsAny<AuthorizationToken>())).Returns(Task.CompletedTask);
-            var handler = new AuthorizeCommandHandler(api);
+            var apiMock = new Mock<ITrello>();
+            apiMock.Setup(a => a.Authorize(It.IsAny<ApplicationKey>(), It.IsAny<AuthorizationToken>())).Returns(Task.CompletedTask);
+            var handler = new AuthorizeCommandHandler(apiMock.Object);
 
             handler.Handle(new AuthorizeCommand(token)).Wait();
 
-            api.Verify(a => a.Authorize(Param.IsAny<ApplicationKey>(), Param.IsAny<AuthorizationToken>()), Occurred.Once());
+            apiMock.Verify(a => a.Authorize(It.IsAny<ApplicationKey>(), It.IsAny<AuthorizationToken>()), Times.Once());
         }
     }
 }

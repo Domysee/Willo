@@ -48,7 +48,7 @@ namespace Willo.View.Setup
             var messageBroker = new MessageBroker(queryHandlerStore, commandHandlerStore);
             Container.RegisterInstance<IMessageBroker>(messageBroker);
 
-            var componentRegisterTypes = AllClasses.FromApplication()
+            var componentRegisterTypes = this.GetType().GetTypeInfo().Assembly.GetTypes()
                 .Where(t => t.GetTypeInfo().ImplementedInterfaces.Contains(typeof(IRegisterComponent)));
             Container.RegisterTypes(componentRegisterTypes, WithMappings.FromAllInterfaces, t => t.FullName, //use the full name as registration name, so that the registration classes can have the same name
                 WithLifetime.ContainerControlled);
