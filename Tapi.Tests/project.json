@@ -9,13 +9,17 @@
     },
     "dotnet-test-mstest": "1.1.1-preview",
     "MSTest.TestFramework": "1.0.1-preview",
-    "Tapi": "1.0.0-*",
     "FluentAssertions": "4.1.1"
   },
 
   "frameworks": {
     "netcoreapp1.0": {
-      "imports": "dnxcore50"
+      "imports": "dnxcore50",
+      "dependencies": {
+        "Tapi": {
+          "target": "project"
+        }
+      }
     }
   }
 }

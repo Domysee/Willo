@@ -1,0 +1,85 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <MinimumVisualStudioVersion>14.0</MinimumVisualStudioVersion>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{0B9E7A99-2CB4-4333-ABE8-FB2099BCE1F8}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Willo.Logic</RootNamespace>
+    <AssemblyName>Willo.Logic</AssemblyName>
+    <DefaultLanguage>en-US</DefaultLanguage>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{786C830F-07A1-408B-BD7F-6EE04809D6DB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
+    <TargetFrameworkVersion>v5.0</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <None Include="project.json" />
+    <!-- A reference to the entire .NET Framework is automatically included -->
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="CommandHandlerBase.cs" />
+    <Compile Include="CommandHandlerStore.cs" />
+    <Compile Include="Components\BoardOverview\BoardOverview.cs" />
+    <Compile Include="Components\BoardOverview\BoardOverviewQuery.cs" />
+    <Compile Include="Components\BoardOverview\BoardOverviewQueryHandler.cs" />
+    <Compile Include="Components\Login\AuthorizationUrlQuery.cs" />
+    <Compile Include="Components\Login\AuthorizationUrlQueryHandler.cs" />
+    <Compile Include="Components\Login\AuthorizeCommand.cs" />
+    <Compile Include="Components\Login\AuthorizeCommandHandler.cs" />
+    <Compile Include="Components\Login\IsAuthorizationTokenQuery.cs" />
+    <Compile Include="Components\Login\IsAuthorizationTokenQueryHandler.cs" />
+    <Compile Include="Errors\AuthorizationDeniedError.cs" />
+    <Compile Include="Errors\NetworkError.cs" />
+    <Compile Include="Errors\RequestFailedError.cs" />
+    <Compile Include="ICommand.cs" />
+    <Compile Include="ICommandHandler.cs" />
+    <Compile Include="ICommandHandlerStore.cs" />
+    <Compile Include="IError.cs" />
+    <Compile Include="IMessageBroker.cs" />
+    <Compile Include="IQuery.cs" />
+    <Compile Include="IQueryHandler.cs" />
+    <Compile Include="IQueryHandlerStore.cs" />
+    <Compile Include="LambdaCommandHandler.cs" />
+    <Compile Include="MessageBroker.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="QueryHandlerBase.cs" />
+    <Compile Include="QueryHandlerStore.cs" />
+    <Compile Include="TrelloData.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Tapi\Tapi.csproj">
+      <Project>{60a50f1b-6385-4359-8a79-fd58f5a21039}</Project>
+      <Name>Tapi</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -173,6 +173,19 @@
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Tapi\Tapi.csproj">
+      <Project>{60a50f1b-6385-4359-8a79-fd58f5a21039}</Project>
+      <Name>Tapi</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Willo.Logic\Willo.Logic.csproj">
+      <Project>{0b9e7a99-2cb4-4333-abe8-fb2099bce1f8}</Project>
+      <Name>Willo.Logic</Name>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
   </PropertyGroup>
