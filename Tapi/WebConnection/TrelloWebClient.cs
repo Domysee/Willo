@@ -11,7 +11,6 @@ namespace Tapi.WebConnection
 {
     public class TrelloWebClient : ITrelloWebClient
     {
-
         private const string InvalidTokenResponse = "invalid token";
         private const string AuthorizationTestUrl = "https://api.trello.com/1/members/me";
         private IWebRequestHandler webRequestHandler;
@@ -22,6 +21,23 @@ namespace Tapi.WebConnection
         public TrelloWebClient()
         {
             webRequestHandler = new WebRequestHandler();
+        }
+
+        public TrelloWebClient(IWebRequestHandler webRequestHandler)
+        {
+            this.webRequestHandler = webRequestHandler;
+        }
+
+        /// <summary>
+        /// Checks if the server accepts the authorization parameters
+        /// </summary>
+        /// <param name="applicationKey"></param>
+        /// <param name="authorizationToken"></param>
+        /// <returns></returns>
+        public async Task<bool> CheckAuthorizationParameters(ApplicationKey applicationKey, AuthorizationToken authorizationToken)
+        {
+            var response = await webRequestHandler.Get(AuthorizationTestUrl, applicationKey, authorizationToken);
+            return response != InvalidTokenResponse;
         }
 
         /// <summary>
@@ -39,18 +55,6 @@ namespace Tapi.WebConnection
             this.applicationKey = applicationKey;
             this.authorizationToken = authorizationToken;
             this.IsAuthorized = true;
-        }
-
-        /// <summary>
-        /// Checks if the server accepts the authorization parameters
-        /// </summary>
-        /// <param name="applicationKey"></param>
-        /// <param name="authorizationToken"></param>
-        /// <returns></returns>
-        public async Task<bool> CheckAuthorizationParameters(ApplicationKey applicationKey, AuthorizationToken authorizationToken)
-        {
-            var response = await webRequestHandler.Get(AuthorizationTestUrl, applicationKey, authorizationToken);
-            return response != InvalidTokenResponse;
         }
 
         private void checkAuthorization()

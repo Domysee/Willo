@@ -8,10 +8,10 @@ using Tapi.WebConnection;
 using Newtonsoft.Json.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace Tapi.Tests.UnitTests
+namespace Tapi.Tests.UnitTests.WebConnection
 {
     [TestClass]
-    public class WebConnnectionTests
+    public class AuthorizationTokenTests
     {
         [TestMethod]
         public void AuthorizationTokenThrowsExceptionOnCreatingWithInvalidString()
@@ -38,35 +38,6 @@ namespace Tapi.Tests.UnitTests
             Action createToken = () => { var x = (AuthorizationToken)invalidToken; };
 
             createToken.ShouldThrow<ArgumentException>();
-        }
-
-        [TestMethod]
-        public void CreatingDoesNotThrow()
-        {
-            Action create = () => { var x = new TrelloWebClient(); };
-
-            create.ShouldNotThrow();
-        }
-
-        [TestMethod]
-        public void AuthorizeDoesNotThrow()
-        {
-            var client = new TrelloWebClient();
-            Action authorize = () => { client.Authorize(TestData.TestApplicationKey, TestData.TestAuthorizationToken); };
-
-            authorize.ShouldNotThrow();
-        }
-
-        [TestMethod]
-        public void GetShouldThrowUnauthorizedExceptionIfClientIsNotAuthorized()
-        {
-            var testUrl = "http://www.url.com";
-            var client = new TrelloWebClient();
-            Action get = () => { client.Get(testUrl).Wait(); };
-            Action genericGet = () => { client.Get<JObject>(testUrl).Wait(); };
-
-            get.ShouldThrow<UnauthorizedException>();
-            genericGet.ShouldThrow<UnauthorizedException>();
         }
     }
 }
