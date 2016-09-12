@@ -7,5 +7,9 @@ namespace Tapi.WebConnection
         public RequestFailedException(string url) : base($"The request to {url} failed")
         {
         }
+
+        public RequestFailedException() : base("Request failed")
+        {
+        }
     }
 }

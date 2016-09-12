@@ -11,7 +11,7 @@ namespace Willo.Logic.Components.Login
     {
         public AuthorizationToken AuthorizationToken { get; }
 
-        public AuthorizeCommand(string authorizationToken)
+        public AuthorizeCommand(AuthorizationToken authorizationToken)
         {
             this.AuthorizationToken = authorizationToken;
         }
