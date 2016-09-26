@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Willo.Logic
+namespace Willo.Logic.Infrastructure
 {
-    public interface IError
+    public interface ICommand
     {
     }
 }

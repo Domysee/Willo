@@ -6,6 +6,7 @@ using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using Willo.Logic;
 using Willo.Logic.Components.Login;
+using Willo.Logic.Infrastructure;
 using Willo.View.Components.Navigation;
 using Willo.View.Components.Navigation.Messaging;
 using Willo.View.Components.UserMessaging.Messaging;

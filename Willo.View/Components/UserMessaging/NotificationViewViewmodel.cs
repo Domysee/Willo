@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Willo.Logic;
 using Willo.View.Components.UserMessaging.Messaging;
 using Willo.View.Infrastructure;
+using Willo.Logic.Infrastructure;
 
 namespace Willo.View.Components.UserMessaging
 {

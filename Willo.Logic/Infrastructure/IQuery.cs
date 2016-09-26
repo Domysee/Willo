@@ -1,4 +1,4 @@
-﻿namespace Willo.Logic
+﻿namespace Willo.Logic.Infrastructure
 {
     public interface IQuery
     {

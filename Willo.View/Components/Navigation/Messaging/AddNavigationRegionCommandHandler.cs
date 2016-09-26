@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Willo.Logic;
+using Willo.Logic.Infrastructure;
 
 namespace Willo.View.Components.Navigation.Messaging
 {

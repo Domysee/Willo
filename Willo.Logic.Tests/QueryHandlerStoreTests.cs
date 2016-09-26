@@ -3,6 +3,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using Willo.Logic.Components.Login;
 using Moq;
+using Willo.Logic.Infrastructure;
 
 namespace Willo.Logic.Tests
 {

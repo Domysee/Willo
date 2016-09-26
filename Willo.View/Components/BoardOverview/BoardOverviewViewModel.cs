@@ -7,6 +7,7 @@ using Tapi.TrelloEntities.Board;
 using Willo.Logic;
 using Willo.Logic.Components.BoardOverview;
 using Willo.View.Infrastructure;
+using Willo.Logic.Infrastructure;
 
 namespace Willo.View.Components.BoardOverview
 {

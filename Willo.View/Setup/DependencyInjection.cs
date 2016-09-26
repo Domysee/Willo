@@ -13,6 +13,7 @@ using Willo.Logic.Components.Login;
 using Willo.View.Components.Login;
 using Willo.View.Components.Navigation;
 using Willo.View.Components.Navigation.Messaging;
+using Willo.Logic.Infrastructure;
 
 namespace Willo.View.Setup
 {

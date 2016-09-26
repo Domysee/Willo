@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace Willo.Logic
+namespace Willo.Logic.Infrastructure
 {
     public interface IMessageBroker
     {

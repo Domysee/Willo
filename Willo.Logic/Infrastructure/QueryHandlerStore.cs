@@ -4,31 +4,31 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Willo.Logic
+namespace Willo.Logic.Infrastructure
 {
-    public class CommandHandlerStore : ICommandHandlerStore
+    public class QueryHandlerStore : IQueryHandlerStore
     {
-        private Dictionary<Type, ICommandHandler> store = new Dictionary<Type, ICommandHandler>();
+        private Dictionary<Type, IQueryHandler> store = new Dictionary<Type, IQueryHandler>();
 
-        public void Register<TCommand>(ICommandHandler<TCommand> handler)
-            where TCommand : ICommand
+        public void Register<TQuery, TReturn>(IQueryHandler<TQuery, TReturn> handler)
+            where TQuery : IQuery<TReturn>
         {
             if (handler == null) throw new ArgumentNullException("The given handler is null");
 
-            var queryType = typeof(TCommand);
+            var queryType = typeof(TQuery);
             store.Add(queryType, handler);
         }
 
-        public void Unregister<TCommand>(ICommandHandler<TCommand> handler)
-            where TCommand : ICommand
+        public void Unregister<TQuery, TReturn>(IQueryHandler<TQuery, TReturn> handler)
+            where TQuery : IQuery<TReturn>
         {
             if (handler == null) throw new ArgumentNullException("The given handler is null");
 
-            var queryType = typeof(TCommand);
+            var queryType = typeof(TQuery);
             store.Remove(queryType);
         }
 
-        public ICommandHandler Get(ICommand query)
+        public IQueryHandler Get(IQuery query)
         {
             if (store.ContainsKey(query.GetType()))
                 return store[query.GetType()];

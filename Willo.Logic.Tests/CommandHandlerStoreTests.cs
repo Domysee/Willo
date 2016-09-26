@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using FluentAssertions;
 using Willo.Logic.Components.Login;
 using Moq;
+using Willo.Logic.Infrastructure;
 
 namespace Willo.Logic.Tests
 {

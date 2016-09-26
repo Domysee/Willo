@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Willo.Logic;
 using Windows.UI.Xaml.Controls;
+using Willo.Logic.Infrastructure;
 
 namespace Willo.View.Components.Navigation.Messaging
 {

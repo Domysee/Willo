@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Tapi.Authorization;
+using Willo.Logic.Infrastructure;
 
 namespace Willo.Logic.Components.Login
 {

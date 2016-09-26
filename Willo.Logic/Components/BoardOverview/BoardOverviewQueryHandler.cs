@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Tapi;
 using Tapi.TrelloEntities;
 using Tapi.TrelloEntities.Board;
+using Willo.Logic.Infrastructure;
 
 namespace Willo.Logic.Components.BoardOverview
 {

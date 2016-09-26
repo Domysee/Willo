@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Willo.Logic
+namespace Willo.Logic.Infrastructure
 {
     public abstract class CommandHandlerBase<TCommand> : ICommandHandler<TCommand>
         where TCommand : ICommand

@@ -8,6 +8,7 @@ using Willo.Logic;
 using Willo.View.Setup;
 using Willo.Logic.Components.Login;
 using Tapi.Authorization;
+using Willo.Logic.Infrastructure;
 
 namespace Willo.View.Components.Login
 {

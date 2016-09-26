@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using FluentAssertions;
 using Moq;
 using System.Linq;
+using Willo.Logic.Infrastructure;
 
 namespace Willo.Logic.Tests
 {
