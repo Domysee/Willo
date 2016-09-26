@@ -53,6 +53,7 @@
     <Compile Include="Errors\AuthorizationDeniedError.cs" />
     <Compile Include="Errors\NetworkError.cs" />
     <Compile Include="Errors\RequestFailedError.cs" />
+    <Compile Include="Infrastructure\CommandResult.cs" />
     <Compile Include="Infrastructure\ICommand.cs" />
     <Compile Include="Infrastructure\ICommandHandler.cs" />
     <Compile Include="Infrastructure\ICommandHandlerStore.cs" />
@@ -63,6 +64,7 @@
     <Compile Include="Infrastructure\IQueryHandlerStore.cs" />
     <Compile Include="Infrastructure\LambdaCommandHandler.cs" />
     <Compile Include="Infrastructure\MessageBroker.cs" />
+    <Compile Include="Infrastructure\ResultState.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Infrastructure\QueryHandlerBase.cs" />
     <Compile Include="Infrastructure\QueryHandlerStore.cs" />

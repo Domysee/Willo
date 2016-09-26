@@ -19,11 +19,11 @@ namespace Willo.View.Components.Navigation.Messaging
             this.navigationManager = navigationManager;
         }
 
-        public override Task<IEnumerable<IError>> Handle(AddNavigationRegionCommand command)
+        public override Task<CommandResult> Handle(AddNavigationRegionCommand command)
         {
             var navigator = navigationCreator.Create(command.Target);
             navigationManager.AddRegion(command.NavigationRegionName, navigator);
-            return Task.FromResult(Enumerable.Empty<IError>());
+            return Task.FromResult(CommandResult.CreateSuccess());
         }
     }
 }

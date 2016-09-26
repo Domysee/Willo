@@ -37,7 +37,7 @@ namespace Willo.View.Components.UserMessaging
             messageBroker.RegisterHandler(new LambdaCommandHandler<MessageUserCommand>(messageUserCommandHandler));
         }
 
-        private IEnumerable<IError> messageUserCommandHandler(MessageUserCommand command)
+        private CommandResult messageUserCommandHandler(MessageUserCommand command)
         {
             Type = command.Type;
             Message = command.Message;
@@ -48,7 +48,7 @@ namespace Willo.View.Components.UserMessaging
                 Message = null;
             });
 
-            return Enumerable.Empty<IError>();
+            return CommandResult.CreateSuccess();
         }
     }
 }

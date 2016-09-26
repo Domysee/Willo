@@ -19,7 +19,7 @@ namespace Willo.Logic.Components.Login
             this.api = api;
         }
 
-        public override async Task<IEnumerable<IError>> Handle(AuthorizeCommand command)
+        public override async Task<CommandResult> Handle(AuthorizeCommand command)
         {
             var errors = new List<IError>();
             try
@@ -38,7 +38,7 @@ namespace Willo.Logic.Components.Login
             {
                 errors.Add(new NetworkError());
             }
-            return errors;
+            return CommandResult.Create(errors);
         }
     }
 }

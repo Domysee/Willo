@@ -38,7 +38,7 @@ namespace Willo.Logic.Tests.Login
                 .Throws((Exception)Activator.CreateInstance(exceptionType));
             var handler = new AuthorizeCommandHandler(apiMock.Object);
 
-            var errors = handler.Handle(new AuthorizeCommand(TestData.TestAuthorizationToken)).Result;
+            var errors = handler.Handle(new AuthorizeCommand(TestData.TestAuthorizationToken)).Result.Errors;
 
             errors.Should().Contain(e => e.GetType() == errorType);
         }

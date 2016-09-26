@@ -8,7 +8,7 @@ namespace Willo.Logic.Infrastructure
 {
     public interface ICommandHandler
     {
-        Task<IEnumerable<IError>> Handle(ICommand command);
+        Task<CommandResult> Handle(ICommand command);
     }
 
     public interface ICommandHandler<TCommand> : ICommandHandler
@@ -19,6 +19,6 @@ namespace Willo.Logic.Infrastructure
         /// </summary>
         /// <param name="command"></param>
         /// <returns>a list of errors, null if no error occurred</returns>
-        Task<IEnumerable<IError>> Handle(TCommand command);
+        Task<CommandResult> Handle(TCommand command);
     }
 }

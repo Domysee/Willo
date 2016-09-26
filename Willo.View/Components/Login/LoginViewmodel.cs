@@ -42,7 +42,8 @@ namespace Willo.View.Components.Login
             }
             if (tokens.Count > 0)
             {
-                var errors = await messageBroker.Command(new AuthorizeCommand(tokens.First()));
+                var result = await messageBroker.Command(new AuthorizeCommand(tokens.First()));
+                var errors = result.Errors;
                 if (errors.Count() == 0)
                     await messageBroker.Command(new NavigateRegionCommand(NavigationRegions.Content, new BoardOverview.BoardOverview()));
             }

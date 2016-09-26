@@ -49,7 +49,7 @@ namespace Willo.Logic.Infrastructure
             return (T)await handler.Handle(query);
         }
 
-        public async Task<IEnumerable<IError>> Command(ICommand command)
+        public async Task<CommandResult> Command(ICommand command)
         {
             var handler = commandHandlerStore.Get(command);
             return await handler.Handle(command);

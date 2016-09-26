@@ -17,10 +17,10 @@ namespace Willo.View.Components.Navigation.Messaging
             this.navigationManager = navigationManager;
         }
 
-        public override Task<IEnumerable<IError>> Handle(NavigateRegionCommand command)
+        public override Task<CommandResult> Handle(NavigateRegionCommand command)
         {
             navigationManager.NavigateRegion(command.NavigationRegionName, command.Content);
-            return Task.FromResult(Enumerable.Empty<IError>());
+            return Task.FromResult(CommandResult.CreateSuccess());
         }
     }
 }
