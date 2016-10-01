@@ -10,17 +10,19 @@ namespace Willo.Logic.Components.Login
 {
     public class IsAuthorizationTokenQueryHandler : QueryHandlerBase<IsAuthorizationTokenQuery, bool>
     {
-        public override async Task<bool> Handle(IsAuthorizationTokenQuery query)
+        public override async Task<QueryResult<bool>> Handle(IsAuthorizationTokenQuery query)
         {
+            bool isAuthorizationToken;
             try
             {
                 new AuthorizationToken(query.AuthorizationToken);
-                return true;
+                isAuthorizationToken = true;
             }
             catch (Exception)
             {
-                return false;
+                isAuthorizationToken = false;
             }
+            return QueryResult<bool>.CreateSuccess(isAuthorizationToken);
         }
     }
 }

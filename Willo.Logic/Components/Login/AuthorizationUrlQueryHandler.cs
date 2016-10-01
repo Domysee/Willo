@@ -17,9 +17,10 @@ namespace Willo.Logic.Components.Login
             this.urlCreator = urlCreator;
         }
 
-        public override async Task<string> Handle(AuthorizationUrlQuery query)
+        public override async Task<QueryResult<string>> Handle(AuthorizationUrlQuery query)
         {
-            return urlCreator.Create(TrelloData.AppplicationKey, TrelloData.ApplicationName, AuthorizationScope.ReadWriteAccount, AuthorizationExpiration.Never);
+            var url = urlCreator.Create(TrelloData.AppplicationKey, TrelloData.ApplicationName, AuthorizationScope.ReadWriteAccount, AuthorizationExpiration.Never);
+            return QueryResult<string>.CreateSuccess(url);
         }
     }
 }

@@ -19,11 +19,12 @@ namespace Willo.Logic.Components.BoardOverview
             this.api = api;
         }
 
-        public override async Task<IEnumerable<BoardOverview>> Handle(BoardOverviewQuery query)
+        public override async Task<QueryResult<IEnumerable<BoardOverview>>> Handle(BoardOverviewQuery query)
         {
             var propertiesToLoad = new BoardProperties { Name = true };
             var boards = await api.Boards.GetAll(MemberId.AuthorizedUser, propertiesToLoad);
-            return boards.Select(b => new BoardOverview(b.Id, b.Name));
+            var boardOverviews = boards.Select(b => new BoardOverview(b.Id, b.Name));
+            return QueryResult<IEnumerable<BoardOverview>>.CreateSuccess(boardOverviews);
         }
     }
 }
