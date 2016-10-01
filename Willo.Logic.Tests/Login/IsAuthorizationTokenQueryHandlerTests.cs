@@ -19,7 +19,7 @@ namespace Willo.Logic.Tests.Login
             var query = new IsAuthorizationTokenQuery(invalidToken);
             var handler = new IsAuthorizationTokenQueryHandler();
 
-            var result = handler.Handle(query).Result;
+            var result = handler.Handle(query).Result.Result;
 
             result.Should().BeFalse();
         }
@@ -31,7 +31,7 @@ namespace Willo.Logic.Tests.Login
             var query = new IsAuthorizationTokenQuery(invalidToken);
             var handler = new IsAuthorizationTokenQueryHandler();
 
-            var result = handler.Handle(query).Result;
+            var result = handler.Handle(query).Result.Result;
 
             result.Should().BeFalse();
         }
@@ -43,7 +43,7 @@ namespace Willo.Logic.Tests.Login
             var query = new IsAuthorizationTokenQuery(invalidToken);
             var handler = new IsAuthorizationTokenQueryHandler();
 
-            var result = handler.Handle(query).Result;
+            var result = handler.Handle(query).Result.Result;
 
             result.Should().BeFalse();
         }
@@ -55,7 +55,7 @@ namespace Willo.Logic.Tests.Login
             var query = new IsAuthorizationTokenQuery(validToken);
             var handler = new IsAuthorizationTokenQueryHandler();
 
-            var result = handler.Handle(query).Result;
+            var result = handler.Handle(query).Result.Result;
 
             result.Should().BeTrue();
         }

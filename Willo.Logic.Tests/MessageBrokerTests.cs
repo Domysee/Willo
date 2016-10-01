@@ -16,7 +16,7 @@ namespace Willo.Logic.Tests
         public void RegisterQueryHandlerShouldNotThrowIfCalledWithNonNullHandler()
         {
             var broker = new MessageBroker(new QueryHandlerStore(), new CommandHandlerStore());
-            var handlerMock =new Mock<IQueryHandler<AuthorizationUrlQuery, string>>();
+            var handlerMock = new Mock<IQueryHandler<AuthorizationUrlQuery, string>>();
             Action action = () => { broker.RegisterHandler(handlerMock.Object); };
 
             action.ShouldNotThrow();
@@ -113,7 +113,7 @@ namespace Willo.Logic.Tests
         [TestMethod]
         public void QueryShouldExecuteHandler()
         {
-            var returnValue = "Return";
+            var returnValue = QueryResult<string>.CreateSuccess("Return");
             var query = new AuthorizationUrlQuery();
             var handlerMock = new Mock<IQueryHandler<AuthorizationUrlQuery, string>>();
             handlerMock.Setup(h => h.Handle((IQuery)query)).Returns(Task.FromResult<object>(returnValue));
@@ -136,7 +136,7 @@ namespace Willo.Logic.Tests
             broker.RegisterHandler(handlerMock.Object);
 
             broker.Command(command).Wait();
-            
+
             handlerMock.Verify(h => h.Handle(It.IsAny<ICommand>()), Times.Once());
         }
     }
