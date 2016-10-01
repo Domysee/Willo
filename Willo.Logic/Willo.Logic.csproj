@@ -53,6 +53,7 @@
     <Compile Include="Errors\AuthorizationDeniedError.cs" />
     <Compile Include="Errors\NetworkError.cs" />
     <Compile Include="Errors\RequestFailedError.cs" />
+    <Compile Include="Infrastructure\QueryResult.cs" />
     <Compile Include="Infrastructure\CommandResult.cs" />
     <Compile Include="Infrastructure\ICommand.cs" />
     <Compile Include="Infrastructure\ICommandHandler.cs" />

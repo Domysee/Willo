@@ -16,6 +16,6 @@ namespace Willo.Logic.Infrastructure
             return await Handle((TQuery)query);
         }
 
-        public abstract Task<TReturn> Handle(TQuery query);
+        public abstract Task<QueryResult<TReturn>> Handle(TQuery query);
     }
 }

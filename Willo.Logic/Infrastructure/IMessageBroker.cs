@@ -6,7 +6,7 @@ namespace Willo.Logic.Infrastructure
     public interface IMessageBroker
     {
         Task<CommandResult> Command(ICommand command);
-        Task<T> Query<T>(IQuery<T> query);
+        Task<QueryResult<T>> Query<T>(IQuery<T> query);
         void RegisterHandler<TCommand>(ICommandHandler<TCommand> handler) where TCommand : ICommand;
         void RegisterHandler<TQuery, TReturn>(IQueryHandler<TQuery, TReturn> handler) where TQuery : IQuery<TReturn>;
         void UnregisterHandler<TCommand>(ICommandHandler<TCommand> handler) where TCommand : ICommand;

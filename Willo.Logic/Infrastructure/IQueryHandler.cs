@@ -14,6 +14,6 @@ namespace Willo.Logic.Infrastructure
     public interface IQueryHandler<TQuery, TReturn> : IQueryHandler
         where TQuery : IQuery<TReturn>
     {
-        Task<TReturn> Handle(TQuery query);
+        Task<QueryResult<TReturn>> Handle(TQuery query);
     }
 }
