@@ -26,7 +26,8 @@ namespace Willo.View.Components.Login
 
         public async Task Initialize()
         {
-            Url = await messageBroker.Query(new AuthorizationUrlQuery());
+            var queryResult = await messageBroker.Query(new AuthorizationUrlQuery());
+            Url = queryResult.Result;
         }
 
         public async Task SetHtml(string html)
@@ -37,7 +38,9 @@ namespace Willo.View.Components.Login
             foreach (Match match in matches)
             {
                 var token = match.Value;
-                if (await messageBroker.Query(new IsAuthorizationTokenQuery(token)))
+                var queryResult = await messageBroker.Query(new IsAuthorizationTokenQuery(token));
+                var isAuthorizationToken = queryResult.Result;
+                if (isAuthorizationToken)
                     tokens.Add(token);
             }
             if (tokens.Count > 0)

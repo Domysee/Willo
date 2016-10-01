@@ -28,7 +28,8 @@ namespace Willo.View.Components.BoardOverview
 
         public async Task Initialize()
         {
-            Boards = (await messageBroker.Query(new BoardOverviewQuery())).ToList();
+            var queryResult = await messageBroker.Query(new BoardOverviewQuery());
+            Boards = queryResult.Result.ToList();
         }
     }
 }
