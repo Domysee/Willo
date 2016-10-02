@@ -8,6 +8,8 @@ using Willo.Logic;
 using Willo.Logic.Components.BoardOverview;
 using Willo.View.Infrastructure;
 using Willo.Logic.Infrastructure;
+using Willo.View.Components.UserMessaging.Messaging;
+using Willo.View.Components.UserMessaging;
 
 namespace Willo.View.Components.BoardOverview
 {
@@ -29,7 +31,13 @@ namespace Willo.View.Components.BoardOverview
         public async Task Initialize()
         {
             var queryResult = await messageBroker.Query(new BoardOverviewQuery());
-            Boards = queryResult.Result.ToList();
+            if (queryResult.State == ResultState.Success)
+                Boards = queryResult.Result.ToList();
+            else if (queryResult.State == ResultState.Failure)
+            {
+                var error = queryResult.Errors.First();
+                await messageBroker.Command(new MessageUserCommand(error.Message, MessageType.Error));
+            }
         }
     }
 }
