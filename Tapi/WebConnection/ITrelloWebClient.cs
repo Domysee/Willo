@@ -17,7 +17,6 @@ namespace Tapi.WebConnection
         /// <returns></returns>
         /// <exception cref="AuthorizationDeniedException">Occurs if the authorization parameters are not accepted by the server</exception>
         /// <exception cref="RequestFailedException">When the response status code does not indicate success</exception>
-        /// <exception cref="NetworkException">When an exception is thrown during the network request</exception>
         Task Authorize(ApplicationKey applicationKey, AuthorizationToken authorizationToken);
 
         /// <summary>
@@ -27,7 +26,6 @@ namespace Tapi.WebConnection
         /// <param name="authorizationToken"></param>
         /// <returns></returns>
         /// <exception cref="RequestFailedException">When the response status code does not indicate success</exception>
-        /// <exception cref="NetworkException">When an exception is thrown during the network request</exception>
         Task<bool> CheckAuthorizationParameters(ApplicationKey applicationKey, AuthorizationToken authorizationToken);
 
         /// <summary>
@@ -37,7 +35,6 @@ namespace Tapi.WebConnection
         /// <returns></returns>
         /// <exception cref="AuthorizationDeniedException">Occurs if the user revoked the authorization token</exception>
         /// <exception cref="RequestFailedException">When the response status code does not indicate success</exception>
-        /// <exception cref="NetworkException">When an exception is thrown during the network request</exception>
         Task<JToken> Get(string url);
 
         /// <summary>
@@ -48,7 +45,6 @@ namespace Tapi.WebConnection
         /// <returns></returns>
         /// <exception cref="AuthorizationDeniedException">Occurs if the user revoked the authorization token</exception>
         /// <exception cref="RequestFailedException">When the response status code does not indicate success</exception>
-        /// <exception cref="NetworkException">When an exception is thrown during the network request</exception>
         Task<T> Get<T>(string url) where T : JToken;
     }
 }

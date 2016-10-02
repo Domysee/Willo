@@ -25,7 +25,6 @@ namespace Tapi.TrelloEntities.Board
         /// <returns></returns>
         /// <exception cref="AuthorizationDeniedException">Occurs if the user revoked the authorization token</exception>
         /// <exception cref="RequestFailedException">When the response status code does not indicate success</exception>
-        /// <exception cref="NetworkException">When an exception is thrown during the network request</exception>
         public async Task<IEnumerable<Board>> GetAll(MemberId memberId, BoardProperties properties = null)
         {
             if (memberId == null) throw new ArgumentNullException("The given memberId is null. To use the authorized user, use MemberId.AuthorizedUser");

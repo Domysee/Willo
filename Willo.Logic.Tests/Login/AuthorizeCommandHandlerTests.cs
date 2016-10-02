@@ -30,7 +30,6 @@ namespace Willo.Logic.Tests.Login
         [DataTestMethod]
         [DataRow(typeof(AuthorizationDeniedException), typeof(AuthorizationDeniedError))]
         [DataRow(typeof(RequestFailedException), typeof(RequestFailedError))]
-        [DataRow(typeof(NetworkException), typeof(NetworkError))]
         public void ShouldReturnCorrectErrorOnException(Type exceptionType, Type errorType)
         {
             var apiMock = new Mock<ITrello>();

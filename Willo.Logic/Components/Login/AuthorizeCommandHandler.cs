@@ -34,10 +34,6 @@ namespace Willo.Logic.Components.Login
             {
                 errors.Add(new RequestFailedError());
             }
-            catch (NetworkException)
-            {
-                errors.Add(new NetworkError());
-            }
             return CommandResult.Create(errors);
         }
     }

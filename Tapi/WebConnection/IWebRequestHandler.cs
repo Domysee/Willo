@@ -16,7 +16,6 @@ namespace Tapi.WebConnection
         /// <param name="authorizationToken"></param>
         /// <returns>the response string</returns>
         /// <exception cref="RequestFailedException">When the response status code does not indicate success</exception>
-        /// <exception cref="NetworkException">When an exception is thrown during the network request</exception>
         Task<string> Get(string url, ApplicationKey applicationKey, AuthorizationToken authorizationToken);
     }
 }

@@ -58,7 +58,6 @@
     <Compile Include="WebConnection\ConnectionData.cs" />
     <Compile Include="WebConnection\ITrelloWebClient.cs" />
     <Compile Include="WebConnection\IWebRequestHandler.cs" />
-    <Compile Include="WebConnection\NetworkException.cs" />
     <Compile Include="WebConnection\RequestFailedException.cs" />
     <Compile Include="WebConnection\TrelloWebClient.cs" />
     <Compile Include="WebConnection\UnauthorizedException.cs" />
