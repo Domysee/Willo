@@ -28,28 +28,16 @@ namespace Tapi.WebConnection
             this.webRequestHandler = webRequestHandler;
         }
 
-        /// <summary>
-        /// Checks if the server accepts the authorization parameters
-        /// </summary>
-        /// <param name="applicationKey"></param>
-        /// <param name="authorizationToken"></param>
-        /// <returns></returns>
         public async Task<bool> CheckAuthorizationParameters(ApplicationKey applicationKey, AuthorizationToken authorizationToken)
         {
             var response = await webRequestHandler.Get(AuthorizationTestUrl, applicationKey, authorizationToken);
             return response != InvalidTokenResponse;
         }
 
-        /// <summary>
-        /// authorizes the client
-        /// </summary>
-        /// <param name="applicationKey"></param>
-        /// <param name="authorizationToken"></param>
-        /// <returns></returns>
-        /// <exception cref="AuthorizationDeniedException">Occurs if the authorization parameters are not accepted by the server</exception>
         public async Task Authorize(ApplicationKey applicationKey, AuthorizationToken authorizationToken)
         {
-            if (!await CheckAuthorizationParameters(applicationKey, authorizationToken))
+            var authorizationParametersCorrect = await CheckAuthorizationParameters(applicationKey, authorizationToken);
+            if (!authorizationParametersCorrect)
                 throw new AuthorizationDeniedException(applicationKey, authorizationToken);
 
             this.applicationKey = applicationKey;
@@ -62,12 +50,6 @@ namespace Tapi.WebConnection
             if (!IsAuthorized) throw new UnauthorizedException();
         }
 
-        /// <summary>
-        /// returns the content of the given url, using the authorization
-        /// </summary>
-        /// <param name="url"></param>
-        /// <returns></returns>
-        /// <exception cref="AuthorizationDeniedException">Occurs if the user revoked the authorization token</exception>
         public async Task<JToken> Get(string url)
         {
             checkAuthorization();
