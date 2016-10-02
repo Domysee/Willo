@@ -1,11 +1,16 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using FluentAssertions;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
+using System;
 using System.Linq;
 using System.Threading.Tasks;
 using Tapi;
 using Tapi.TrelloEntities;
 using Tapi.TrelloEntities.Board;
+using Tapi.WebConnection;
 using Willo.Logic.Components.BoardOverview;
+using Willo.Logic.Errors;
+using Willo.Logic.Infrastructure;
 
 namespace Willo.Logic.Tests.BoardOverview
 {
@@ -21,8 +26,9 @@ namespace Willo.Logic.Tests.BoardOverview
             apiMock.SetupGet(a => a.Boards).Returns(boardsMock.Object);
             var handler = new BoardOverviewQueryHandler(apiMock.Object);
 
-            handler.Handle(new BoardOverviewQuery()).Wait();
-            
+            var result = handler.Handle(new BoardOverviewQuery()).Result;
+
+            result.State.Should().Be(ResultState.Success);
             boardsMock.Verify(b => b.GetAll(It.IsAny<MemberId>(), It.IsAny<BoardProperties>()), Times.Once());
         }
 
@@ -35,9 +41,40 @@ namespace Willo.Logic.Tests.BoardOverview
             apiMock.SetupGet(a => a.Boards).Returns(boardsMock.Object);
             var handler = new BoardOverviewQueryHandler(apiMock.Object);
 
-            handler.Handle(new BoardOverviewQuery()).Wait();
+            var result = handler.Handle(new BoardOverviewQuery()).Result;
 
+            result.State.Should().Be(ResultState.Success);
             boardsMock.Verify(b => b.GetAll(MemberId.AuthorizedUser, It.IsAny<BoardProperties>()), Times.Once());
+        }
+
+        [TestMethod]
+        public void ShouldReturnAuthorizationDeniedErrorIfAuthorizationDeniedxceptionIsThrown()
+        {
+            var boardsMock = new Mock<IBoards>();
+            boardsMock.Setup(b => b.GetAll(It.IsAny<MemberId>(), It.IsAny<BoardProperties>())).Throws<AuthorizationDeniedException>();
+            var apiMock = new Mock<ITrello>();
+            apiMock.SetupGet(a => a.Boards).Returns(boardsMock.Object);
+            var handler = new BoardOverviewQueryHandler(apiMock.Object);
+
+            var result = handler.Handle(new BoardOverviewQuery()).Result;
+
+            result.State.Should().Be(ResultState.Failure);
+            result.Errors.Should().Contain(error => error.GetType() == typeof(AuthorizationDeniedError));
+        }
+
+        [TestMethod]
+        public void ShouldReturnRequestFailedErrorIfRequestFailedxceptionIsThrown()
+        {
+            var boardsMock = new Mock<IBoards>();
+            boardsMock.Setup(b => b.GetAll(It.IsAny<MemberId>(), It.IsAny<BoardProperties>())).Throws<RequestFailedException>();
+            var apiMock = new Mock<ITrello>();
+            apiMock.SetupGet(a => a.Boards).Returns(boardsMock.Object);
+            var handler = new BoardOverviewQueryHandler(apiMock.Object);
+
+            var result = handler.Handle(new BoardOverviewQuery()).Result;
+
+            result.State.Should().Be(ResultState.Failure);
+            result.Errors.Should().Contain(error => error.GetType() == typeof(RequestFailedError));
         }
     }
 }
