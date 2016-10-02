@@ -43,13 +43,22 @@ namespace Tapi.WebConnection
 
         private HttpClient createClient(ApplicationKey applicationKey, AuthorizationToken authorizationToken)
         {
-            var client = new HttpClient(new AddCredentialsHandler(applicationKey, authorizationToken), true);            
+            var client = new HttpClient(new AddCredentialsHandler(applicationKey, authorizationToken), true);
             return client;
         }
 
         public async Task<string> Get(string url, ApplicationKey applicationKey, AuthorizationToken authorizationToken)
         {
-            var uri = new Uri(url);
+            Uri uri;
+            try
+            {
+                uri = new Uri(url);
+            }
+            catch (Exception)
+            {
+                throw new ArgumentException("The given url is not valid");
+            }
+
             using (var client = createClient(applicationKey, authorizationToken))
             {
                 var response = await getResponse(client, uri);
