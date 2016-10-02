@@ -30,7 +30,7 @@ namespace Willo.View.Components.Login
             Url = queryResult.Result;
         }
 
-        public async Task SetHtml(string html)
+        public async Task SetAuthorizationTokenFromHtml(string html)
         {
             var tokenRegex = new Regex("[0-9a-z]{64}", RegexOptions.IgnoreCase);
             var matches = tokenRegex.Matches(html);

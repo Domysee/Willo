@@ -35,7 +35,7 @@ namespace Willo.View.Components.Login
         private async void WebView_DOMContentLoaded(WebView sender, WebViewDOMContentLoadedEventArgs args)
         {
             var html = await sender.InvokeScriptAsync("eval", new string[] { "document.querySelector('html').innerHTML" });
-            await Viewmodel.SetHtml(html);
+            await Viewmodel.SetAuthorizationTokenFromHtml(html);
         }
     }
 }
