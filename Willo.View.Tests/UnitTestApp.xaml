@@ -1,8 +1,0 @@
-﻿<Application
-    x:Class="Willo.View.Tests.App"
-    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:Willo.View.Tests"
-    RequestedTheme="Light">
-
-</Application>
