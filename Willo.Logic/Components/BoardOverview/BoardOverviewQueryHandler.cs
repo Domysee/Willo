@@ -21,7 +21,6 @@ namespace Willo.Logic.Components.BoardOverview
 
         protected override async Task<QueryResult<IEnumerable<BoardOverview>>> handleImplementation(BoardOverviewQuery query)
         {
-            throw new Tapi.WebConnection.AuthorizationDeniedException();
             var propertiesToLoad = new BoardProperties { Name = true };
             var boards = await api.Boards.GetAll(MemberId.AuthorizedUser, propertiesToLoad);
             var boardOverviews = boards.Select(b => new BoardOverview(b.Id, b.Name));

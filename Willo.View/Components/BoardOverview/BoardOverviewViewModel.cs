@@ -43,6 +43,7 @@ namespace Willo.View.Components.BoardOverview
                 if (error is AuthorizationDeniedError)
                 {
                     await messageBroker.Command(new NavigateRegionCommand(NavigationRegions.Content, new LoginView()));
+                    await messageBroker.Command(new MessageUserCommand("The application is not authorized any more, please authorize it again", MessageType.Error));
                 }
                 else
                 {
