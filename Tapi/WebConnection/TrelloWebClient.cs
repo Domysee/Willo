@@ -11,7 +11,6 @@ namespace Tapi.WebConnection
 {
     public class TrelloWebClient : ITrelloWebClient
     {
-        private const string InvalidTokenResponse = "invalid token";
         private const string AuthorizationTestUrl = "https://api.trello.com/1/members/me";
         private IWebRequestHandler webRequestHandler;
         public bool IsAuthorized { get; private set; }
@@ -30,8 +29,15 @@ namespace Tapi.WebConnection
 
         public async Task<bool> CheckAuthorizationParameters(ApplicationKey applicationKey, AuthorizationToken authorizationToken)
         {
-            var response = await webRequestHandler.Get(AuthorizationTestUrl, applicationKey, authorizationToken);
-            return response != InvalidTokenResponse;
+            try
+            {
+                var response = await webRequestHandler.Get(AuthorizationTestUrl, applicationKey, authorizationToken);
+                return true;
+            }
+            catch (AuthorizationDeniedException)
+            {
+                return false;
+            }
         }
 
         public async Task Authorize(ApplicationKey applicationKey, AuthorizationToken authorizationToken)
@@ -55,9 +61,6 @@ namespace Tapi.WebConnection
             checkAuthorization();
             var uri = new UriBuilder(url);
             var response = await webRequestHandler.Get(url, applicationKey, authorizationToken);
-            if (response == InvalidTokenResponse)
-                throw new AuthorizationDeniedException(applicationKey, authorizationToken);
-
             var result = await Task.Run(() => JToken.Parse(response));
             return result;
         }

@@ -62,6 +62,8 @@ namespace Tapi.WebConnection
             using (var client = createClient(applicationKey, authorizationToken))
             {
                 var response = await client.GetAsync(uri);
+                if (response.StatusCode == System.Net.HttpStatusCode.Unauthorized)
+                    throw new AuthorizationDeniedException(applicationKey, authorizationToken);
                 if (!response.IsSuccessStatusCode)
                     throw new RequestFailedException(url);
 

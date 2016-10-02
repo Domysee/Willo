@@ -59,7 +59,7 @@ namespace Willo.Logic.Tests.BoardOverview
             var result = handler.Handle(new BoardOverviewQuery()).Result;
 
             result.State.Should().Be(ResultState.Failure);
-            result.Errors.Should().Contain(error => error.GetType() == typeof(AuthorizationDeniedError));
+            result.Errors.Should().Contain(error => error is AuthorizationDeniedError);
         }
 
         [TestMethod]
@@ -74,7 +74,7 @@ namespace Willo.Logic.Tests.BoardOverview
             var result = handler.Handle(new BoardOverviewQuery()).Result;
 
             result.State.Should().Be(ResultState.Failure);
-            result.Errors.Should().Contain(error => error.GetType() == typeof(RequestFailedError));
+            result.Errors.Should().Contain(error => error is RequestFailedError);
         }
     }
 }
