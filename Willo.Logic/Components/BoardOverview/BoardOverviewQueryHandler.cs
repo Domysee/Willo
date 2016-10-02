@@ -10,7 +10,7 @@ using Willo.Logic.Infrastructure;
 
 namespace Willo.Logic.Components.BoardOverview
 {
-    public class BoardOverviewQueryHandler : QueryHandlerBase<BoardOverviewQuery, IEnumerable<BoardOverview>>
+    public class BoardOverviewQueryHandler : TrelloQueryHandlerBase<BoardOverviewQuery, IEnumerable<BoardOverview>>
     {
         private ITrello api;
 
@@ -19,7 +19,7 @@ namespace Willo.Logic.Components.BoardOverview
             this.api = api;
         }
 
-        public override async Task<QueryResult<IEnumerable<BoardOverview>>> Handle(BoardOverviewQuery query)
+        protected override async Task<QueryResult<IEnumerable<BoardOverview>>> handleImplementation(BoardOverviewQuery query)
         {
             var propertiesToLoad = new BoardProperties { Name = true };
             var boards = await api.Boards.GetAll(MemberId.AuthorizedUser, propertiesToLoad);
