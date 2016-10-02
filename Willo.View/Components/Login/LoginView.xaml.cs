@@ -16,8 +16,6 @@ using Windows.UI.Xaml.Navigation;
 using Willo.View.Infrastructure;
 using Willo.View.Setup;
 
-// The User Control item template is documented at http://go.microsoft.com/fwlink/?LinkId=234236
-
 namespace Willo.View.Components.Login
 {
     public sealed partial class LoginView : UserControl
@@ -29,13 +27,17 @@ namespace Willo.View.Components.Login
             this.InitializeComponent();
             this.Viewmodel = DependencyInjection.Instance.Resolve<LoginViewmodel>();
             this.DataContext = this.Viewmodel;
-            this.Viewmodel.Initialize().Wait();
         }
 
         private async void WebView_DOMContentLoaded(WebView sender, WebViewDOMContentLoadedEventArgs args)
         {
             var html = await sender.InvokeScriptAsync("eval", new string[] { "document.querySelector('html').innerHTML" });
             await Viewmodel.SetAuthorizationTokenFromHtml(html);
+        }
+
+        private void UserControl_Loaded(object sender, RoutedEventArgs e)
+        {
+            this.Viewmodel.Initialize();
         }
     }
 }
