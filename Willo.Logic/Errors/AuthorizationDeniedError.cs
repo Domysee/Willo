@@ -9,5 +9,6 @@ namespace Willo.Logic.Errors
 {
     public class AuthorizationDeniedError : IError
     {
+        public string Message => "The authorization parameters were denied. Please authorize Willo again.";
     }
 }

@@ -9,5 +9,6 @@ namespace Willo.Logic.Errors
 {
     public class RequestFailedError : IError
     {
+        public string Message => "There was an error in the network request. Are you sure you have Internet connection?";
     }
 }

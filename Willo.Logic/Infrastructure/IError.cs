@@ -8,5 +8,6 @@ namespace Willo.Logic.Infrastructure
 {
     public interface IError
     {
+        string Message { get; }
     }
 }
