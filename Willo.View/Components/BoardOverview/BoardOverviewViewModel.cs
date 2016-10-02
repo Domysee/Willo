@@ -10,6 +10,10 @@ using Willo.View.Infrastructure;
 using Willo.Logic.Infrastructure;
 using Willo.View.Components.UserMessaging.Messaging;
 using Willo.View.Components.UserMessaging;
+using Willo.Logic.Errors;
+using Willo.View.Components.Navigation.Messaging;
+using Willo.View.Components.Navigation;
+using Willo.View.Components.Login;
 
 namespace Willo.View.Components.BoardOverview
 {
@@ -36,7 +40,14 @@ namespace Willo.View.Components.BoardOverview
             else if (queryResult.State == ResultState.Failure)
             {
                 var error = queryResult.Errors.First();
-                await messageBroker.Command(new MessageUserCommand(error.Message, MessageType.Error));
+                if (error is AuthorizationDeniedError)
+                {
+                    await messageBroker.Command(new NavigateRegionCommand(NavigationRegions.Content, new LoginView()));
+                }
+                else
+                {
+                    await messageBroker.Command(new MessageUserCommand(error.Message, MessageType.Error));
+                }
             }
         }
     }
