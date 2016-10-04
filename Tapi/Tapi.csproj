@@ -47,12 +47,12 @@
     <Compile Include="ITrello.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Trello.cs" />
-    <Compile Include="TrelloEntities\Board.cs" />
-    <Compile Include="TrelloEntities\BoardProperties.cs" />
-    <Compile Include="TrelloEntities\Boards.cs" />
-    <Compile Include="TrelloEntities\IBoards.cs" />
+    <Compile Include="TrelloEntities\Board\Board.cs" />
+    <Compile Include="TrelloEntities\Board\BoardOverviewProperties.cs" />
+    <Compile Include="TrelloEntities\Board\Boards.cs" />
+    <Compile Include="TrelloEntities\Board\IBoards.cs" />
     <Compile Include="TrelloEntities\MemberId.cs" />
-    <Compile Include="TrelloEntities\PropertyMappings.cs" />
+    <Compile Include="TrelloEntities\Board\PropertyMappings.cs" />
     <Compile Include="WebConnection\AuthorizationDeniedException.cs" />
     <Compile Include="WebConnection\AuthorizationToken.cs" />
     <Compile Include="WebConnection\ConnectionData.cs" />
@@ -63,9 +63,7 @@
     <Compile Include="WebConnection\UnauthorizedException.cs" />
     <Compile Include="WebConnection\WebRequestHandler.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="TrelloEntities\Board\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

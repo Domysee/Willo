@@ -21,7 +21,7 @@ namespace Willo.Logic.Tests.BoardOverview
         public void ShouldQueryAllBoards()
         {
             var boardsMock = new Mock<IBoards>();
-            boardsMock.Setup(b => b.GetAll(It.IsAny<MemberId>(), It.IsAny<BoardProperties>())).Returns(Task.FromResult(Enumerable.Empty<Board>()));
+            boardsMock.Setup(b => b.GetAll(It.IsAny<MemberId>(), It.IsAny<BoardOverviewProperties>())).Returns(Task.FromResult(Enumerable.Empty<Board>()));
             var apiMock = new Mock<ITrello>();
             apiMock.SetupGet(a => a.Boards).Returns(boardsMock.Object);
             var handler = new BoardOverviewQueryHandler(apiMock.Object);
@@ -29,14 +29,14 @@ namespace Willo.Logic.Tests.BoardOverview
             var result = handler.Handle(new BoardOverviewQuery()).Result;
 
             result.State.Should().Be(ResultState.Success);
-            boardsMock.Verify(b => b.GetAll(It.IsAny<MemberId>(), It.IsAny<BoardProperties>()), Times.Once());
+            boardsMock.Verify(b => b.GetAll(It.IsAny<MemberId>(), It.IsAny<BoardOverviewProperties>()), Times.Once());
         }
 
         [TestMethod]
         public void ShouldQueryAllBoardsWithAuthorizedUser()
         {
             var boardsMock = new Mock<IBoards>();
-            boardsMock.Setup(b => b.GetAll(MemberId.AuthorizedUser, It.IsAny<BoardProperties>())).Returns(Task.FromResult(Enumerable.Empty<Board>()));
+            boardsMock.Setup(b => b.GetAll(MemberId.AuthorizedUser, It.IsAny<BoardOverviewProperties>())).Returns(Task.FromResult(Enumerable.Empty<Board>()));
             var apiMock = new Mock<ITrello>();
             apiMock.SetupGet(a => a.Boards).Returns(boardsMock.Object);
             var handler = new BoardOverviewQueryHandler(apiMock.Object);
@@ -44,14 +44,14 @@ namespace Willo.Logic.Tests.BoardOverview
             var result = handler.Handle(new BoardOverviewQuery()).Result;
 
             result.State.Should().Be(ResultState.Success);
-            boardsMock.Verify(b => b.GetAll(MemberId.AuthorizedUser, It.IsAny<BoardProperties>()), Times.Once());
+            boardsMock.Verify(b => b.GetAll(MemberId.AuthorizedUser, It.IsAny<BoardOverviewProperties>()), Times.Once());
         }
 
         [TestMethod]
         public void ShouldReturnAuthorizationDeniedErrorIfAuthorizationDeniedxceptionIsThrown()
         {
             var boardsMock = new Mock<IBoards>();
-            boardsMock.Setup(b => b.GetAll(It.IsAny<MemberId>(), It.IsAny<BoardProperties>())).Throws<AuthorizationDeniedException>();
+            boardsMock.Setup(b => b.GetAll(It.IsAny<MemberId>(), It.IsAny<BoardOverviewProperties>())).Throws<AuthorizationDeniedException>();
             var apiMock = new Mock<ITrello>();
             apiMock.SetupGet(a => a.Boards).Returns(boardsMock.Object);
             var handler = new BoardOverviewQueryHandler(apiMock.Object);
@@ -66,7 +66,7 @@ namespace Willo.Logic.Tests.BoardOverview
         public void ShouldReturnRequestFailedErrorIfRequestFailedxceptionIsThrown()
         {
             var boardsMock = new Mock<IBoards>();
-            boardsMock.Setup(b => b.GetAll(It.IsAny<MemberId>(), It.IsAny<BoardProperties>())).Throws<RequestFailedException>();
+            boardsMock.Setup(b => b.GetAll(It.IsAny<MemberId>(), It.IsAny<BoardOverviewProperties>())).Throws<RequestFailedException>();
             var apiMock = new Mock<ITrello>();
             apiMock.SetupGet(a => a.Boards).Returns(boardsMock.Object);
             var handler = new BoardOverviewQueryHandler(apiMock.Object);
