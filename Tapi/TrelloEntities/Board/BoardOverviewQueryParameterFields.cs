@@ -28,6 +28,7 @@ namespace Tapi.TrelloEntities.Board
         public bool Memberships { get; set; }
         public bool LabelNames { get; set; }
 
+        public static readonly BoardOverviewQueryParameterFields Default = All;
         public static readonly BoardOverviewQueryParameterFields All = new BoardOverviewQueryParameterFields
         {
             Name = true,
