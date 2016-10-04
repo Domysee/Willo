@@ -17,7 +17,7 @@ namespace Tapi.TrelloEntities.Board
             this.webClient = webClient;
         }
 
-        public async Task<IEnumerable<Board>> GetAll(MemberId memberId, BoardOverviewProperties properties = null)
+        public async Task<IEnumerable<Board>> GetAll(MemberId memberId, BoardOverviewQueryParameters properties = null)
         {
             if (memberId == null) throw new ArgumentNullException("The given memberId is null. To use the authorized user, use MemberId.AuthorizedUser");
 

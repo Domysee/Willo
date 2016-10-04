@@ -48,7 +48,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Trello.cs" />
     <Compile Include="TrelloEntities\Board\Board.cs" />
-    <Compile Include="TrelloEntities\Board\BoardOverviewProperties.cs" />
+    <Compile Include="TrelloEntities\Board\BoardOverviewQueryParameters.cs" />
     <Compile Include="TrelloEntities\Board\Boards.cs" />
     <Compile Include="TrelloEntities\Board\IBoards.cs" />
     <Compile Include="TrelloEntities\MemberId.cs" />

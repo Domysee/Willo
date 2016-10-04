@@ -21,7 +21,7 @@ namespace Willo.Logic.Components.BoardOverview
 
         protected override async Task<QueryResult<IEnumerable<BoardOverview>>> handleImplementation(BoardOverviewQuery query)
         {
-            var propertiesToLoad = new BoardOverviewProperties { Name = true };
+            var propertiesToLoad = new BoardOverviewQueryParameters { Name = true };
             var boards = await api.Boards.GetAll(MemberId.AuthorizedUser, propertiesToLoad);
             var boardOverviews = boards.Select(b => new BoardOverview(b.Id, b.Name));
             return QueryResult<IEnumerable<BoardOverview>>.CreateSuccess(boardOverviews);

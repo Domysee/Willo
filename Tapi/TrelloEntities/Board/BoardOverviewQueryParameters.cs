@@ -10,7 +10,7 @@ namespace Tapi.TrelloEntities.Board
     /// <summary>
     /// defines a class to specify which properties should be loaded by the api
     /// </summary>
-    public class BoardOverviewProperties
+    public class BoardOverviewQueryParameters
     {
         public bool Name { get; set; }
         public bool Description { get; set; }
@@ -36,7 +36,7 @@ namespace Tapi.TrelloEntities.Board
         /// Creates BoardProperties with all properties set to false
         /// Id is queried by default
         /// </summary>
-        public BoardOverviewProperties() { }
+        public BoardOverviewQueryParameters() { }
 
         public override string ToString()
         {
@@ -50,7 +50,7 @@ namespace Tapi.TrelloEntities.Board
             return String.Join(",", apiPropertyNames);
         }
 
-        public static readonly BoardOverviewProperties All = new BoardOverviewProperties
+        public static readonly BoardOverviewQueryParameters All = new BoardOverviewQueryParameters
         {
             Name = true,
             Description = true,
