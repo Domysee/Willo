@@ -17,13 +17,13 @@ namespace Tapi.TrelloEntities.Board
             this.webClient = webClient;
         }
 
-        public async Task<IEnumerable<Board>> GetAll(MemberId memberId, BoardOverviewQueryParameters properties = null)
+        public async Task<IEnumerable<Board>> GetAll(MemberId memberId, BoardOverviewQueryParameters queryParameters = null)
         {
             if (memberId == null) throw new ArgumentNullException("The given memberId is null. To use the authorized user, use MemberId.AuthorizedUser");
 
             var url = $"{ConnectionData.BaseUrl}/members/{memberId}/boards";
-            if (properties != null)
-                url += "?fields=" + properties.ToString();
+            if (queryParameters != null)
+                url += "?" + queryParameters.ToQueryString();
             var result = await webClient.Get<JArray>(url);
             var boards = result.Select(json => Board.FromJson((JObject)json)).ToList();
             return boards;

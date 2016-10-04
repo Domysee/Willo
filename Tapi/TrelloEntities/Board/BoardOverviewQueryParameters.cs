@@ -12,25 +12,7 @@ namespace Tapi.TrelloEntities.Board
     /// </summary>
     public class BoardOverviewQueryParameters
     {
-        public bool Name { get; set; }
-        public bool Description { get; set; }
-        public bool DescriptionData { get; set; }
-        public bool IsClosed { get; set; }
-        public bool IsUserInvited { get; set; }
-        public bool IsUserSubscribed { get; set; }
-        public bool IsStarredByUser { get; set; }
-        public bool LastActivity { get; set; }
-        public bool LastView { get; set; }
-        public bool Url { get; set; }
-        public bool ShortUrl { get; set; }
-        public bool ShortLink { get; set; }
-        public bool Pinned { get; set; }
-        public bool OrganizationId { get; set; }
-        public bool Invitations { get; set; }
-        public bool PowerUps { get; set; }
-        public bool Preferences { get; set; }
-        public bool Memberships { get; set; }
-        public bool LabelNames { get; set; }
+        public BoardOverviewQueryParameterFields Fields { get; set; }
 
         /// <summary>
         /// Creates BoardProperties with all properties set to false
@@ -38,39 +20,22 @@ namespace Tapi.TrelloEntities.Board
         /// </summary>
         public BoardOverviewQueryParameters() { }
 
-        public override string ToString()
+        public string ToQueryString()
         {
             var apiPropertyNames = new List<string>();
-            foreach (var property in this.GetType().GetProperties())
+            foreach (var property in Fields.GetType().GetProperties())
             {
                 var apiPropertyName = PropertyMappings.BoardMappings[property.Name];
                 var includeProperty = (bool)property.GetValue(this);
                 if (includeProperty) apiPropertyNames.Add(apiPropertyName);
             }
-            return String.Join(",", apiPropertyNames);
+            var fieldsQueryString = "fields=" + String.Join(",", apiPropertyNames);
+            return fieldsQueryString;
         }
 
-        public static readonly BoardOverviewQueryParameters All = new BoardOverviewQueryParameters
+        public static readonly BoardOverviewQueryParameters AllFields = new BoardOverviewQueryParameters
         {
-            Name = true,
-            Description = true,
-            DescriptionData = true,
-            IsClosed = true,
-            IsUserInvited = true,
-            IsUserSubscribed = true,
-            IsStarredByUser = true,
-            LastActivity = true,
-            LastView = true,
-            Url = true,
-            ShortUrl = true,
-            ShortLink = true,
-            Pinned = true,
-            OrganizationId = true,
-            Invitations = true,
-            PowerUps = true,
-            Preferences = true,
-            Memberships = true,
-            LabelNames = true
+            Fields = BoardOverviewQueryParameterFields.All
         };
     }
 }
