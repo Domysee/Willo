@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Tapi.TrelloEntities.Board
+namespace Tapi.TrelloEntities
 {
     /// <summary>
     /// contains mappings from properties of C# classes to the Trello api
