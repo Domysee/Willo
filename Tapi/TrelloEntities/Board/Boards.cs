@@ -29,11 +29,13 @@ namespace Tapi.TrelloEntities.Board
             return boards;
         }
 
-        public async Task<Board> Get(string boardId)
+        public async Task<Board> Get(string boardId, BoardQueryParameters queryParameters = null)
         {
             if (boardId == null) throw new ArgumentNullException(nameof(boardId));
 
             var url = $"{ConnectionData.BaseUrl}/boards/{boardId}";
+            if (queryParameters != null)
+                url += "?" + queryParameters.ToQueryString();
             var result = await webClient.Get<JObject>(url);
             var board = Board.FromJson(result);
             return board;

@@ -9,19 +9,20 @@ namespace Tapi.TrelloEntities.Board
         /// gets all boards of the given user
         /// </summary>
         /// <param name="memberId">the user to get the boards from</param>
-        /// <param name="properties">the properties that should be returned by the api</param>
+        /// <param name="queryParameters">defines which properties are queried</param>
         /// <returns></returns>
         /// <exception cref="AuthorizationDeniedException">Occurs if the user revoked the authorization token</exception>
         /// <exception cref="RequestFailedException">When the response status code does not indicate success</exception>
-        Task<IEnumerable<Board>> GetAll(MemberId memberId, BoardOverviewQueryParameters properties = null);
+        Task<IEnumerable<Board>> GetAll(MemberId memberId, BoardOverviewQueryParameters queryParameters = null);
 
         /// <summary>
         /// gets the board with the given id
         /// </summary>
         /// <param name="boardId"></param>
+        /// <param name="queryParameters">defines which properties are queried</param>
         /// <returns></returns>
         /// <exception cref="AuthorizationDeniedException">Occurs if the user revoked the authorization token</exception>
         /// <exception cref="RequestFailedException">When the response status code does not indicate success</exception>
-        Task<Board> Get(string boardId);
+        Task<Board> Get(string boardId, BoardQueryParameters queryParameters);
     }
 }
