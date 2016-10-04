@@ -21,5 +21,14 @@ namespace Tapi.Tests.UnitTests.TrelloEntities.Board
 
             getAll.ShouldThrow<ArgumentNullException>();
         }
+
+        [TestMethod]
+        public void GetShouldThrowExceptionIfBoardIdIsNull()
+        {
+            var boards = new Boards(new TrelloWebClient());
+            Action get = () => { boards.Get(null).Wait(); };
+
+            get.ShouldThrow<ArgumentNullException>();
+        }
     }
 }
