@@ -25,7 +25,7 @@ namespace Tapi.TrelloEntities.Board
             var apiPropertyNames = new List<string>();
             foreach (var property in Fields.GetType().GetProperties())
             {
-                var apiPropertyName = PropertyMappings.BoardMappings[property.Name];
+                var apiPropertyName = PropertyMappings.BoardFieldMappings[property.Name];
                 var includeProperty = (bool)property.GetValue(this);
                 if (includeProperty) apiPropertyNames.Add(apiPropertyName);
             }

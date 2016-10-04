@@ -32,12 +32,13 @@ namespace Tapi.TrelloEntities.Board
         public object Memberships { get; private set; }
         public object LabelNames { get; private set; }
 
+
         public static Board FromJson(JObject jobject)
         {
             var board = new Board();
             foreach (var property in board.GetType().GetProperties())
             {
-                var apiPropertyName = PropertyMappings.BoardMappings[property.Name];
+                var apiPropertyName = PropertyMappings.BoardFieldMappings[property.Name];
                 var jToken = jobject[apiPropertyName];
                 if (jToken != null)
                     property.SetValue(board, jToken.ToObject(property.PropertyType));

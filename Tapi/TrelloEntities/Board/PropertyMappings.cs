@@ -11,7 +11,7 @@ namespace Tapi.TrelloEntities.Board
     /// </summary>
     public class PropertyMappings
     {
-        public static readonly Dictionary<string, string> BoardMappings = new Dictionary<string, string>
+        public static readonly Dictionary<string, string> BoardFieldMappings = new Dictionary<string, string>
         {
             {"Id", "id"},
             {"Name", "name"},
