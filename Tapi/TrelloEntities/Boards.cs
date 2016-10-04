@@ -28,5 +28,15 @@ namespace Tapi.TrelloEntities.Board
             var boards = result.Select(json => Board.FromJson((JObject)json)).ToList();
             return boards;
         }
+
+        public async Task<Board> Get(string boardId)
+        {
+            if (boardId == null) throw new ArgumentNullException(nameof(boardId));
+
+            var url = $"{ConnectionData.BaseUrl}/boards/{boardId}";
+            var result = await webClient.Get<JObject>(url);
+            var board = Board.FromJson(result);
+            return board;
+        }
     }
 }

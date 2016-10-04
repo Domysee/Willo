@@ -14,5 +14,14 @@ namespace Tapi.TrelloEntities.Board
         /// <exception cref="AuthorizationDeniedException">Occurs if the user revoked the authorization token</exception>
         /// <exception cref="RequestFailedException">When the response status code does not indicate success</exception>
         Task<IEnumerable<Board>> GetAll(MemberId memberId, BoardProperties properties = null);
+
+        /// <summary>
+        /// gets the board with the given id
+        /// </summary>
+        /// <param name="boardId"></param>
+        /// <returns></returns>
+        /// <exception cref="AuthorizationDeniedException">Occurs if the user revoked the authorization token</exception>
+        /// <exception cref="RequestFailedException">When the response status code does not indicate success</exception>
+        Task<Board> Get(string boardId);
     }
 }
