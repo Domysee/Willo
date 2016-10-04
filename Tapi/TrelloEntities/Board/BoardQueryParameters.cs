@@ -12,7 +12,7 @@ namespace Tapi.TrelloEntities.Board
     /// </summary>
     public class BoardQueryParameters
     {
-        public BoardQueryParameterFields Fields { get; set; }
+        public BoardFields Fields { get; set; }
 
         /// <summary>
         /// Creates BoardProperties with all properties set to false
@@ -35,7 +35,7 @@ namespace Tapi.TrelloEntities.Board
 
         public static readonly BoardQueryParameters AllFields = new BoardQueryParameters
         {
-            Fields = BoardQueryParameterFields.All
+            Fields = BoardFields.All
         };
     }
 }

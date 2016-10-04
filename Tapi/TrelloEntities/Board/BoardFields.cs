@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Tapi.TrelloEntities.Board
 {
-    public class BoardOverviewQueryParameterFields
+    public class BoardFields
     {
         public bool Name { get; set; }
         public bool Description { get; set; }
@@ -28,8 +28,7 @@ namespace Tapi.TrelloEntities.Board
         public bool Memberships { get; set; }
         public bool LabelNames { get; set; }
 
-        public static readonly BoardOverviewQueryParameterFields Default = All;
-        public static readonly BoardOverviewQueryParameterFields All = new BoardOverviewQueryParameterFields
+        public static readonly BoardFields All = new BoardFields
         {
             Name = true,
             Description = true,
