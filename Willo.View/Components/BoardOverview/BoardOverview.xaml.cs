@@ -23,12 +23,12 @@ namespace Willo.View.Components.BoardOverview
 {
     public sealed partial class BoardOverview : UserControl
     {
-        public BoardOverviewViewModel Viewmodel { get; }
+        public BoardOverviewViewmodel Viewmodel { get; }
 
         public BoardOverview()
         {
             this.InitializeComponent();
-            this.Viewmodel = DependencyInjection.Instance.Resolve<BoardOverviewViewModel>();
+            this.Viewmodel = DependencyInjection.Instance.Resolve<BoardOverviewViewmodel>();
             this.DataContext = this.Viewmodel;
         }
 

@@ -96,6 +96,10 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="Components\BoardOverview\Register.cs" />
+    <Compile Include="Components\BoardView\BoardView.xaml.cs">
+      <DependentUpon>BoardView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Components\BoardView\BoardViewViewmodel.cs" />
     <Compile Include="Components\Login\Register.cs" />
     <Compile Include="Components\Navigation\Messaging\AddNavigationRegionCommand.cs" />
     <Compile Include="Components\Navigation\Messaging\AddNavigationRegionCommandHandler.cs" />
@@ -116,7 +120,7 @@
     <Compile Include="Components\BoardOverview\BoardOverview.xaml.cs">
       <DependentUpon>BoardOverview.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Components\BoardOverview\BoardOverviewViewModel.cs" />
+    <Compile Include="Components\BoardOverview\BoardOverviewViewmodel.cs" />
     <Compile Include="Components\Login\LoginView.xaml.cs">
       <DependentUpon>LoginView.xaml</DependentUpon>
     </Compile>
@@ -158,6 +162,10 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Page Include="Components\BoardOverview\BoardOverview.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Components\BoardView\BoardView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

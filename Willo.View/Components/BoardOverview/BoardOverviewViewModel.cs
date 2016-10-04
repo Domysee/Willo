@@ -17,7 +17,7 @@ using Willo.View.Components.Login;
 
 namespace Willo.View.Components.BoardOverview
 {
-    public class BoardOverviewViewModel : BindableBase
+    public class BoardOverviewViewmodel : BindableBase
     {
         private IMessageBroker messageBroker;
         private IReadOnlyCollection<Logic.Components.BoardOverview.BoardOverview> boards;
@@ -27,7 +27,7 @@ namespace Willo.View.Components.BoardOverview
             set { SetProperty(ref boards, value); }
         }
 
-        public BoardOverviewViewModel(IMessageBroker messageBroker)
+        public BoardOverviewViewmodel(IMessageBroker messageBroker)
         {
             this.messageBroker = messageBroker;
         }
