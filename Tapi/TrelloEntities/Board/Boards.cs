@@ -17,12 +17,6 @@ namespace Tapi.TrelloEntities.Board
             this.webClient = webClient;
         }
 
-        /// <summary>
-        /// gets all boards of the given user
-        /// </summary>
-        /// <param name="memberId">the user to get the boards from</param>
-        /// <param name="properties">the properties that should be returned by the api</param>
-        /// <returns></returns>
         public async Task<IEnumerable<Board>> GetAll(MemberId memberId, BoardProperties properties = null)
         {
             if (memberId == null) throw new ArgumentNullException("The given memberId is null. To use the authorized user, use MemberId.AuthorizedUser");
@@ -33,6 +27,16 @@ namespace Tapi.TrelloEntities.Board
             var result = await webClient.Get<JArray>(url);
             var boards = result.Select(json => Board.FromJson((JObject)json)).ToList();
             return boards;
+        }
+
+        public async Task<Board> Get(string boardId)
+        {
+            if (boardId == null) throw new ArgumentNullException(nameof(boardId));
+
+            var url = $"{ConnectionData.BaseUrl}/boards/{boardId}";
+            var result = await webClient.Get<JObject>(url);
+            var board = Board.FromJson(result);
+            return board;
         }
     }
 }
