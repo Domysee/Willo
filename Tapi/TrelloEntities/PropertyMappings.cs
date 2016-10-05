@@ -11,6 +11,14 @@ namespace Tapi.TrelloEntities
     /// </summary>
     public class PropertyMappings
     {
+        public static readonly Dictionary<string, string> ActionFieldMappings = new Dictionary<string, string>
+        {
+            { nameof(Action.Action.Id), "id" },
+            { nameof(Action.Action.CreatorId), "idMemberCreator" },
+            { nameof(Action.Action.Type), "type" },
+            { nameof(Action.Action.Data), "data" },
+        };
+
         public static readonly Dictionary<string, string> BoardFieldMappings = new Dictionary<string, string>
         {
             { nameof(Board.Board.IsClosed), "closed" },
