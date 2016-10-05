@@ -140,5 +140,26 @@ namespace Tapi.TrelloEntities
             { nameof(Notification.Notification.IsUnread), "unread" },
             { nameof(Notification.Notification.Data), "data" },
         };
+
+        public static readonly Dictionary<string, string> OrganizationFieldMappings = new Dictionary<string, string>
+        {
+            { nameof(Organization.Organization.Id), "id" },
+            { nameof(Organization.Organization.BillableMemberCount), "billableMemberCount" },
+            { nameof(Organization.Organization.Description), "desc" },
+            { nameof(Organization.Organization.DescriptionData), "descData" },
+            { nameof(Organization.Organization.DisplayName), "displayName" },
+            { nameof(Organization.Organization.BoardIds), "idBoards" },
+            { nameof(Organization.Organization.Invitations), "invitations" },
+            { nameof(Organization.Organization.IsCurrentUserInvited), "invited" },
+            { nameof(Organization.Organization.LogoHash), "logoHash" },
+            { nameof(Organization.Organization.Memberships), "memberships" },
+            { nameof(Organization.Organization.Name), "name" },
+            { nameof(Organization.Organization.PowerUps), "powerUps" },
+            { nameof(Organization.Organization.Preferences), "prefs" },
+            { nameof(Organization.Organization.PremiumFeatures), "premiumFeatures" },
+            { nameof(Organization.Organization.Products), "products" },
+            { nameof(Organization.Organization.Url), "url" },
+            { nameof(Organization.Organization.Website), "website" }
+        };
     }
 }
