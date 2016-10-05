@@ -130,5 +130,15 @@ namespace Tapi.TrelloEntities
             { nameof(Member.Member.Url), "url" },
             { nameof(Member.Member.Username), "username" }
         };
+
+        public static readonly Dictionary<string, string> NotificationFieldMappings = new Dictionary<string, string>
+        {
+            { nameof(Notification.Notification.Id), "id" },
+            { nameof(Notification.Notification.Date), "date" },
+            { nameof(Notification.Notification.CreatorId), "idMemberCreator" },
+            { nameof(Notification.Notification.Type), "type" },
+            { nameof(Notification.Notification.IsUnread), "unread" },
+            { nameof(Notification.Notification.Data), "data" },
+        };
     }
 }
