@@ -73,5 +73,14 @@ namespace Tapi.TrelloEntities
             { nameof(Checklist.Checklist.Name), "name" },
             { nameof(Checklist.Checklist.Position), "pos" }
         };
+
+        public static readonly Dictionary<string, string> LabelFieldMappings = new Dictionary<string, string>
+        {
+            { nameof(Label.Label.Id), "id" },
+            { nameof(Label.Label.ContainingBoardId), "idBoard" },
+            { nameof(Label.Label.Name), "name" },
+            { nameof(Label.Label.Color), "color" },
+            { nameof(Label.Label.UseCount), "uses" }
+        };
     }
 }
