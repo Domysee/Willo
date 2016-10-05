@@ -64,5 +64,14 @@ namespace Tapi.TrelloEntities
             { nameof(Card.Card.ShortUrl), "shortUrl" },
             { nameof(Card.Card.Url), "url" }
         };
+
+        public static readonly Dictionary<string, string> ChecklistFieldMappings = new Dictionary<string, string>
+        {
+            { nameof(Checklist.Checklist.Id), "id" },
+            { nameof(Checklist.Checklist.ContainingBoardId), "idBoard" },
+            { nameof(Checklist.Checklist.ContainingCardId), "idCard" },
+            { nameof(Checklist.Checklist.Name), "name" },
+            { nameof(Checklist.Checklist.Position), "pos" }
+        };
     }
 }
