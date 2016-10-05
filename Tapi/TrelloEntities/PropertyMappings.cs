@@ -100,5 +100,35 @@ namespace Tapi.TrelloEntities
             { nameof(List.List.Position), "pos" },
             { nameof(List.List.IsUserSubscribed), "subscribed" }
         };
+
+        public static readonly Dictionary<string, string> MemberFieldMappings = new Dictionary<string, string>
+        {
+            { nameof(Member.Member.Id), "id" },
+            { nameof(Member.Member.AvatarHash), "avatarHash" },
+            { nameof(Member.Member.AvatarSource), "avatarSource" },
+            { nameof(Member.Member.Bio), "bio" },
+            { nameof(Member.Member.BioData), "bioData" },
+            { nameof(Member.Member.IsConfirmed), "confirmed" },
+            { nameof(Member.Member.Email), "email" },
+            { nameof(Member.Member.FullName), "fullName" },
+            { nameof(Member.Member.GravatarHash), "gravatarHash" },
+            { nameof(Member.Member.BoardIds), "idBoards" },
+            { nameof(Member.Member.PinnedBoardIds), "idBoardsPinned" },
+            { nameof(Member.Member.EnterpriseId), "idEnterprise" },
+            { nameof(Member.Member.OrganizationIds), "idOrganizations" },
+            { nameof(Member.Member.PremOrgsAdminId), "idPremOrgsAdmin" },
+            { nameof(Member.Member.Initials), "initials" },
+            { nameof(Member.Member.LoginTypes), "loginTypes" },
+            { nameof(Member.Member.MemberType), "memberType" },
+            { nameof(Member.Member.DismissedOneTimeMessages), "oneTimeMessagesDismissed" },
+            { nameof(Member.Member.Preferences), "prefs" },
+            { nameof(Member.Member.PremiumFeatures), "premiumFeatures" },
+            { nameof(Member.Member.Products), "products" },
+            { nameof(Member.Member.Status), "status" },
+            { nameof(Member.Member.Trophies), "trophies" },
+            { nameof(Member.Member.UploadedAvatarHash), "uploadedAvatarHash" },
+            { nameof(Member.Member.Url), "url" },
+            { nameof(Member.Member.Username), "username" }
+        };
     }
 }
