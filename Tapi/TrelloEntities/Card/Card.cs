@@ -8,30 +8,30 @@ namespace Tapi.TrelloEntities.Card
 {
     public class Card
     {
-        public object Id { get; private set; }
-        public object ShortId { get; private set; }
-        public object Name { get; private set; }
+        public string Id { get; private set; }
+        public int ShortId { get; private set; }
+        public string Name { get; private set; }
         public object Description { get; private set; }
         public object DescriptionData { get; private set; }
-        public object IsClosed { get; private set; }
-        public object IsUserSubscribed { get; private set; }
-        public object DueDate { get; private set; }
-        public object Email { get; private set; }
+        public bool IsClosed { get; private set; }
+        public bool IsUserSubscribed { get; private set; }
+        public DateTime? DueDate { get; private set; }
+        public string Email { get; private set; }
         public object Badges { get; private set; }
-        public object CheckItemStates { get; private set; }
-        public object ContainingBoardId { get; private set; }
-        public object ContainingListId { get; private set; }
-        public object ContainedChecklistIds { get; private set; }
-        public object MemberIds { get; private set; }
-        public object VotedMemberIds { get; private set; }
-        public object AttachmentCoverId { get; private set; }
-        public object ManualCoverAttachment { get; private set; }
-        public object Labels { get; private set; }
-        public object LabelIds { get; private set; }
-        public object LastActivity { get; private set; }
-        public object Position { get; private set; }
-        public object Url { get; private set; }
-        public object ShortUrl { get; private set; }
-        public object ShortLink { get; private set; }
+        public IEnumerable<object> CheckItemStates { get; private set; }
+        public string ContainingBoardId { get; private set; }
+        public string ContainingListId { get; private set; }
+        public IEnumerable<string> ContainedChecklistIds { get; private set; }
+        public IEnumerable<string> MemberIds { get; private set; }
+        public IEnumerable<string> VotedMemberIds { get; private set; }
+        public string AttachmentCoverId { get; private set; }
+        public bool ManualCoverAttachment { get; private set; }
+        public IEnumerable<object> Labels { get; private set; }
+        public IEnumerable<string> LabelIds { get; private set; }
+        public DateTime? LastActivity { get; private set; }
+        public int Position { get; private set; }
+        public string Url { get; private set; }
+        public string ShortUrl { get; private set; }
+        public string ShortLink { get; private set; }
     }
 }
