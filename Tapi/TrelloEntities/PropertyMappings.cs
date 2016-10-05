@@ -82,5 +82,15 @@ namespace Tapi.TrelloEntities
             { nameof(Label.Label.Color), "color" },
             { nameof(Label.Label.UseCount), "uses" }
         };
+
+        public static readonly Dictionary<string, string> ListFieldMappings = new Dictionary<string, string>
+        {
+            { nameof(List.List.IsClosed), "closed" },
+            { nameof(List.List.Id), "id" },
+            { nameof(List.List.ContainingBoardId), "idBoard" },
+            { nameof(List.List.Name), "name" },
+            { nameof(List.List.Position), "pos" },
+            { nameof(List.List.IsUserSubscribed), "subscribed" }
+        };
     }
 }
