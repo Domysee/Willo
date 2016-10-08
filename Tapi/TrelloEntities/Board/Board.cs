@@ -25,7 +25,7 @@ namespace Tapi.TrelloEntities.Board
         public Uri Url { get; private set; }
         public Uri ShortUrl { get; private set; }
         public string ShortLink { get; private set; }
-        public OrganizationId OrganizationId { get; private set; }
+        public OrganizationId? OrganizationId { get; private set; }
         public object Invitations { get; private set; }
         public object PowerUps { get; private set; }
         public object IdTags { get; private set; }
