@@ -1,6 +1,8 @@
-﻿using System;
+﻿using Newtonsoft.Json.Linq;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -33,5 +35,18 @@ namespace Tapi.TrelloEntities.Card
         public string Url { get; private set; }
         public string ShortUrl { get; private set; }
         public string ShortLink { get; private set; }
+
+        public static Card FromJson(JObject jobject)
+        {
+            var card = new Card();
+            foreach (var property in card.GetType().GetProperties())
+            {
+                var apiPropertyName = PropertyMappings.CardFieldMappings[property.Name];
+                var jToken = jobject[apiPropertyName];
+                if (jToken != null)
+                    property.SetValue(card, jToken.ToObject(property.PropertyType));
+            }
+            return card;
+        }
     }
 }

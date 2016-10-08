@@ -1,6 +1,8 @@
-﻿using System;
+﻿using Newtonsoft.Json.Linq;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -34,5 +36,18 @@ namespace Tapi.TrelloEntities.Member
         public string Status { get; private set; }
         public IEnumerable<object> Trophies { get; private set; }
         public string Url { get; private set; }
+
+        public static Member FromJson(JObject jobject)
+        {
+            var member = new Member();
+            foreach (var property in member.GetType().GetProperties())
+            {
+                var apiPropertyName = PropertyMappings.MemberFieldMappings[property.Name];
+                var jToken = jobject[apiPropertyName];
+                if (jToken != null)
+                    property.SetValue(member, jToken.ToObject(property.PropertyType));
+            }
+            return member;
+        }
     }
 }

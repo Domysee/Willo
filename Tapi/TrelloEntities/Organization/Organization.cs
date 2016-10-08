@@ -1,6 +1,8 @@
-﻿using System;
+﻿using Newtonsoft.Json.Linq;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -25,5 +27,18 @@ namespace Tapi.TrelloEntities.Organization
         public IEnumerable<object> PremiumFeatures { get; private set; }
         public IEnumerable<object> Products { get; private set; }
         public bool IsCurrentUserInvited { get; private set; }
+
+        public static Organization FromJson(JObject jobject)
+        {
+            var organization = new Organization();
+            foreach (var property in organization.GetType().GetProperties())
+            {
+                var apiPropertyName = PropertyMappings.OrganizationFieldMappings[property.Name];
+                var jToken = jobject[apiPropertyName];
+                if (jToken != null)
+                    property.SetValue(organization, jToken.ToObject(property.PropertyType));
+            }
+            return organization;
+        }
     }
 }
