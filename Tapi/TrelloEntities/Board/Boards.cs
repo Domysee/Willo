@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Tapi.TrelloEntities.Member;
 using Tapi.WebConnection;
 
 namespace Tapi.TrelloEntities.Board

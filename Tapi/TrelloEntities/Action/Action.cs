@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Tapi.TrelloEntities.Member;
 
 namespace Tapi.TrelloEntities.Action
 {

@@ -62,7 +62,7 @@
     <Compile Include="TrelloEntities\Label\Label.cs" />
     <Compile Include="TrelloEntities\List\ListFields.cs" />
     <Compile Include="TrelloEntities\List\List.cs" />
-    <Compile Include="TrelloEntities\MemberId.cs" />
+    <Compile Include="TrelloEntities\Member\MemberId.cs" />
     <Compile Include="TrelloEntities\Member\MemberFields.cs" />
     <Compile Include="TrelloEntities\Member\Member.cs" />
     <Compile Include="TrelloEntities\Notification\NotificationFields.cs" />

@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Tapi;
 using Tapi.TrelloEntities;
 using Tapi.TrelloEntities.Board;
+using Tapi.TrelloEntities.Member;
 using Tapi.WebConnection;
 using Willo.Logic.Components.BoardOverview;
 using Willo.Logic.Errors;

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Tapi.TrelloEntities
+namespace Tapi.TrelloEntities.Member
 {
     public struct MemberId
     {
