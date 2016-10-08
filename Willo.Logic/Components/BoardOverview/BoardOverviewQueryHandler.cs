@@ -23,7 +23,7 @@ namespace Willo.Logic.Components.BoardOverview
         {
             var propertiesToLoad = new BoardOverviewQueryParameters
             {
-                Fields = new BoardOverviewQueryParameterFields { Name = true }
+                Fields = new BoardFields { Name = true }
             };
             var boards = await api.Boards.GetAll(MemberId.AuthorizedUser, propertiesToLoad);
             var boardOverviews = boards.Select(b => new BoardOverview(b.Id, b.Name));

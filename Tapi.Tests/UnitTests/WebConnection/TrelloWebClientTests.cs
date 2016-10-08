@@ -59,7 +59,7 @@ namespace Tapi.Tests.UnitTests.WebConnection
         public void CheckAuthorizationParametersShouldReturnFalseIfTestRequestDoesntSucceed()
         {
             var webRequestHandlerMock = new Mock<IWebRequestHandler>();
-            webRequestHandlerMock.Setup(w => w.Get(It.IsAny<string>(), It.IsAny<ApplicationKey>(), It.IsAny<AuthorizationToken>())).ReturnsAsync("invalid token");
+            webRequestHandlerMock.Setup(w => w.Get(It.IsAny<string>(), It.IsAny<ApplicationKey>(), It.IsAny<AuthorizationToken>())).Throws<AuthorizationDeniedException>();
             var client = new TrelloWebClient(webRequestHandlerMock.Object);
 
             var result = client.CheckAuthorizationParameters(TestData.TestApplicationKey, TestData.TestAuthorizationToken).Result;
@@ -83,7 +83,7 @@ namespace Tapi.Tests.UnitTests.WebConnection
         public void AuthorizeShouldThrowIfAuthorizationParametersAreInvalid()
         {
             var webRequestHandlerMock = new Mock<IWebRequestHandler>();
-            webRequestHandlerMock.Setup(w => w.Get(It.IsAny<string>(), It.IsAny<ApplicationKey>(), It.IsAny<AuthorizationToken>())).ReturnsAsync("invalid token");
+            webRequestHandlerMock.Setup(w => w.Get(It.IsAny<string>(), It.IsAny<ApplicationKey>(), It.IsAny<AuthorizationToken>())).Throws<AuthorizationDeniedException>();
             var client = new TrelloWebClient(webRequestHandlerMock.Object);
 
             Action a = () => client.Authorize(TestData.TestApplicationKey, TestData.TestAuthorizationToken).Wait();
@@ -105,7 +105,7 @@ namespace Tapi.Tests.UnitTests.WebConnection
         public void GetShouldThrowIfAuthorizationIsInvalid()
         {
             var webRequestHandlerMock = new Mock<IWebRequestHandler>();
-            webRequestHandlerMock.SetupSequence(w => w.Get(It.IsAny<string>(), It.IsAny<ApplicationKey>(), It.IsAny<AuthorizationToken>())).ReturnsAsync("result").ReturnsAsync("invalid token");
+            webRequestHandlerMock.SetupSequence(w => w.Get(It.IsAny<string>(), It.IsAny<ApplicationKey>(), It.IsAny<AuthorizationToken>())).ReturnsAsync("result").Throws<AuthorizationDeniedException>();
             var client = new TrelloWebClient(webRequestHandlerMock.Object);
             client.Authorize(TestData.TestApplicationKey, TestData.TestAuthorizationToken).Wait();
 
