@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Reflection;
+using Tapi.TrelloEntities.Organization;
 
 namespace Tapi.TrelloEntities.Board
 {
@@ -18,13 +19,13 @@ namespace Tapi.TrelloEntities.Board
         public bool? IsUserInvited { get; private set; }
         public bool? IsUserSubscribed { get; private set; }
         public bool? IsStarredByUser { get; private set; }
+        public bool? IsPinned { get; private set; }
         public DateTime? LastActivity { get; private set; }
         public DateTime? LastView { get; private set; }
         public Uri Url { get; private set; }
         public Uri ShortUrl { get; private set; }
         public string ShortLink { get; private set; }
-        public object Pinned { get; private set; }
-        public object OrganizationId { get; private set; }
+        public OrganizationId OrganizationId { get; private set; }
         public object Invitations { get; private set; }
         public object PowerUps { get; private set; }
         public object IdTags { get; private set; }

@@ -34,7 +34,7 @@ namespace Tapi.TrelloEntities
             { nameof(Board.Board.LabelNames), "labelNames" },
             { nameof(Board.Board.Memberships), "memberships" },
             { nameof(Board.Board.Name), "name" },
-            { nameof(Board.Board.Pinned), "pinned" },
+            { nameof(Board.Board.IsPinned), "pinned" },
             { nameof(Board.Board.PowerUps), "powerUps" },
             { nameof(Board.Board.Preferences), "prefs" },
             { nameof(Board.Board.ShortLink), "shortLink" },
