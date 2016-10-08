@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Tapi.TrelloEntities.Board;
 
 namespace Tapi.TrelloEntities
 {
@@ -89,6 +90,20 @@ namespace Tapi.TrelloEntities
             { nameof(Label.Label.Name), "name" },
             { nameof(Label.Label.Color), "color" },
             { nameof(Label.Label.UseCount), "uses" }
+        };
+
+        public static readonly Dictionary<string, string> LabelNamesFieldMappings = new Dictionary<string, string>
+        {
+            { nameof(LabelNames.Green), "green" },
+            { nameof(LabelNames.Yellow), "yellow" },
+            { nameof(LabelNames.Orange), "orange" },
+            { nameof(LabelNames.Red), "red" },
+            { nameof(LabelNames.Purple), "purple" },
+            { nameof(LabelNames.Blue), "blue" },
+            { nameof(LabelNames.Sky), "sky" },
+            { nameof(LabelNames.Lime), "lime" },
+            { nameof(LabelNames.Pink), "pink" },
+            { nameof(LabelNames.Black), "black" }
         };
 
         public static readonly Dictionary<string, string> ListFieldMappings = new Dictionary<string, string>
