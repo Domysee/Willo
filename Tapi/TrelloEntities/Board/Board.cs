@@ -31,7 +31,7 @@ namespace Tapi.TrelloEntities.Board
         public object IdTags { get; private set; }
         public object Preferences { get; private set; }
         public object Memberships { get; private set; }
-        public object LabelNames { get; private set; }
+        public LabelNames LabelNames { get; private set; }
 
 
         public static Board FromJson(JObject jobject)
