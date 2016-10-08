@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Tapi.TrelloEntities
 {
-    public class MemberId
+    public struct MemberId
     {
         public static readonly MemberId AuthorizedUser = new MemberId("me");
 
