@@ -8,8 +8,7 @@ namespace Tapi.TrelloEntities.Board
 {
     public enum InvitationPermission
     {
-        Members,
-        Owners,
-        Admins
+        Admins, //Allow only admins to add and remove members
+        Members //Allow all members and admins to add and remove members
     }
 }
