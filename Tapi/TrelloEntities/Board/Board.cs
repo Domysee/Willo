@@ -29,7 +29,7 @@ namespace Tapi.TrelloEntities.Board
         public object Invitations { get; private set; }
         public IEnumerable<object> PowerUps { get; private set; }
         public IEnumerable<object> IdTags { get; private set; }
-        public object Preferences { get; private set; }
+        public BoardPreferences Preferences { get; private set; }
         public IEnumerable<Membership> Memberships { get; private set; }
         public LabelNames LabelNames { get; private set; }
 

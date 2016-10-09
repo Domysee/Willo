@@ -45,6 +45,28 @@ namespace Tapi.TrelloEntities
             { nameof(Board.Board.Url), "url" }
         };
 
+        public static readonly Dictionary<string, string> BoardPreferencesFieldMappings = new Dictionary<string, string>
+        {
+            { nameof(BoardPreferences.PermissionLevel), "permissionLevel" },
+            { nameof(BoardPreferences.VotingPermission), "voting" },
+            { nameof(BoardPreferences.CommentPermission), "comments" },
+            { nameof(BoardPreferences.InvitationPermission), "invitations" },
+            { nameof(BoardPreferences.SelfJoin), "selfJoin" },
+            { nameof(BoardPreferences.HasCardCovers), "cardCovers" },
+            { nameof(BoardPreferences.CardAging), "cardAging" },
+            { nameof(BoardPreferences.IsCalendarFeedEnabled), "calendarFeedEnabled" },
+            { nameof(BoardPreferences.BackgroundColorName), "background" },
+            { nameof(BoardPreferences.BackgroundImage), "backgroundImage" },
+            { nameof(BoardPreferences.ScaledBackgroundImage), "backgroundImageScaled" },
+            { nameof(BoardPreferences.HasBackgroundTitle), "backgroundTitle" },
+            { nameof(BoardPreferences.BackgroundBrightness), "backgroundBrightness" },
+            { nameof(BoardPreferences.BackgroundColor), "backgroundColor" },
+            { nameof(BoardPreferences.PermissionLevelCanBePublic), "canBePublic" },
+            { nameof(BoardPreferences.PermissionLevelCanBeTeam), "canBeOrg" },
+            { nameof(BoardPreferences.PermissionLevelCanBePrivate), "canBePrivate" },
+            { nameof(BoardPreferences.UserCanInvite), "canInvite" }
+    };
+
         public static readonly Dictionary<string, string> CardFieldMappings = new Dictionary<string, string>
         {
             { nameof(Card.Card.Badges), "badges" },

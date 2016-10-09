@@ -49,6 +49,7 @@
     <Compile Include="Trello.cs" />
     <Compile Include="TrelloEntities\Action\Action.cs" />
     <Compile Include="TrelloEntities\Action\ActionId.cs" />
+    <Compile Include="TrelloEntities\Board\BackgroundBrightness.cs" />
     <Compile Include="TrelloEntities\Board\BoardId.cs" />
     <Compile Include="TrelloEntities\Board\Board.cs" />
     <Compile Include="TrelloEntities\Board\BoardFields.cs" />
@@ -56,9 +57,14 @@
     <Compile Include="TrelloEntities\Board\BoardQueryParameters.cs" />
     <Compile Include="TrelloEntities\Board\BoardOverviewQueryParameters.cs" />
     <Compile Include="TrelloEntities\Board\Boards.cs" />
+    <Compile Include="TrelloEntities\Board\CardAging.cs" />
+    <Compile Include="TrelloEntities\Board\CommentPermission.cs" />
     <Compile Include="TrelloEntities\Board\IBoards.cs" />
+    <Compile Include="TrelloEntities\Board\InvitationPermission.cs" />
     <Compile Include="TrelloEntities\Board\LabelNames.cs" />
     <Compile Include="TrelloEntities\Board\Membership.cs" />
+    <Compile Include="TrelloEntities\Board\PermissionLevel.cs" />
+    <Compile Include="TrelloEntities\Board\VotingPermission.cs" />
     <Compile Include="TrelloEntities\Card\CardId.cs" />
     <Compile Include="TrelloEntities\Card\Card.cs" />
     <Compile Include="TrelloEntities\Card\CardFields.cs" />
