@@ -8,8 +8,8 @@ namespace Tapi.TrelloEntities.Board
 {
     public enum VotingPermission
     {
-        Disabled,
-        Members,
+        Disabled,   //The voting power-up is inactive
+        Members,    //All board members can vote
         MembersAndObservers,
         Team,
         Public
