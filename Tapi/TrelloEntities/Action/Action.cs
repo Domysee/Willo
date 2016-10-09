@@ -7,11 +7,11 @@ using Tapi.TrelloEntities.Member;
 
 namespace Tapi.TrelloEntities.Action
 {
-    public class Action
+    public abstract class Action
     {
         public ActionId Id { get; private set; }
         public MemberId CreatorId { get; private set; }
-        public string Type { get; private set; }
-        public object Data { get; private set; }
+        public DateTime Date { get; private set; }
+        public ActionExecutor Executor { get; private set; }
     }
 }

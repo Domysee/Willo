@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Tapi.TrelloEntities.Action;
 using Tapi.TrelloEntities.Board;
 
 namespace Tapi.TrelloEntities
@@ -16,8 +17,17 @@ namespace Tapi.TrelloEntities
         {
             { nameof(Action.Action.Id), "id" },
             { nameof(Action.Action.CreatorId), "idMemberCreator" },
-            { nameof(Action.Action.Type), "type" },
-            { nameof(Action.Action.Data), "data" },
+            { nameof(Action.Action.Date), "date" },
+            { nameof(Action.Action.Executor), "memberCreator" }
+        };
+
+        public static readonly Dictionary<string, string> ActionExecutorFieldMappings = new Dictionary<string, string>
+        {
+            { nameof(ActionExecutor.Id), "id" },
+            { nameof(ActionExecutor.AvatarHash), "avatarHash" },
+            { nameof(ActionExecutor.FullName), "fullName" },
+            { nameof(ActionExecutor.Initials), "initials" },
+            { nameof(ActionExecutor.Username), "username" }
         };
 
         public static readonly Dictionary<string, string> BoardFieldMappings = new Dictionary<string, string>
