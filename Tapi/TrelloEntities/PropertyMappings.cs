@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Tapi.TrelloEntities.Action;
 using Tapi.TrelloEntities.Board;
+using Tapi.TrelloEntities.Card;
 
 namespace Tapi.TrelloEntities
 {
@@ -28,6 +29,29 @@ namespace Tapi.TrelloEntities
             { nameof(ActionExecutor.FullName), "fullName" },
             { nameof(ActionExecutor.Initials), "initials" },
             { nameof(ActionExecutor.Username), "username" }
+        };
+
+        public static readonly Dictionary<string, string> AttachmentFieldMappings = new Dictionary<string, string>
+        {
+            { nameof(Attachment.Id), "id" },
+            { nameof(Attachment.ByteCount), "bytes" },
+            { nameof(Attachment.AddDate), "date" },
+            { nameof(Attachment.EdgeColor), "edgeColor" },
+            { nameof(Attachment.CreatorId), "idMember" },
+            { nameof(Attachment.IsUpload), "isUpload" },
+            { nameof(Attachment.MimeType), "mimeType" },
+            { nameof(Attachment.Name), "name" },
+            { nameof(Attachment.Url), "url" }
+        };
+
+        public static readonly Dictionary<string, string> AttachmentPreviewFieldMappings = new Dictionary<string, string>
+        {
+            { nameof(AttachmentPreview.Id), "_id" },
+            { nameof(AttachmentPreview.ByteCount), "bytes" },
+            { nameof(AttachmentPreview.Url), "url" },
+            { nameof(AttachmentPreview.Height), "height" },
+            { nameof(AttachmentPreview.Width), "width" },
+            { nameof(AttachmentPreview.IsScaled), "scaled" }
         };
 
         public static readonly Dictionary<string, string> BoardFieldMappings = new Dictionary<string, string>
