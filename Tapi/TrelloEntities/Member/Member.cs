@@ -10,7 +10,7 @@ namespace Tapi.TrelloEntities.Member
 {
     public class Member
     {
-        public string Id { get; private set; }
+        public MemberId Id { get; private set; }
         public string Username { get; private set; }
         public string FullName { get; private set; }
         public string Initials { get; private set; }

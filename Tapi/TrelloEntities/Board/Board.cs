@@ -11,7 +11,7 @@ namespace Tapi.TrelloEntities.Board
 {
     public class Board
     {
-        public string Id { get; private set; }
+        public BoardId Id { get; private set; }
         public string Name { get; private set; }
         public string Description { get; private set; }
         public object DescriptionData { get; private set; }

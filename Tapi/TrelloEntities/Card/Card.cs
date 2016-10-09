@@ -10,7 +10,7 @@ namespace Tapi.TrelloEntities.Card
 {
     public class Card
     {
-        public string Id { get; private set; }
+        public CardId Id { get; private set; }
         public int ShortId { get; private set; }
         public string Name { get; private set; }
         public object Description { get; private set; }

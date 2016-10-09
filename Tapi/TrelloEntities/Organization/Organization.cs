@@ -10,7 +10,7 @@ namespace Tapi.TrelloEntities.Organization
 {
     public class Organization
     {
-        public string Id { get; private set; }
+        public OrganizationId Id { get; private set; }
         public string Name { get; private set; }
         public string DisplayName { get; private set; }
         public string Url { get; private set; }

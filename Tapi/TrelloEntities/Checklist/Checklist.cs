@@ -10,7 +10,7 @@ namespace Tapi.TrelloEntities.Checklist
 {
     public class Checklist
     {
-        public string Id { get; private set; }
+        public ChecklistId Id { get; private set; }
         public string Name { get; private set; }
         public string ContainingBoardId { get; private set; }
         public string ContainingCardId { get; private set; }

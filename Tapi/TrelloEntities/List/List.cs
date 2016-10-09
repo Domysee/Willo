@@ -10,7 +10,7 @@ namespace Tapi.TrelloEntities.List
 {
     public class List
     {
-        public string Id { get; private set; }
+        public ListId Id { get; private set; }
         public string Name { get; private set; }
         public bool IsClosed { get; private set; }
         public bool IsUserSubscribed { get; private set; }

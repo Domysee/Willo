@@ -9,7 +9,7 @@ namespace Tapi.TrelloEntities.Action
 {
     public class Action
     {
-        public string Id { get; private set; }
+        public ActionId Id { get; private set; }
         public MemberId CreatorId { get; private set; }
         public string Type { get; private set; }
         public object Data { get; private set; }

@@ -10,7 +10,7 @@ namespace Tapi.TrelloEntities.Notification
 {
     public class Notification
     {
-        public string Id { get; private set; }
+        public NotificationId Id { get; private set; }
         public DateTime Date { get; private set; }
         public string CreatorId { get; private set; }
         public string Type { get; private set; }
