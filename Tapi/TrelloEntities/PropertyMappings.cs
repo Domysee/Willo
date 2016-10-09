@@ -88,7 +88,7 @@ namespace Tapi.TrelloEntities
             { nameof(Card.Card.DueDate), "due" },
             { nameof(Card.Card.Email), "email" },
             { nameof(Card.Card.Id), "id" },
-            { nameof(Card.Card.AttachmentCoverId), "idAttachmentCover" },
+            { nameof(Card.Card.CoverId), "idAttachmentCover" },
             { nameof(Card.Card.ContainingBoardId), "idBoard" },
             { nameof(Card.Card.ContainedChecklistIds), "idChecklists" },
             { nameof(Card.Card.LabelIds), "idLabels" },

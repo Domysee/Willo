@@ -26,7 +26,7 @@ namespace Tapi.TrelloEntities.Card
         public IEnumerable<string> ContainedChecklistIds { get; private set; }
         public IEnumerable<string> MemberIds { get; private set; }
         public IEnumerable<string> VotedMemberIds { get; private set; }
-        public string AttachmentCoverId { get; private set; }
+        public AttachmentId CoverId { get; private set; }
         public bool ManualCoverAttachment { get; private set; }
         public IEnumerable<object> Labels { get; private set; }
         public IEnumerable<string> LabelIds { get; private set; }
