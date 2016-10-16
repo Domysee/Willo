@@ -24,9 +24,17 @@ namespace Tapi.TrelloEntities
 
         public static readonly Dictionary<string, string> ActionAssociatedBoardFieldMappings = new Dictionary<string, string>
         {
-            { nameof(Action.ActionAssociatedBoard.Id), "id" },
-            { nameof(Action.ActionAssociatedBoard.Name), "name" },
-            { nameof(Action.ActionAssociatedBoard.ShortLink), "shortLink" }
+            { nameof(ActionAssociatedBoard.Id), "id" },
+            { nameof(ActionAssociatedBoard.Name), "name" },
+            { nameof(ActionAssociatedBoard.ShortLink), "shortLink" }
+        };
+
+        public static readonly Dictionary<string, string> ActionAssociatedCardFieldMappings = new Dictionary<string, string>
+        {
+            { nameof(ActionAssociatedCard.Id), "id" },
+            { nameof(ActionAssociatedCard.ShortId), "idShort" },
+            { nameof(ActionAssociatedCard.Name), "name" },
+            { nameof(ActionAssociatedCard.ShortLink), "shortLink" },
         };
 
         public static readonly Dictionary<string, string> ActionExecutorFieldMappings = new Dictionary<string, string>
@@ -106,7 +114,7 @@ namespace Tapi.TrelloEntities
             { nameof(BoardPreferences.PermissionLevelCanBeTeam), "canBeOrg" },
             { nameof(BoardPreferences.PermissionLevelCanBePrivate), "canBePrivate" },
             { nameof(BoardPreferences.UserCanInvite), "canInvite" }
-    };
+        };
 
         public static readonly Dictionary<string, string> CardFieldMappings = new Dictionary<string, string>
         {
