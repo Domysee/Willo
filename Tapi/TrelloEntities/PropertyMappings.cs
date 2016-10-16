@@ -22,6 +22,15 @@ namespace Tapi.TrelloEntities
             { nameof(Action.Action.Executor), "memberCreator" }
         };
 
+        public static readonly Dictionary<string, string> ActionAssociatedAttachmentFieldMappings = new Dictionary<string, string>
+        {
+            { nameof(ActionAssociatedAttachment.Url), "url" },
+            { nameof(ActionAssociatedAttachment.Name), "name" },
+            { nameof(ActionAssociatedAttachment.Id), "id" },
+            { nameof(ActionAssociatedAttachment.PreviewUrl), "previewUrl" },
+            { nameof(ActionAssociatedAttachment.PreviewUrl2x), "previewUrl2x" }
+        };
+
         public static readonly Dictionary<string, string> ActionAssociatedBoardFieldMappings = new Dictionary<string, string>
         {
             { nameof(ActionAssociatedBoard.Id), "id" },

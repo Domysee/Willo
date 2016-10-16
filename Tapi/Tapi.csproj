@@ -52,6 +52,7 @@
     <Compile Include="TrelloEntities\Action\ActionOwner.cs" />
     <Compile Include="TrelloEntities\Action\ActionId.cs" />
     <Compile Include="TrelloEntities\Action\ActionAssociatedCard.cs" />
+    <Compile Include="TrelloEntities\Action\ActionAssociatedAttachment.cs" />
     <Compile Include="TrelloEntities\Board\BackgroundBrightness.cs" />
     <Compile Include="TrelloEntities\Board\BoardId.cs" />
     <Compile Include="TrelloEntities\Board\Board.cs" />
