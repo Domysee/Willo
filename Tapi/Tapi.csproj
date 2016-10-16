@@ -48,7 +48,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Trello.cs" />
     <Compile Include="TrelloEntities\Action\Action.cs" />
-    <Compile Include="TrelloEntities\Action\ActionExecutor.cs" />
+    <Compile Include="TrelloEntities\Action\ActionOwner.cs" />
     <Compile Include="TrelloEntities\Action\ActionId.cs" />
     <Compile Include="TrelloEntities\Board\BackgroundBrightness.cs" />
     <Compile Include="TrelloEntities\Board\BoardId.cs" />

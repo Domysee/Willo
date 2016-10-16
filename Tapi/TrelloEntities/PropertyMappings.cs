@@ -24,11 +24,11 @@ namespace Tapi.TrelloEntities
 
         public static readonly Dictionary<string, string> ActionExecutorFieldMappings = new Dictionary<string, string>
         {
-            { nameof(ActionExecutor.Id), "id" },
-            { nameof(ActionExecutor.AvatarHash), "avatarHash" },
-            { nameof(ActionExecutor.FullName), "fullName" },
-            { nameof(ActionExecutor.Initials), "initials" },
-            { nameof(ActionExecutor.Username), "username" }
+            { nameof(ActionOwner.Id), "id" },
+            { nameof(ActionOwner.AvatarHash), "avatarHash" },
+            { nameof(ActionOwner.FullName), "fullName" },
+            { nameof(ActionOwner.Initials), "initials" },
+            { nameof(ActionOwner.Username), "username" }
         };
 
         public static readonly Dictionary<string, string> AttachmentFieldMappings = new Dictionary<string, string>

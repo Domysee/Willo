@@ -10,7 +10,7 @@ namespace Tapi.TrelloEntities.Action
     /// <summary>
     /// represents a subset of the data of the member who did the action
     /// </summary>
-    public class ActionExecutor
+    public class ActionOwner
     {
         public MemberId Id { get; private set; }
         public string Username { get; private set; }

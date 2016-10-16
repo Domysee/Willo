@@ -12,6 +12,6 @@ namespace Tapi.TrelloEntities.Action
         public ActionId Id { get; private set; }
         public MemberId CreatorId { get; private set; }
         public DateTime Date { get; private set; }
-        public ActionExecutor Executor { get; private set; }
+        public ActionOwner Executor { get; private set; }
     }
 }
